@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblog/img/fluid.png">
-  <link rel="icon" href="/myblog/img/logo.PNG">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="Springboot调用榛子云短信api服务榛子云官方文档 步骤1.添加依赖 123456&lt;!-- 榛子云api --&gt;        &lt;dependency&gt;            &lt;groupId&gt;com.zhenzikj&lt;&#x2F;groupId&gt;            &lt;artifactId&gt;zhenzisms&lt;&#x2F;artifactI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="调用榛子云短信api服务">
-<meta property="og:url" content="https://yangyewen.gitee.io/myblog/2022/10/28/%E8%B0%83%E7%94%A8%E6%A6%9B%E5%AD%90%E4%BA%91%E7%9F%AD%E4%BF%A1api%E6%9C%8D%E5%8A%A1/index.html">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/10/28/%E8%B0%83%E7%94%A8%E6%A6%9B%E5%AD%90%E4%BA%91%E7%9F%AD%E4%BF%A1api%E6%9C%8D%E5%8A%A1/index.html">
 <meta property="og:site_name" content="EvanYoung">
 <meta property="og:description" content="Springboot调用榛子云短信api服务榛子云官方文档 步骤1.添加依赖 123456&lt;!-- 榛子云api --&gt;        &lt;dependency&gt;            &lt;groupId&gt;com.zhenzikj&lt;&#x2F;groupId&gt;            &lt;artifactId&gt;zhenzisms&lt;&#x2F;artifactI">
 <meta property="og:locale" content="zh_CN">
@@ -54,12 +54,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -68,18 +68,18 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"yangyewen.gitee.io","root":"/myblog/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblog/local-search.xml"};
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblog/js/utils.js" ></script>
-  <script  src="/myblog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 5.4.1"></head>
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -91,7 +91,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblog/">
+    <a class="navbar-brand" href="/">
       <strong>EvanYoung</strong>
     </a>
 
@@ -110,7 +110,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -122,7 +122,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -134,7 +134,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -146,7 +146,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -158,7 +158,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -187,7 +187,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblog/img/bg10.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -271,10 +271,10 @@
               
               <h2 id="Springboot调用榛子云短信api服务"><a href="#Springboot调用榛子云短信api服务" class="headerlink" title="Springboot调用榛子云短信api服务"></a>Springboot调用榛子云短信api服务</h2><p><a target="_blank" rel="noopener" href="http://smsow.zhenzikj.com/doc/ready.html">榛子云官方文档</a></p>
 <h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p><strong>1.添加依赖</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 榛子云api --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.zhenzikj<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>zhenzisms<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre class=" language-hljs xml"><span class="hljs-comment">&lt;!-- 榛子云api --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.zhenzikj<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>zhenzisms<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name"><code class="language-hljs xml"><span class="hljs-comment">&lt;!-- 榛子云api --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.zhenzikj<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>zhenzisms<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>></span><br></code></pre></td></tr></table></figure>
 
 <p><strong>2.编写控制类</strong></p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-meta">@Controller</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Message</span> &#123;<br>    <span class="hljs-comment">//短信平台相关参数</span><br>    <span class="hljs-comment">//榛子云链接</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-title class_">String</span> apiUrl = <span class="hljs-string">&quot;https://sms_developer.zhenzikj.com&quot;</span>;<br>    <span class="hljs-comment">//榛子云系统上获取 填入自己账号的id和密钥</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-title class_">String</span> appId = <span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-title class_">String</span> appSecret = <span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-meta">@GetMapping</span>(<span class="hljs-string">&quot;/fitness/code&quot;</span>)<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">boolean</span> <span class="hljs-title function_">getCode</span>(<span class="hljs-params"><span class="hljs-meta">@RequestParam</span>(<span class="hljs-string">&quot;memPhone&quot;</span>) <span class="hljs-built_in">String</span> memPhone, HttpSession httpSession</span>)&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-title class_">JSON</span><span class="hljs-built_in">Object</span> json = <span class="hljs-literal">null</span>;<br>            <span class="hljs-comment">//随机生成验证码</span><br>            <span class="hljs-title class_">String</span> code = <span class="hljs-title class_">String</span>.<span class="hljs-title function_">valueOf</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>().<span class="hljs-title function_">nextInt</span>(<span class="hljs-number">999999</span>));<br>            <span class="hljs-comment">//将验证码通过榛子云接口发送至手机</span><br>            <span class="hljs-title class_">ZhenziSmsClient</span> client = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ZhenziSmsClient</span>(apiUrl, appId, appSecret);<br>            <span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">String</span>, <span class="hljs-title class_">Object</span>&gt; params = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;<span class="hljs-title class_">String</span>, <span class="hljs-title class_">Object</span>&gt;();<br>            params.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;number&quot;</span>, <span class="hljs-string">&quot;填自己的手机号码&quot;</span>);<br>            params.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;templateId&quot;</span>, <span class="hljs-string">&quot;短信的模板id&quot;</span>);<br>            <span class="hljs-title class_">String</span>[] templateParams = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[<span class="hljs-number">2</span>];<br>            templateParams[<span class="hljs-number">0</span>] = code;<br>            templateParams[<span class="hljs-number">1</span>] = <span class="hljs-string">&quot;5分钟&quot;</span>;<span class="hljs-comment">//设置有效时间</span><br>            params.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;templateParams&quot;</span>, templateParams);<br>            <span class="hljs-title class_">String</span> result = client.<span class="hljs-title function_">send</span>(params);<br>            <span class="hljs-title class_">System</span>.<span class="hljs-property">out</span>.<span class="hljs-title function_">println</span>(result);<br>            json = <span class="hljs-title class_">JSON</span><span class="hljs-built_in">Object</span>.<span class="hljs-title function_">parseObject</span>(result);<br>            <span class="hljs-title class_">System</span>.<span class="hljs-property">out</span>.<span class="hljs-title function_">println</span>(result);<br>            <span class="hljs-comment">//将验证码存到session中,同时存入创建时间</span><br>            <span class="hljs-comment">//以json存放，这里使用的是阿里的fastjson</span><br>            json = <span class="hljs-keyword">new</span> <span class="hljs-title class_">JSON</span><span class="hljs-built_in">Object</span>();<br>            json.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;memPhone&quot;</span>,memPhone);<br>            json.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;code&quot;</span>,code);<br>            json.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;createTime&quot;</span>,<span class="hljs-title class_">System</span>.<span class="hljs-title function_">currentTimeMillis</span>());<br>            <span class="hljs-comment">// 将认证码存入SESSION</span><br>            redisTemplate.<span class="hljs-title function_">expire</span>(<span class="hljs-string">&quot;verifyCode&quot;</span>+memPhone,<span class="hljs-number">1</span>, <span class="hljs-title class_">TimeUnit</span>.<span class="hljs-property">MINUTES</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125; <span class="hljs-keyword">catch</span> (<span class="hljs-title class_">Exception</span> e) &#123;<br>            e.<span class="hljs-title function_">printStackTrace</span>();<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre class=" language-hljs typescript"><span class="hljs-meta">@Controller</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Message</span> &#123;<br>    <span class="hljs-comment">//短信平台相关参数</span><br>    <span class="hljs-comment">//榛子云链接</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-title class_">String</span> apiUrl = <span class="hljs-string">&quot;https://sms_developer.zhenzikj.com&quot;</span>;<br>    <span class="hljs-comment">//榛子云系统上获取 填入自己账号的id和密钥</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-title class_">String</span> appId = <span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-title class_">String</span> appSecret = <span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-meta">@GetMapping</span>(<span class="hljs-string">&quot;/fitness/code&quot;</span>)<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">boolean</span> <span class="hljs-title function_">getCode</span>(<span class="hljs-params"><span class="hljs-meta">@RequestParam</span>(<span class="hljs-string">&quot;memPhone&quot;</span>) <span class="hljs-built_in">String</span> memPhone, HttpSession httpSession</span>)&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-title class_">JSON</span><span class="hljs-built_in">Object</span> json = <span class="hljs-literal">null</span>;<br>            <span class="hljs-comment">//随机生成验证码</span><br>            <span class="hljs-title class_">String</span> code = <span class="hljs-title class_">String</span>.<span class="hljs-title function_">valueOf</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>().<span class="hljs-title function_">nextInt</span>(<span class="hljs-number">999999</span>));<br>            <span class="hljs-comment">//将验证码通过榛子云接口发送至手机</span><br>            <span class="hljs-title class_">ZhenziSmsClient</span> client = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ZhenziSmsClient</span>(apiUrl, appId, appSecret);<br>            <span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">String</span>, <span class="hljs-title class_">Object</span>&gt; params = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;<span class="hljs-title class_">String</span>, <span class="hljs-title class_">Object</span>&gt;();<br>            params.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;number&quot;</span>, <span class="hljs-string">&quot;填自己的手机号码&quot;</span>);<br>            params.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;templateId&quot;</span>, <span class="hljs-string">&quot;短信的模板id&quot;</span>);<br>            <span class="hljs-title class_">String</span>[] templateParams = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[<span class="hljs-number">2</span>];<br>            templateParams[<span class="hljs-number">0</span>] = code;<br>            templateParams[<span class="hljs-number">1</span>] = <span class="hljs-string">&quot;5分钟&quot;</span>;<span class="hljs-comment">//设置有效时间</span><br>            params.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;templateParams&quot;</span>, templateParams);<br>            <span class="hljs-title class_">String</span> result = client.<span class="hljs-title function_">send</span>(params);<br>            <span class="hljs-title class_">System</span>.<span class="hljs-property">out</span>.<span class="hljs-title function_">println</span>(result);<br>            json = <span class="hljs-title class_">JSON</span><span class="hljs-built_in">Object</span>.<span class="hljs-title function_">parseObject</span>(result);<br>            <span class="hljs-title class_">System</span>.<span class="hljs-property">out</span>.<span class="hljs-title function_">println</span>(result);<br>            <span class="hljs-comment">//将验证码存到session中,同时存入创建时间</span><br>            <span class="hljs-comment">//以json存放，这里使用的是阿里的fastjson</span><br>            json = <span class="hljs-keyword">new</span> <span class="hljs-title class_">JSON</span><span class="hljs-built_in">Object</span>();<br>            json.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;memPhone&quot;</span>,memPhone);<br>            json.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;code&quot;</span>,code);<br>            json.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;createTime&quot;</span>,<span class="hljs-title class_">System</span>.<span class="hljs-title function_">currentTimeMillis</span>());<br>            <span class="hljs-comment">// 将认证码存入SESSION</span><br>            redisTemplate.<span class="hljs-title function_">expire</span>(<span class="hljs-string">&quot;verifyCode&quot;</span>+memPhone,<span class="hljs-number">1</span>, <span class="hljs-title class_">TimeUnit</span>.<span class="hljs-property">MINUTES</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125; <span class="hljs-keyword">catch</span> (<span class="hljs-title class_">Exception</span> e) &#123;<br>            e.<span class="hljs-title function_">printStackTrace</span>();<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal"><code class="language-hljs typescript"><span class="hljs-meta">@Controller</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Message</span> &#123;<br>    <span class="hljs-comment">//短信平台相关参数</span><br>    <span class="hljs-comment">//榛子云链接</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-title class_">String</span> apiUrl = <span class="hljs-string">&quot;https://sms_developer.zhenzikj.com&quot;</span>;<br>    <span class="hljs-comment">//榛子云系统上获取 填入自己账号的id和密钥</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-title class_">String</span> appId = <span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-title class_">String</span> appSecret = <span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-meta">@GetMapping</span>(<span class="hljs-string">&quot;/fitness/code&quot;</span>)<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">boolean</span> <span class="hljs-title function_">getCode</span>(<span class="hljs-params"><span class="hljs-meta">@RequestParam</span>(<span class="hljs-string">&quot;memPhone&quot;</span>) <span class="hljs-built_in">String</span> memPhone, HttpSession httpSession</span>)&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-title class_">JSON</span><span class="hljs-built_in">Object</span> json = <span class="hljs-literal">null</span>;<br>            <span class="hljs-comment">//随机生成验证码</span><br>            <span class="hljs-title class_">String</span> code = <span class="hljs-title class_">String</span>.<span class="hljs-title function_">valueOf</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Random</span>().<span class="hljs-title function_">nextInt</span>(<span class="hljs-number">999999</span>));<br>            <span class="hljs-comment">//将验证码通过榛子云接口发送至手机</span><br>            <span class="hljs-title class_">ZhenziSmsClient</span> client = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ZhenziSmsClient</span>(apiUrl, appId, appSecret);<br>            <span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">String</span>, <span class="hljs-title class_">Object</span>&gt; params = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;<span class="hljs-title class_">String</span>, <span class="hljs-title class_">Object</span>&gt;();<br>            params.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;number&quot;</span>, <span class="hljs-string">&quot;填自己的手机号码&quot;</span>);<br>            params.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;templateId&quot;</span>, <span class="hljs-string">&quot;短信的模板id&quot;</span>);<br>            <span class="hljs-title class_">String</span>[] templateParams = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[<span class="hljs-number">2</span>];<br>            templateParams[<span class="hljs-number">0</span>] = code;<br>            templateParams[<span class="hljs-number">1</span>] = <span class="hljs-string">&quot;5分钟&quot;</span>;<span class="hljs-comment">//设置有效时间</span><br>            params.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;templateParams&quot;</span>, templateParams);<br>            <span class="hljs-title class_">String</span> result = client.<span class="hljs-title function_">send</span>(params);<br>            <span class="hljs-title class_">System</span>.<span class="hljs-property">out</span>.<span class="hljs-title function_">println</span>(result);<br>            json = <span class="hljs-title class_">JSON</span><span class="hljs-built_in">Object</span>.<span class="hljs-title function_">parseObject</span>(result);<br>            <span class="hljs-title class_">System</span>.<span class="hljs-property">out</span>.<span class="hljs-title function_">println</span>(result);<br>            <span class="hljs-comment">//将验证码存到session中,同时存入创建时间</span><br>            <span class="hljs-comment">//以json存放，这里使用的是阿里的fastjson</span><br>            json = <span class="hljs-keyword">new</span> <span class="hljs-title class_">JSON</span><span class="hljs-built_in">Object</span>();<br>            json.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;memPhone&quot;</span>,memPhone);<br>            json.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;code&quot;</span>,code);<br>            json.<span class="hljs-title function_">put</span>(<span class="hljs-string">&quot;createTime&quot;</span>,<span class="hljs-title class_">System</span>.<span class="hljs-title function_">currentTimeMillis</span>());<br>            <span class="hljs-comment">// 将认证码存入SESSION</span><br>            redisTemplate.<span class="hljs-title function_">expire</span>(<span class="hljs-string">&quot;verifyCode&quot;</span>+memPhone,<span class="hljs-number">1</span>, <span class="hljs-title class_">TimeUnit</span>.<span class="hljs-property">MINUTES</span>);<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125; <span class="hljs-keyword">catch</span> (<span class="hljs-title class_">Exception</span> e) &#123;<br>            e.<span class="hljs-title function_">printStackTrace</span>();<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -297,7 +297,7 @@
     
       <span class="category-chain">
         
-  <a href="/myblog/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
   
   
 
@@ -318,7 +318,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>调用榛子云短信api服务</div>
-      <div>https://yangyewen.gitee.io/myblog/2022/10/28/调用榛子云短信api服务/</div>
+      <div>https://evanyangtobegreatest.github.io/2022/10/28/调用榛子云短信api服务/</div>
     </div>
     <div class="license-meta">
       
@@ -360,7 +360,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblog/2022/12/09/JsBarcode%E5%BE%AA%E7%8E%AF%E7%94%9F%E6%88%90%E5%A4%9A%E4%B8%AA%E6%9D%A1%E5%BD%A2%E7%A0%81/" title="JsBarcode循环生成多个条形码">
+                      <a href="/2022/12/09/JsBarcode%E5%BE%AA%E7%8E%AF%E7%94%9F%E6%88%90%E5%A4%9A%E4%B8%AA%E6%9D%A1%E5%BD%A2%E7%A0%81/" title="JsBarcode循环生成多个条形码">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">JsBarcode循环生成多个条形码</span>
                         <span class="visible-mobile">上一篇</span>
@@ -370,7 +370,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblog/2022/09/06/JSON%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E8%BD%ACJava%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" title="JSON对象数组转Java对象数组">
+                      <a href="/2022/09/06/JSON%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E8%BD%ACJava%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" title="JSON对象数组转Java对象数组">
                         <span class="hidden-mobile">JSON对象数组转Java对象数组</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -493,7 +493,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/myblog/img/police_beian.png" srcset="/myblog/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>粤公网安备 44011402000758号</span>
         </a>
@@ -524,8 +524,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblog/js/events.js" ></script>
-<script  src="/myblog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -549,7 +549,7 @@
 
 
   
-    <script  src="/myblog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -686,7 +686,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -694,7 +694,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblog/img/fluid.png">
-  <link rel="icon" href="/myblog/img/logo.PNG">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,18 +19,18 @@
     <meta name="description" content="Mybatis笔记第一章1.三层架构界面层： 和用户打交道的， 接收用户的请求参数， 显示处理结果的。（jsp ，html ，servlet）业务逻辑层： 接收了界面层传递的数据，计算逻辑，调用数据库，获取数据数据访问层： 就是访问数据库， 执行对数据的查询，修改，删除等等的。  三层对应的包    界面层： controller包 （servlet）    业务逻辑层： service 包（XX">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mybatis笔记">
-<meta property="og:url" content="https://yangyewen.gitee.io/myblog/2022/03/21/Mybatis%E7%AC%94%E8%AE%B0-1/index.html">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/03/21/Mybatis%E7%AC%94%E8%AE%B0-1/index.html">
 <meta property="og:site_name" content="EvanYoung">
 <meta property="og:description" content="Mybatis笔记第一章1.三层架构界面层： 和用户打交道的， 接收用户的请求参数， 显示处理结果的。（jsp ，html ，servlet）业务逻辑层： 接收了界面层传递的数据，计算逻辑，调用数据库，获取数据数据访问层： 就是访问数据库， 执行对数据的查询，修改，删除等等的。  三层对应的包    界面层： controller包 （servlet）    业务逻辑层： service 包（XX">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yangyewen.gitee.io/myblog/img/bg6.jpg">
+<meta property="og:image" content="https://evanyangtobegreatest.github.io/img/bg6.jpg">
 <meta property="article:published_time" content="2022-03-21T01:11:27.000Z">
 <meta property="article:modified_time" content="2022-05-23T06:49:15.954Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java框架">
 <meta property="article:tag" content="mybatis">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yangyewen.gitee.io/myblog/img/bg6.jpg">
+<meta name="twitter:image" content="https://evanyangtobegreatest.github.io/img/bg6.jpg">
   
   
   
@@ -58,12 +58,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -72,18 +72,18 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"yangyewen.gitee.io","root":"/myblog/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblog/local-search.xml"};
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblog/js/utils.js" ></script>
-  <script  src="/myblog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 5.4.1"></head>
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -95,7 +95,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblog/">
+    <a class="navbar-brand" href="/">
       <strong>EvanYoung</strong>
     </a>
 
@@ -114,7 +114,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -126,7 +126,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -138,7 +138,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -150,7 +150,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -162,7 +162,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -191,7 +191,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblog/img/bg10.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -332,7 +332,7 @@
 <li><p>2.提供了执行sql语句的能力， 不用你执行sql</p>
 </li>
 <li><p>3.提供了循环sql， 把sql的结果转为java对象， List集合的能力</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (rs.next()) &#123;<br>	<span class="hljs-type">Student</span> <span class="hljs-variable">stu</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>();<br>	stu.setId(rs.getInt(<span class="hljs-string">&quot;id&quot;</span>));<br>	stu.setName(rs.getString(<span class="hljs-string">&quot;name&quot;</span>));<br>	stu.setAge(rs.getInt(<span class="hljs-string">&quot;age&quot;</span>));<br>	<span class="hljs-comment">//从数据库取出数据转为 Student 对象，封装到 List 集合</span><br>	stuList.add(stu);<br>  &#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">while</span> (rs.next()) &#123;<br>	<span class="hljs-type">Student</span> <span class="hljs-variable">stu</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>();<br>	stu.setId(rs.getInt(<span class="hljs-string">&quot;id&quot;</span>));<br>	stu.setName(rs.getString(<span class="hljs-string">&quot;name&quot;</span>));<br>	stu.setAge(rs.getInt(<span class="hljs-string">&quot;age&quot;</span>));<br>	<span class="hljs-comment"><code class="language-hljs java"><span class="hljs-keyword">while</span> (rs.next()) &#123;<br>	<span class="hljs-type">Student</span> <span class="hljs-variable">stu</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>();<br>	stu.setId(rs.getInt(<span class="hljs-string">&quot;id&quot;</span>));<br>	stu.setName(rs.getString(<span class="hljs-string">&quot;name&quot;</span>));<br>	stu.setAge(rs.getInt(<span class="hljs-string">&quot;age&quot;</span>));<br>	<span class="hljs-comment">//从数据库取出数据转为 Student 对象，封装到 List 集合</span><br>	stuList.add(stu);<br>  &#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>4.提供了关闭资源的能力，不用你关闭Connection, Statement, ResultSet</p>
 </li>
 </ul>
@@ -351,7 +351,7 @@
 </ol>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">SqlSessionFactoryBuilder</span> <span class="hljs-variable">builder</span>  <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SqlSessionFactoryBuilder</span>();<br><span class="hljs-comment">//创建SqlSessionFactory对象</span><br><span class="hljs-type">SqlSessionFactory</span> <span class="hljs-variable">factory</span> <span class="hljs-operator">=</span> builder.build(in);<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-type">SqlSessionFactoryBuilder</span> <span class="hljs-variable">builder</span>  <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SqlSessionFactoryBuilder</span>();<br><span class="hljs-comment">//创建SqlSessionFactory对象</span><br><span class="hljs-type">SqlSessionFactory</span> <span class="hljs-variable">factory</span> <span class="hljs-operator"><code class="language-hljs java"><span class="hljs-type">SqlSessionFactoryBuilder</span> <span class="hljs-variable">builder</span>  <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SqlSessionFactoryBuilder</span>();<br><span class="hljs-comment">//创建SqlSessionFactory对象</span><br><span class="hljs-type">SqlSessionFactory</span> <span class="hljs-variable">factory</span> <span class="hljs-operator">=</span> builder.build(in);<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><ol start="3">
@@ -359,7 +359,7 @@
 </ol>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java">SqlSessionFactory:接口  ， 接口实现类： DefaultSqlSessionFactory<br> SqlSessionFactory作用： 获取SqlSession对象。<span class="hljs-type">SqlSession</span> <span class="hljs-variable">sqlSession</span> <span class="hljs-operator">=</span> factory.openSession();<br><br> openSession()方法说明：<br>  <span class="hljs-number">1.</span> openSession() ：无参数的， 获取是非自动提交事务的SqlSession对象<br>  <span class="hljs-number">2.</span> openSession(<span class="hljs-type">boolean</span>): openSession(<span class="hljs-literal">true</span>)  获取自动提交事务的SqlSession. <br>                         openSession(<span class="hljs-literal">false</span>)  非自动提交事务的SqlSession对象<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs java">SqlSessionFactory:接口  ， 接口实现类： DefaultSqlSessionFactory<br> SqlSessionFactory作用： 获取SqlSession对象。<span class="hljs-type">SqlSession</span> <span class="hljs-variable">sqlSession</span> <span class="hljs-operator">=</span> factory.openSession();<br><br> openSession()方法说明：<br>  <span class="hljs-number">1.</span> openSession() ：无参数的， 获取是非自动提交事务的SqlSession对象<br>  <span class="hljs-number">2.</span> openSession(<span class="hljs-type">boolean</span>): openSession(<span class="hljs-literal">true</span>)  获取自动提交事务的SqlSession. <br>                         openSession(<span class="hljs-literal"><code class="language-hljs java">SqlSessionFactory:接口  ， 接口实现类： DefaultSqlSessionFactory<br> SqlSessionFactory作用： 获取SqlSession对象。<span class="hljs-type">SqlSession</span> <span class="hljs-variable">sqlSession</span> <span class="hljs-operator">=</span> factory.openSession();<br><br> openSession()方法说明：<br>  <span class="hljs-number">1.</span> openSession() ：无参数的， 获取是非自动提交事务的SqlSession对象<br>  <span class="hljs-number">2.</span> openSession(<span class="hljs-type">boolean</span>): openSession(<span class="hljs-literal">true</span>)  获取自动提交事务的SqlSession. <br>                         openSession(<span class="hljs-literal">false</span>)  非自动提交事务的SqlSession对象<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><ol start="4">
@@ -367,7 +367,7 @@
 </ol>
 </li>
 </ul>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs tex">使用要求：<br>SqlSession对象不是线程安全的，需要在方法内部使用。<br>在执行sql语句之前，使用openSession()获取SqlSession对象。<br>在执行完sql语句后，需要关闭它，执行SqlSession.close(). 这样能保证他的使用是线程安全的。<br></code></pre></td></tr></table></figure>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">使用要求：<br>SqlSession对象不是线程安全的，需要在方法内部使用。<br>在执行sql语句之前，使用openSession()获取SqlSession对象。<br>在执行完sql语句后，需要关闭它，执行SqlSession.close(). 这样能保证他的使用是线程安全的。<br></code></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h3 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h3><ul>
@@ -376,34 +376,34 @@
 <li><p>传入参数： 从java代码中把数据传入到mapper文件的sql语句中。</p>
 <ul>
 <li><p>parameterType ： 写在mapper文件中的一个属性。 表示dao接口中方法的参数的数据类型。<br>例如：StudentDao接口</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> Student  <span class="hljs-title function_">selectStudentById</span><span class="hljs-params">(Integer id)</span> <br></code></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> Student  <span class="hljs-title function_">selectStudentById</span><span class="hljs-params"><code class="language-hljs java"><span class="hljs-keyword">public</span> Student  <span class="hljs-title function_">selectStudentById</span><span class="hljs-params">(Integer id)</span> <br></code></pre></td></tr></table></figure></li>
 <li><p>一个简单类型的参数：<br>简单类型： mybatis把java的基本数据类型和String都叫简单类型。<br>在mapper文件获取简单类型的一个参数的值，使用 #{任意字符}</p>
 </li>
 </ul>
 <p>接口：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> Student  <span class="hljs-title function_">selectStudentById</span><span class="hljs-params">(Integer id)</span> <br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> Student  <span class="hljs-title function_">selectStudentById</span><span class="hljs-params"><code class="language-hljs java"><span class="hljs-keyword">public</span> Student  <span class="hljs-title function_">selectStudentById</span><span class="hljs-params">(Integer id)</span> <br></code></pre></td></tr></table></figure>
 
 <p>mapper:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span>#&#123;studentId&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs sql"><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator"><code class="language-hljs sql"><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span>#&#123;studentId&#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>参数，使用@Param命名参数</p>
 <p>接口 :</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;Student&gt; <span class="hljs-title function_">selectMulitParam</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;myname&quot;)</span> String name, <span class="hljs-meta">@Param(&quot;myage&quot;)</span> Integer age)</span><br>  使用  <span class="hljs-meta">@Param(&quot;参数名&quot;)</span>  String name <br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> List&lt;Student&gt; <span class="hljs-title function_">selectMulitParam</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;myname&quot;)</span> String name, <span class="hljs-meta">@Param(&quot;myage&quot;)</span> Integer age)</span><br>  使用  <span class="hljs-meta"><code class="language-hljs java"><span class="hljs-keyword">public</span> List&lt;Student&gt; <span class="hljs-title function_">selectMulitParam</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;myname&quot;)</span> String name, <span class="hljs-meta">@Param(&quot;myage&quot;)</span> Integer age)</span><br>  使用  <span class="hljs-meta">@Param("参数名")</span>  String name <br></code></pre></td></tr></table></figure>
 
 <p>mapper:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-operator">&lt;</span><span class="hljs-keyword">select</span><span class="hljs-operator">&gt;</span><br>    <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> name<span class="hljs-operator">=</span>#&#123;myname&#125; <span class="hljs-keyword">or</span> age<span class="hljs-operator">=</span>#&#123;myage&#125;<br>  <span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">select</span><span class="hljs-operator">&gt;</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs sql"><span class="hljs-operator">&lt;</span><span class="hljs-keyword">select</span><span class="hljs-operator">&gt;</span><br>    <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> name<span class="hljs-operator">=</span>#&#123;myname&#125; <span class="hljs-keyword">or</span> age<span class="hljs-operator">=</span>#&#123;myage&#125;<br>  <span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">select</span><span class="hljs-operator"><code class="language-hljs sql"><span class="hljs-operator">&lt;</span><span class="hljs-keyword">select</span><span class="hljs-operator">&gt;</span><br>    <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> name<span class="hljs-operator">=</span>#&#123;myname&#125; <span class="hljs-keyword">or</span> age<span class="hljs-operator">=</span>#&#123;myage&#125;<br>  <span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">select</span><span class="hljs-operator">></span><br></code></pre></td></tr></table></figure></li>
 <li><p>多个参数，使用java对象<br>语法 #{属性名}</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">vo: <span class="hljs-keyword">value</span> <span class="hljs-keyword">object</span> , 放一些存储数据的类。比如说 提交请求参数， <span class="hljs-type">name</span> ,age <br>	     现在想把<span class="hljs-type">name</span> ,age 传给一个service 类。<br>vo: <span class="hljs-keyword">view</span> <span class="hljs-keyword">object</span> , 从servlet把数据返回给浏览器使用的类，表示显示结果的类。<br><br>pojo: 普通的有<span class="hljs-keyword">set</span>， <span class="hljs-keyword">get</span>方法的java类。普通的java对象<br><br>Servlet: StudentService( addStudent( MyParam  param)  )<br><br>entity（<span class="hljs-keyword">domain</span>域）: 实体类， 和数据库中的表对应的类。<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre class=" language-hljs pgsql">vo: <span class="hljs-keyword">value</span> <span class="hljs-keyword">object</span> , 放一些存储数据的类。比如说 提交请求参数， <span class="hljs-type">name</span> ,age <br>	     现在想把<span class="hljs-type">name</span> ,age 传给一个service 类。<br>vo: <span class="hljs-keyword">view</span> <span class="hljs-keyword">object</span> , 从servlet把数据返回给浏览器使用的类，表示显示结果的类。<br><br>pojo: 普通的有<span class="hljs-keyword">set</span>， <span class="hljs-keyword">get</span>方法的java类。普通的java对象<br><br>Servlet: StudentService( addStudent( MyParam  param)  )<br><br>entity（<span class="hljs-keyword"><code class="language-hljs pgsql">vo: <span class="hljs-keyword">value</span> <span class="hljs-keyword">object</span> , 放一些存储数据的类。比如说 提交请求参数， <span class="hljs-type">name</span> ,age <br>	     现在想把<span class="hljs-type">name</span> ,age 传给一个service 类。<br>vo: <span class="hljs-keyword">view</span> <span class="hljs-keyword">object</span> , 从servlet把数据返回给浏览器使用的类，表示显示结果的类。<br><br>pojo: 普通的有<span class="hljs-keyword">set</span>， <span class="hljs-keyword">get</span>方法的java类。普通的java对象<br><br>Servlet: StudentService( addStudent( MyParam  param)  )<br><br>entity（<span class="hljs-keyword">domain</span>域）: 实体类， 和数据库中的表对应的类。<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="和-重点"><a href="#和-重点" class="headerlink" title="#和$:[重点]"></a><strong>#和$</strong>:[重点]</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span>#&#123;studentId&#125;<br>  <span class="hljs-operator">/</span><span class="hljs-operator">/</span> # 的结果： <br><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span>? <br><br><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span>$&#123;studentId&#125;<br>  <span class="hljs-operator">/</span><span class="hljs-operator">/</span> $ 的结果：<br><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span><span class="hljs-number">1001</span><br></code></pre></td></tr></table></figure>
+<h4 id="和-重点"><a href="#和-重点" class="headerlink" title="#和$:[重点]"></a><strong>#和$</strong>:[重点]</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs sql"><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span>#&#123;studentId&#125;<br>  <span class="hljs-operator">/</span><span class="hljs-operator">/</span> # 的结果： <br><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span>? <br><br><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span>$&#123;studentId&#125;<br>  <span class="hljs-operator">/</span><span class="hljs-operator">/</span> $ 的结果：<br><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span><span class="hljs-number"><code class="language-hljs sql"><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span>#&#123;studentId&#125;<br>  <span class="hljs-operator">/</span><span class="hljs-operator">/</span> # 的结果： <br><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span>? <br><br><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span>$&#123;studentId&#125;<br>  <span class="hljs-operator">/</span><span class="hljs-operator">/</span> $ 的结果：<br><span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id<span class="hljs-operator">=</span><span class="hljs-number">1001</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>  $:可以替换表名或者列名， 你能确定数据是安全的。可以使用$</li>
 </ul>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs tex"><span class="hljs-params">#</span>和<span class="hljs-built_in">$</span> 区别<br>        <span class="hljs-params">#</span>&#123;&#125; 是 占位符 ：动态解析 -&gt; 预编译 -&gt; 执行<br>        <span class="hljs-built_in">$</span>&#123;&#125; 是 拼接符 ：动态解析 -&gt; 编译 -&gt; 执行<br>1. <span class="hljs-params">#</span>使用?在sql语句中做占位的， 使用PreparedStatement执行sql，效率高<br>2. <span class="hljs-params">#</span>能够避免sql注入，更安全。<br>3. <span class="hljs-built_in">$</span>不使用占位符，是字符串连接方式，使用Statement对象执行sql，效率低<br>4. <span class="hljs-built_in">$</span>有sql注入的风险，缺乏安全性。<br>5. <span class="hljs-built_in">$</span>:可以替换表名或者列名<br>6. Mybatis默认值不同<br>  <span class="hljs-params">#</span>&#123;&#125; 默认值 arg0、arg1、arg2  或 0、 1<br>	这里用Mybatis默认的 0 和 1 来代替传参，根据版本不同，也可能是用arg0、arg1、arg2，<br>	或者 param1 、param2 ，可以根据报错信息进行修改。<br>  <span class="hljs-built_in">$</span>&#123;&#125; 默认值param1、param2、param3<br>	<span class="hljs-built_in">$</span>&#123;&#125; 时，用 0 和 1虽然不会报错，但是会直接当成参数执行。一般默认参数是param1、param2<br></code></pre></td></tr></table></figure>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><span class="hljs-params">#</span>和<span class="hljs-built_in">$</span> 区别<br>        <span class="hljs-params">#</span>&#123;&#125; 是 占位符 ：动态解析 -&gt; 预编译 -&gt; 执行<br>        <span class="hljs-built_in">$</span>&#123;&#125; 是 拼接符 ：动态解析 -&gt; 编译 -&gt; 执行<br>1. <span class="hljs-params">#</span>使用?在sql语句中做占位的， 使用PreparedStatement执行sql，效率高<br>2. <span class="hljs-params">#</span>能够避免sql注入，更安全。<br>3. <span class="hljs-built_in">$</span>不使用占位符，是字符串连接方式，使用Statement对象执行sql，效率低<br>4. <span class="hljs-built_in">$</span>有sql注入的风险，缺乏安全性。<br>5. <span class="hljs-built_in">$</span>:可以替换表名或者列名<br>6. Mybatis默认值不同<br>  <span class="hljs-params">#</span>&#123;&#125; 默认值 arg0、arg1、arg2  或 0、 1<br>	这里用Mybatis默认的 0 和 1 来代替传参，根据版本不同，也可能是用arg0、arg1、arg2，<br>	或者 param1 、param2 ，可以根据报错信息进行修改。<br>  <span class="hljs-built_in">$</span>&#123;&#125; 默认值param1、param2、param3<br>	<span class="hljs-built_in"><code class="language-hljs tex"><span class="hljs-params">#</span>和<span class="hljs-built_in">$</span> 区别<br>        <span class="hljs-params">#</span>&#123;&#125; 是 占位符 ：动态解析 -&gt; 预编译 -&gt; 执行<br>        <span class="hljs-built_in">$</span>&#123;&#125; 是 拼接符 ：动态解析 -&gt; 编译 -&gt; 执行<br>1. <span class="hljs-params">#</span>使用?在sql语句中做占位的， 使用PreparedStatement执行sql，效率高<br>2. <span class="hljs-params">#</span>能够避免sql注入，更安全。<br>3. <span class="hljs-built_in">$</span>不使用占位符，是字符串连接方式，使用Statement对象执行sql，效率低<br>4. <span class="hljs-built_in">$</span>有sql注入的风险，缺乏安全性。<br>5. <span class="hljs-built_in">$</span>:可以替换表名或者列名<br>6. Mybatis默认值不同<br>  <span class="hljs-params">#</span>&#123;&#125; 默认值 arg0、arg1、arg2  或 0、 1<br>	这里用Mybatis默认的 0 和 1 来代替传参，根据版本不同，也可能是用arg0、arg1、arg2，<br>	或者 param1 、param2 ，可以根据报错信息进行修改。<br>  <span class="hljs-built_in">$</span>&#123;&#125; 默认值param1、param2、param3<br>	<span class="hljs-built_in">$</span>&#123;&#125; 时，用 0 和 1虽然不会报错，但是会直接当成参数执行。一般默认参数是param1、param2<br></code></pre></td></tr></table></figure>
 
 <p>什么是SQL注入？</p>
 <p>通过传参就能改变SQL语句原本规则的操作就是SQL注入</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql">如果用$传参 name <span class="hljs-operator">=</span> &quot;jack or name = lisa&quot;，<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> `role` <span class="hljs-keyword">where</span> name <span class="hljs-operator">=</span> $&#123;name&#125;<br>因为$&#123;&#125;是拼接符，会直接替换，所以实际是：<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> `role` <span class="hljs-keyword">where</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;jack&#x27;</span> <span class="hljs-keyword">or</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;lisa&#x27;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre class=" language-hljs sql">如果用$传参 name <span class="hljs-operator">=</span> &quot;jack or name = lisa&quot;，<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> `role` <span class="hljs-keyword">where</span> name <span class="hljs-operator">=</span> $&#123;name&#125;<br>因为$&#123;&#125;是拼接符，会直接替换，所以实际是：<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> `role` <span class="hljs-keyword">where</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;jack&#x27;</span> <span class="hljs-keyword">or</span> name <span class="hljs-operator">=</span> <span class="hljs-string"><code class="language-hljs sql">如果用$传参 name <span class="hljs-operator">=</span> &quot;jack or name = lisa&quot;，<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> `role` <span class="hljs-keyword">where</span> name <span class="hljs-operator">=</span> $&#123;name&#125;<br>因为$&#123;&#125;是拼接符，会直接替换，所以实际是：<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> `role` <span class="hljs-keyword">where</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;jack&#x27;</span> <span class="hljs-keyword">or</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;lisa&#x27;</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="mybatis的输出结果"><a href="#mybatis的输出结果" class="headerlink" title="mybatis的输出结果"></a>mybatis的输出结果</h4><p>mybatis执行了sql语句，得到java对象。</p>
 <ul>
@@ -413,13 +413,13 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs tex">处理方式：<br> 1. mybatis执行sql语句， 然后mybatis调用类的无参数构造方法，创建对象。<br> 2. mybatis把ResultSet指定列值赋给同名的属性。<br></code></pre></td></tr></table></figure>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">处理方式：<br> 1. mybatis执行sql语句， 然后mybatis调用类的无参数构造方法，创建对象。<br> 2. mybatis把ResultSet指定列值赋给同名的属性。<br></code></pre></td></tr></table></figure>
 
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-operator">&lt;</span><span class="hljs-keyword">select</span> id<span class="hljs-operator">=</span>&quot;selectMultiPosition&quot; resultType<span class="hljs-operator">=</span>&quot;com.bjpowernode.domain.Student&quot;<span class="hljs-operator">&gt;</span><br>	 <span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student<br><span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">select</span><span class="hljs-operator">&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs sql"><span class="hljs-operator">&lt;</span><span class="hljs-keyword">select</span> id<span class="hljs-operator">=</span>&quot;selectMultiPosition&quot; resultType<span class="hljs-operator">=</span>&quot;com.bjpowernode.domain.Student&quot;<span class="hljs-operator">&gt;</span><br>	 <span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student<br><span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">select</span><span class="hljs-operator"><code class="language-hljs sql"><span class="hljs-operator">&lt;</span><span class="hljs-keyword">select</span> id<span class="hljs-operator">=</span>&quot;selectMultiPosition&quot; resultType<span class="hljs-operator">=</span>&quot;com.bjpowernode.domain.Student&quot;<span class="hljs-operator">&gt;</span><br>	 <span class="hljs-keyword">select</span> id,name, email,age <span class="hljs-keyword">from</span> student<br><span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">select</span><span class="hljs-operator">></span><br></code></pre></td></tr></table></figure>
 
 <p>​    对等的jdbc:</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">ResultSet rs = execute<span class="hljs-constructor">Query(<span class="hljs-string">&quot; select id,name, email,age from student&quot;</span> )</span><br>	  <span class="hljs-keyword">while</span>(rs.next<span class="hljs-literal">()</span>)&#123;<br>        Student student = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Student()</span>;<br>		student.set<span class="hljs-constructor">Id(<span class="hljs-params">rs</span>.<span class="hljs-params">getInt</span>(<span class="hljs-string">&quot;id&quot;</span>)</span>);<br>		student.set<span class="hljs-constructor">Name(<span class="hljs-params">rs</span>.<span class="hljs-params">getString</span>(<span class="hljs-string">&quot;name&quot;</span>)</span>)<br>	  &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre class=" language-hljs reasonml">ResultSet rs = execute<span class="hljs-constructor">Query(<span class="hljs-string">&quot; select id,name, email,age from student&quot;</span> )</span><br>	  <span class="hljs-keyword">while</span>(rs.next<span class="hljs-literal">()</span>)&#123;<br>        Student student = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Student()</span>;<br>		student.set<span class="hljs-constructor">Id(<span class="hljs-params">rs</span>.<span class="hljs-params">getInt</span>(<span class="hljs-string">&quot;id&quot;</span>)</span>);<br>		student.set<span class="hljs-constructor">Name(<span class="hljs-params">rs</span>.<span class="hljs-params">getString</span>(<span class="hljs-string"><code class="language-hljs reasonml">ResultSet rs = execute<span class="hljs-constructor">Query(<span class="hljs-string">&quot; select id,name, email,age from student&quot;</span> )</span><br>	  <span class="hljs-keyword">while</span>(rs.next<span class="hljs-literal">()</span>)&#123;<br>        Student student = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Student()</span>;<br>		student.set<span class="hljs-constructor">Id(<span class="hljs-params">rs</span>.<span class="hljs-params">getInt</span>(<span class="hljs-string">&quot;id&quot;</span>)</span>);<br>		student.set<span class="hljs-constructor">Name(<span class="hljs-params">rs</span>.<span class="hljs-params">getString</span>(<span class="hljs-string">"name"</span>)</span>)<br>	  &#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><p>定义自定义类型的别名</p>
@@ -442,7 +442,7 @@
 <ul>
 <li><code>&lt;if&gt;</code>是判断条件的，</li>
 </ul>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql">语法<br><span class="hljs-operator">&lt;</span>if test<span class="hljs-operator">=</span>&quot;判断java对象的属性值&quot;<span class="hljs-operator">&gt;</span><br>           部分<span class="hljs-keyword">sql</span>语句<br><span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span>if<span class="hljs-operator">&gt;</span><br></code></pre></td></tr></table></figure>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre class=" language-hljs sql">语法<br><span class="hljs-operator">&lt;</span>if test<span class="hljs-operator">=</span>&quot;判断java对象的属性值&quot;<span class="hljs-operator">&gt;</span><br>           部分<span class="hljs-keyword">sql</span>语句<br><span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span>if<span class="hljs-operator"><code class="language-hljs sql">语法<br><span class="hljs-operator">&lt;</span>if test<span class="hljs-operator">=</span>&quot;判断java对象的属性值&quot;<span class="hljs-operator">&gt;</span><br>           部分<span class="hljs-keyword">sql</span>语句<br><span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span>if<span class="hljs-operator">></span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><p><code>&lt;where&gt;</code> 用来包含 多个<code>&lt;if&gt;</code>的， 当多个if有一个成立的， <code>&lt;where&gt;</code>会自动增加一个where关键字，</p>
@@ -454,31 +454,31 @@
 </code></pre>
 </li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id <span class="hljs-keyword">in</span> (<span class="hljs-number">1001</span>,<span class="hljs-number">1002</span>,<span class="hljs-number">1003</span>)<br><br>public List<span class="hljs-operator">&lt;</span>Student<span class="hljs-operator">&gt;</span> selectFor(List<span class="hljs-operator">&lt;</span><span class="hljs-type">Integer</span><span class="hljs-operator">&gt;</span> idlist)<br><br>List<span class="hljs-operator">&lt;</span><span class="hljs-type">Integer</span><span class="hljs-operator">&gt;</span> list <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> ...<br>list.add(<span class="hljs-number">1001</span>);<br>list.add(<span class="hljs-number">1002</span>);<br>list.add(<span class="hljs-number">1003</span>);<br><br>dao.selectFor(list)<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre class=" language-hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id <span class="hljs-keyword">in</span> (<span class="hljs-number">1001</span>,<span class="hljs-number">1002</span>,<span class="hljs-number">1003</span>)<br><br>public List<span class="hljs-operator">&lt;</span>Student<span class="hljs-operator">&gt;</span> selectFor(List<span class="hljs-operator">&lt;</span><span class="hljs-type">Integer</span><span class="hljs-operator">&gt;</span> idlist)<br><br>List<span class="hljs-operator">&lt;</span><span class="hljs-type">Integer</span><span class="hljs-operator">&gt;</span> list <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> ...<br>list.add(<span class="hljs-number">1001</span>);<br>list.add(<span class="hljs-number">1002</span>);<br>list.add(<span class="hljs-number"><code class="language-hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> id <span class="hljs-keyword">in</span> (<span class="hljs-number">1001</span>,<span class="hljs-number">1002</span>,<span class="hljs-number">1003</span>)<br><br>public List<span class="hljs-operator">&lt;</span>Student<span class="hljs-operator">&gt;</span> selectFor(List<span class="hljs-operator">&lt;</span><span class="hljs-type">Integer</span><span class="hljs-operator">&gt;</span> idlist)<br><br>List<span class="hljs-operator">&lt;</span><span class="hljs-type">Integer</span><span class="hljs-operator">&gt;</span> list <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> ...<br>list.add(<span class="hljs-number">1001</span>);<br>list.add(<span class="hljs-number">1002</span>);<br>list.add(<span class="hljs-number">1003</span>);<br><br>dao.selectFor(list)<br></code></pre></td></tr></table></figure>
 
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"> <span class="hljs-operator">&lt;</span>foreach collection<span class="hljs-operator">=</span>&quot;&quot; item<span class="hljs-operator">=</span>&quot;&quot; <span class="hljs-keyword">open</span><span class="hljs-operator">=</span>&quot;&quot; <span class="hljs-keyword">close</span><span class="hljs-operator">=</span>&quot;&quot; separator<span class="hljs-operator">=</span>&quot;&quot;<span class="hljs-operator">&gt;</span><br>         #&#123;xxx&#125;<br><span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span>foreach<span class="hljs-operator">&gt;</span><br><br>collection:表示接口中的方法参数的类型， 如果是数组使用<span class="hljs-keyword">array</span> , 如果是list集合使用list<br>item:自定义的，表示数组和集合成员的变量<br><span class="hljs-keyword">open</span>:循环开始是的字符<br><span class="hljs-keyword">close</span>:循环结束时的字符<br>separator:集合成员之间的分隔符<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre class=" language-hljs sql"> <span class="hljs-operator">&lt;</span>foreach collection<span class="hljs-operator">=</span>&quot;&quot; item<span class="hljs-operator">=</span>&quot;&quot; <span class="hljs-keyword">open</span><span class="hljs-operator">=</span>&quot;&quot; <span class="hljs-keyword">close</span><span class="hljs-operator">=</span>&quot;&quot; separator<span class="hljs-operator">=</span>&quot;&quot;<span class="hljs-operator">&gt;</span><br>         #&#123;xxx&#125;<br><span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span>foreach<span class="hljs-operator">&gt;</span><br><br>collection:表示接口中的方法参数的类型， 如果是数组使用<span class="hljs-keyword">array</span> , 如果是list集合使用list<br>item:自定义的，表示数组和集合成员的变量<br><span class="hljs-keyword">open</span>:循环开始是的字符<br><span class="hljs-keyword"><code class="language-hljs sql"> <span class="hljs-operator">&lt;</span>foreach collection<span class="hljs-operator">=</span>&quot;&quot; item<span class="hljs-operator">=</span>&quot;&quot; <span class="hljs-keyword">open</span><span class="hljs-operator">=</span>&quot;&quot; <span class="hljs-keyword">close</span><span class="hljs-operator">=</span>&quot;&quot; separator<span class="hljs-operator">=</span>&quot;&quot;<span class="hljs-operator">&gt;</span><br>         #&#123;xxx&#125;<br><span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span>foreach<span class="hljs-operator">&gt;</span><br><br>collection:表示接口中的方法参数的类型， 如果是数组使用<span class="hljs-keyword">array</span> , 如果是list集合使用list<br>item:自定义的，表示数组和集合成员的变量<br><span class="hljs-keyword">open</span>:循环开始是的字符<br><span class="hljs-keyword">close</span>:循环结束时的字符<br>separator:集合成员之间的分隔符<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><p>sql代码片段， 就是复用一些语法<br>步骤<br>1.先定义</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">`<span class="hljs-operator">&lt;</span><span class="hljs-keyword">sql</span> id<span class="hljs-operator">=</span>&quot;自定义名称唯一&quot;<span class="hljs-operator">&gt;</span>`  <span class="hljs-keyword">sql</span>语句， 表名，字段等 `<span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">sql</span><span class="hljs-operator">&gt;</span>`<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs sql">`<span class="hljs-operator">&lt;</span><span class="hljs-keyword">sql</span> id<span class="hljs-operator">=</span>&quot;自定义名称唯一&quot;<span class="hljs-operator">&gt;</span>`  <span class="hljs-keyword">sql</span>语句， 表名，字段等 `<span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">sql</span><span class="hljs-operator"><code class="language-hljs sql">`<span class="hljs-operator">&lt;</span><span class="hljs-keyword">sql</span> id<span class="hljs-operator">=</span>&quot;自定义名称唯一&quot;<span class="hljs-operator">&gt;</span>`  <span class="hljs-keyword">sql</span>语句， 表名，字段等 `<span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">sql</span><span class="hljs-operator">></span>`<br></code></pre></td></tr></table></figure></li>
 <li><p> 2.再使用， </p>
 </li>
 </ul>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">`<span class="hljs-operator">&lt;</span>include refid<span class="hljs-operator">=</span>&quot;id的值&quot; <span class="hljs-operator">/</span><span class="hljs-operator">&gt;</span>`<br></code></pre></td></tr></table></figure>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs sql">`<span class="hljs-operator">&lt;</span>include refid<span class="hljs-operator">=</span>&quot;id的值&quot; <span class="hljs-operator">/</span><span class="hljs-operator"><code class="language-hljs sql">`<span class="hljs-operator">&lt;</span>include refid<span class="hljs-operator">=</span>&quot;id的值&quot; <span class="hljs-operator">/</span><span class="hljs-operator">></span>`<br></code></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ul>
 <li><p>数据库的属性配置文件： 把数据库连接信息放到一个单独的文件中。 和mybatis主配置文件分开。<br>目的是便于修改，保存，处理多个数据库的信息。</p>
 <ul>
 <li><p>在resources目录中定义一个属性配置文件， xxxx.properties ,例如 jdbc.properties<br>在属性配置文件中， 定义数据，格式是 key=value<br>key： 一般使用 . 做多级目录的。<br>例如:</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros"> jdbc.mysql.driver, jdbc.driver, mydriver<br>	  jdbc.<span class="hljs-attribute">driver</span>=com.mysql.jdbc.Driver<br>	  jdbc.<span class="hljs-attribute">url</span>=jdbc:mysql//.....<br>	  jdbc.<span class="hljs-attribute">username</span>=root<br>	  jdbc.<span class="hljs-attribute">password</span>=123456<br>在mybatis的主配置文件，使用`&lt;property&gt; `指定文件的位置<br> 在需要使用值的地方， <span class="hljs-variable">$&#123;key&#125;</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs routeros"> jdbc.mysql.driver, jdbc.driver, mydriver<br>	  jdbc.<span class="hljs-attribute">driver</span>=com.mysql.jdbc.Driver<br>	  jdbc.<span class="hljs-attribute">url</span>=jdbc:mysql//.....<br>	  jdbc.<span class="hljs-attribute">username</span>=root<br>	  jdbc.<span class="hljs-attribute">password</span>=123456<br>在mybatis的主配置文件，使用`&lt;property&gt; `指定文件的位置<br> 在需要使用值的地方， <span class="hljs-variable"><code class="language-hljs routeros"> jdbc.mysql.driver, jdbc.driver, mydriver<br>	  jdbc.<span class="hljs-attribute">driver</span>=com.mysql.jdbc.Driver<br>	  jdbc.<span class="hljs-attribute">url</span>=jdbc:mysql//.....<br>	  jdbc.<span class="hljs-attribute">username</span>=root<br>	  jdbc.<span class="hljs-attribute">password</span>=123456<br>在mybatis的主配置文件，使用`&lt;property&gt; `指定文件的位置<br> 在需要使用值的地方， <span class="hljs-variable">$&#123;key&#125;</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>mapper文件，使用package指定路径</p>
 </li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-operator">&lt;</span>mappers<span class="hljs-operator">&gt;</span><br>     <span class="hljs-operator">&lt;</span><span class="hljs-operator">!</span><span class="hljs-comment">--</span><br>     name: xml文件（mapper文件）所在的包名, 这个包中所有xml文件一次都能加载给mybatis<br>     使用package的要求：<br>       <span class="hljs-number">1.</span> mapper文件名称需要和接口名称一样， 区分大小写的一样<br>       <span class="hljs-number">2.</span> mapper文件和dao接口需要在同一目录 <span class="hljs-comment">--&gt;</span><br>    <span class="hljs-operator">&lt;</span>package name<span class="hljs-operator">=</span>&quot;com.bjpowernode.dao&quot;<span class="hljs-operator">/</span><span class="hljs-operator">&gt;</span><br><span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span>mappers<span class="hljs-operator">&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre class=" language-hljs sql"><span class="hljs-operator">&lt;</span>mappers<span class="hljs-operator">&gt;</span><br>     <span class="hljs-operator">&lt;</span><span class="hljs-operator">!</span><span class="hljs-comment">--</span><br>     name: xml文件（mapper文件）所在的包名, 这个包中所有xml文件一次都能加载给mybatis<br>     使用package的要求：<br>       <span class="hljs-number">1.</span> mapper文件名称需要和接口名称一样， 区分大小写的一样<br>       <span class="hljs-number">2.</span> mapper文件和dao接口需要在同一目录 <span class="hljs-comment">--&gt;</span><br>    <span class="hljs-operator">&lt;</span>package name<span class="hljs-operator">=</span>&quot;com.bjpowernode.dao&quot;<span class="hljs-operator">/</span><span class="hljs-operator">&gt;</span><br><span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span>mappers<span class="hljs-operator"><code class="language-hljs sql"><span class="hljs-operator">&lt;</span>mappers<span class="hljs-operator">&gt;</span><br>     <span class="hljs-operator">&lt;</span><span class="hljs-operator">!</span><span class="hljs-comment">--</span><br>     name: xml文件（mapper文件）所在的包名, 这个包中所有xml文件一次都能加载给mybatis<br>     使用package的要求：<br>       <span class="hljs-number">1.</span> mapper文件名称需要和接口名称一样， 区分大小写的一样<br>       <span class="hljs-number">2.</span> mapper文件和dao接口需要在同一目录 <span class="hljs-comment">--&gt;</span><br>    <span class="hljs-operator">&lt;</span>package name<span class="hljs-operator">=</span>&quot;com.bjpowernode.dao&quot;<span class="hljs-operator">/</span><span class="hljs-operator">&gt;</span><br><span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span>mappers<span class="hljs-operator">></span><br></code></pre></td></tr></table></figure>
 
 <hr>
 <p>完</p>
@@ -500,7 +500,7 @@
     
       <span class="category-chain">
         
-  <a href="/myblog/categories/JAVA%E6%A1%86%E6%9E%B6/" class="category-chain-item">JAVA框架</a>
+  <a href="/categories/JAVA%E6%A1%86%E6%9E%B6/" class="category-chain-item">JAVA框架</a>
   
   
 
@@ -515,9 +515,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/myblog/tags/Java%E6%A1%86%E6%9E%B6/">#Java框架</a>
+        <a href="/tags/Java%E6%A1%86%E6%9E%B6/">#Java框架</a>
       
-        <a href="/myblog/tags/mybatis/">#mybatis</a>
+        <a href="/tags/mybatis/">#mybatis</a>
       
     </div>
   
@@ -530,7 +530,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Mybatis笔记</div>
-      <div>https://yangyewen.gitee.io/myblog/2022/03/21/Mybatis笔记-1/</div>
+      <div>https://evanyangtobegreatest.github.io/2022/03/21/Mybatis笔记-1/</div>
     </div>
     <div class="license-meta">
       
@@ -572,7 +572,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblog/2022/03/25/WhiteJotter/" title="WhiteJotter">
+                      <a href="/2022/03/25/WhiteJotter/" title="WhiteJotter">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">WhiteJotter</span>
                         <span class="visible-mobile">上一篇</span>
@@ -582,7 +582,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblog/2022/03/16/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java多线程">
+                      <a href="/2022/03/16/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java多线程">
                         <span class="hidden-mobile">Java多线程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -705,7 +705,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/myblog/img/police_beian.png" srcset="/myblog/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>粤公网安备 44011402000758号</span>
         </a>
@@ -736,8 +736,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblog/js/events.js" ></script>
-<script  src="/myblog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -761,7 +761,7 @@
 
 
   
-    <script  src="/myblog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -898,7 +898,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -906,7 +906,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

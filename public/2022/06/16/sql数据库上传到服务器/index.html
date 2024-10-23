@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblog/img/fluid.png">
-  <link rel="icon" href="/myblog/img/logo.PNG">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="操作准备Xshell、Xftp、已连接服务器。 已安装mysql的服务器。 操作步骤1.将要上传的数据库导出为sql文件，保存到本地中。可以通过Navicat等sql工具导出，也可以本地电脑CMD命令导出。 2.通过Xftp、Xshell连接远程服务器。 3.将步骤1中保存的本地sql文件通过Xftp上传到服务器的文件夹中(路径随意)，记住这个上传路径。(例：&#x2F;usr&#x2F;mydatabase&#x2F;shu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sql数据库上传到服务器">
-<meta property="og:url" content="https://yangyewen.gitee.io/myblog/2022/06/16/sql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E4%BC%A0%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/06/16/sql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E4%BC%A0%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
 <meta property="og:site_name" content="EvanYoung">
 <meta property="og:description" content="操作准备Xshell、Xftp、已连接服务器。 已安装mysql的服务器。 操作步骤1.将要上传的数据库导出为sql文件，保存到本地中。可以通过Navicat等sql工具导出，也可以本地电脑CMD命令导出。 2.通过Xftp、Xshell连接远程服务器。 3.将步骤1中保存的本地sql文件通过Xftp上传到服务器的文件夹中(路径随意)，记住这个上传路径。(例：&#x2F;usr&#x2F;mydatabase&#x2F;shu">
 <meta property="og:locale" content="zh_CN">
@@ -54,12 +54,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -68,18 +68,18 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"yangyewen.gitee.io","root":"/myblog/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblog/local-search.xml"};
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblog/js/utils.js" ></script>
-  <script  src="/myblog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 5.4.1"></head>
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -91,7 +91,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblog/">
+    <a class="navbar-brand" href="/">
       <strong>EvanYoung</strong>
     </a>
 
@@ -110,7 +110,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -122,7 +122,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -134,7 +134,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -146,7 +146,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -158,7 +158,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -187,7 +187,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblog/img/bg10.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -275,22 +275,22 @@
 <p><strong>2.通过Xftp、Xshell连接远程服务器。</strong></p>
 <p><strong>3.将步骤1中保存的本地sql文件通过Xftp上传到服务器的文件夹中(路径随意)，记住这个上传路径。(例：/usr/mydatabase/shuju.sql)</strong></p>
 <h4 id="服务器中的操作"><a href="#服务器中的操作" class="headerlink" title="服务器中的操作"></a>服务器中的操作</h4><p><strong>4.在Xshell中输入mysql -u root -p,输入正确密码进入服务器数据库中；</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql -u root -p<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">mysql -u root -p<br></code></pre></td></tr></table></figure>
 
 <p><strong>5.进入mysql后创建一个数据库，名字与导入的sql文件一致；</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create database shuju;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">create database shuju;<br></code></pre></td></tr></table></figure>
 
 <p><strong>6.退出mysql</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">exit;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">exit;<br></code></pre></td></tr></table></figure>
 
 <p><strong>7.执行命令sudo mysqldum完整如下</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Linux">//sudo mysqldump -u root -p &#x27;数据库名&#x27; &lt; &#x27;sql文件的路径&#x27;;<br>sudo mysqldump -u root -p shuju &lt; /usr/mydatabase/shuju.sql;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs Linux"><code class="language-hljs Linux">//sudo mysqldump -u root -p &#x27;数据库名&#x27; < &#x27;sql文件的路径&#x27;;<br>sudo mysqldump -u root -p shuju < /usr/mydatabase/shuju.sql;<br></code></pre></td></tr></table></figure>
 
 <p><strong>8.进入mysql，执行use shuju</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql -u root -p;<br>use shuju;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">mysql -u root -p;<br>use shuju;<br></code></pre></td></tr></table></figure>
 
 <p><strong>9.然后执行source操作,source+sql路径</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">source  /usr/mydatabase/shuju.sql;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">source  /usr/mydatabase/shuju.sql;<br></code></pre></td></tr></table></figure>
 
 <p><strong>到这里，已经完成了数据库的上传。</strong></p>
 
@@ -310,7 +310,7 @@
     
       <span class="category-chain">
         
-  <a href="/myblog/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
   
   
 
@@ -331,7 +331,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>sql数据库上传到服务器</div>
-      <div>https://yangyewen.gitee.io/myblog/2022/06/16/sql数据库上传到服务器/</div>
+      <div>https://evanyangtobegreatest.github.io/2022/06/16/sql数据库上传到服务器/</div>
     </div>
     <div class="license-meta">
       
@@ -373,7 +373,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblog/2022/06/23/xml%E5%AF%BC%E5%87%BAword%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/" title="xml导出word图片不显示问题">
+                      <a href="/2022/06/23/xml%E5%AF%BC%E5%87%BAword%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/" title="xml导出word图片不显示问题">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">xml导出word图片不显示问题</span>
                         <span class="visible-mobile">上一篇</span>
@@ -383,7 +383,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblog/2022/06/13/qs%E5%BA%8F%E5%88%97%E5%8C%96/" title="qs序列化">
+                      <a href="/2022/06/13/qs%E5%BA%8F%E5%88%97%E5%8C%96/" title="qs序列化">
                         <span class="hidden-mobile">qs序列化</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -506,7 +506,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/myblog/img/police_beian.png" srcset="/myblog/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>粤公网安备 44011402000758号</span>
         </a>
@@ -537,8 +537,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblog/js/events.js" ></script>
-<script  src="/myblog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -562,7 +562,7 @@
 
 
   
-    <script  src="/myblog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -699,7 +699,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -707,7 +707,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

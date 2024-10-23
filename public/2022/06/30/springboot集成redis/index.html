@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblog/img/fluid.png">
-  <link rel="icon" href="/myblog/img/logo.PNG">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="springboot 集成redisredis是什么Redis 是一种非关系型数据库（NoSQL），NoSQL 是以 key-value 的形式存储的，和传统的关系型数据库不一样，不一定遵循传统数据库的一些基本要求，比如说 SQL 标准，ACID 属性，表结构等等，这类数据库主要有以下特点：非关系型的、分布式的、开源的、水平可扩展的。NoSQL 使用场景有：对数据高并发读写、对海量数据的高效率存储">
 <meta property="og:type" content="article">
 <meta property="og:title" content="springboot集成redis">
-<meta property="og:url" content="https://yangyewen.gitee.io/myblog/2022/06/30/springboot%E9%9B%86%E6%88%90redis/index.html">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/06/30/springboot%E9%9B%86%E6%88%90redis/index.html">
 <meta property="og:site_name" content="EvanYoung">
 <meta property="og:description" content="springboot 集成redisredis是什么Redis 是一种非关系型数据库（NoSQL），NoSQL 是以 key-value 的形式存储的，和传统的关系型数据库不一样，不一定遵循传统数据库的一些基本要求，比如说 SQL 标准，ACID 属性，表结构等等，这类数据库主要有以下特点：非关系型的、分布式的、开源的、水平可扩展的。NoSQL 使用场景有：对数据高并发读写、对海量数据的高效率存储">
 <meta property="og:locale" content="zh_CN">
@@ -54,12 +54,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -68,18 +68,18 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"yangyewen.gitee.io","root":"/myblog/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblog/local-search.xml"};
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblog/js/utils.js" ></script>
-  <script  src="/myblog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 5.4.1"></head>
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -91,7 +91,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblog/">
+    <a class="navbar-brand" href="/">
       <strong>EvanYoung</strong>
     </a>
 
@@ -110,7 +110,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -122,7 +122,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -134,7 +134,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -146,7 +146,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -158,7 +158,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -187,7 +187,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblog/img/bg10.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -287,19 +287,19 @@
 <p>不同的是每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。</p>
 <p>zset的成员是唯一的,但分数(score)却可以重复。</p>
 <h2 id="Springboot如何集成使用redis"><a href="#Springboot如何集成使用redis" class="headerlink" title="Springboot如何集成使用redis"></a>Springboot如何集成使用redis</h2><p><strong>1.添加依赖</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre class=" language-hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name"><code class="language-hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>></span><br></code></pre></td></tr></table></figure>
 
 <p><strong>2.创建Redis的Config类</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RedisConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> RedisTemplate&lt;String, Object&gt; <span class="hljs-title function_">redisTemplate</span><span class="hljs-params">(RedisConnectionFactory connectionFactory)</span> &#123;<br>        <span class="hljs-comment">// 创建redisTemplate</span><br>        RedisTemplate&lt;String, Object&gt; redisTemplate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RedisTemplate</span>&lt;&gt;();<br>        redisTemplate.setConnectionFactory(connectionFactory);<br><br>        <span class="hljs-comment">// 使用Jackson2JsonRedisSerialize替换默认序列化</span><br>        <span class="hljs-type">Jackson2JsonRedisSerializer</span> <span class="hljs-variable">jackson2JsonRedisSerializer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> 	 <span class="hljs-title class_">Jackson2JsonRedisSerializer</span>(Object.class);<br><br>        <span class="hljs-type">ObjectMapper</span> <span class="hljs-variable">objectMapper</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectMapper</span>();<br>        objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);<br>        objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);<br><br>        jackson2JsonRedisSerializer.setObjectMapper(objectMapper);<br><br>        <span class="hljs-comment">// key采用String的序列化方式</span><br>        redisTemplate.setKeySerializer(<span class="hljs-keyword">new</span> <span class="hljs-title class_">StringRedisSerializer</span>());<br>        <span class="hljs-comment">// value序列化方式采用jackson</span><br>        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);<br>        <span class="hljs-comment">// hash的key也采用String的序列化方式</span><br>        redisTemplate.setHashKeySerializer(<span class="hljs-keyword">new</span> <span class="hljs-title class_">StringRedisSerializer</span>());<br>        <span class="hljs-comment">// hash的value序列化方式采用jackson</span><br>        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);<br>        redisTemplate.afterPropertiesSet();<br>        <span class="hljs-keyword">return</span> redisTemplate;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RedisConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> RedisTemplate&lt;String, Object&gt; <span class="hljs-title function_">redisTemplate</span><span class="hljs-params">(RedisConnectionFactory connectionFactory)</span> &#123;<br>        <span class="hljs-comment">// 创建redisTemplate</span><br>        RedisTemplate&lt;String, Object&gt; redisTemplate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RedisTemplate</span>&lt;&gt;();<br>        redisTemplate.setConnectionFactory(connectionFactory);<br><br>        <span class="hljs-comment">// 使用Jackson2JsonRedisSerialize替换默认序列化</span><br>        <span class="hljs-type">Jackson2JsonRedisSerializer</span> <span class="hljs-variable">jackson2JsonRedisSerializer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> 	 <span class="hljs-title class_">Jackson2JsonRedisSerializer</span>(Object.class);<br><br>        <span class="hljs-type">ObjectMapper</span> <span class="hljs-variable">objectMapper</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectMapper</span>();<br>        objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);<br>        objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);<br><br>        jackson2JsonRedisSerializer.setObjectMapper(objectMapper);<br><br>        <span class="hljs-comment">// key采用String的序列化方式</span><br>        redisTemplate.setKeySerializer(<span class="hljs-keyword">new</span> <span class="hljs-title class_">StringRedisSerializer</span>());<br>        <span class="hljs-comment">// value序列化方式采用jackson</span><br>        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);<br>        <span class="hljs-comment">// hash的key也采用String的序列化方式</span><br>        redisTemplate.setHashKeySerializer(<span class="hljs-keyword">new</span> <span class="hljs-title class_">StringRedisSerializer</span>());<br>        <span class="hljs-comment">// hash的value序列化方式采用jackson</span><br>        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);<br>        redisTemplate.afterPropertiesSet();<br>        <span class="hljs-keyword"><code class="language-hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RedisConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> RedisTemplate&lt;String, Object&gt; <span class="hljs-title function_">redisTemplate</span><span class="hljs-params">(RedisConnectionFactory connectionFactory)</span> &#123;<br>        <span class="hljs-comment">// 创建redisTemplate</span><br>        RedisTemplate&lt;String, Object&gt; redisTemplate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RedisTemplate</span>&lt;&gt;();<br>        redisTemplate.setConnectionFactory(connectionFactory);<br><br>        <span class="hljs-comment">// 使用Jackson2JsonRedisSerialize替换默认序列化</span><br>        <span class="hljs-type">Jackson2JsonRedisSerializer</span> <span class="hljs-variable">jackson2JsonRedisSerializer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> 	 <span class="hljs-title class_">Jackson2JsonRedisSerializer</span>(Object.class);<br><br>        <span class="hljs-type">ObjectMapper</span> <span class="hljs-variable">objectMapper</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectMapper</span>();<br>        objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);<br>        objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);<br><br>        jackson2JsonRedisSerializer.setObjectMapper(objectMapper);<br><br>        <span class="hljs-comment">// key采用String的序列化方式</span><br>        redisTemplate.setKeySerializer(<span class="hljs-keyword">new</span> <span class="hljs-title class_">StringRedisSerializer</span>());<br>        <span class="hljs-comment">// value序列化方式采用jackson</span><br>        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);<br>        <span class="hljs-comment">// hash的key也采用String的序列化方式</span><br>        redisTemplate.setHashKeySerializer(<span class="hljs-keyword">new</span> <span class="hljs-title class_">StringRedisSerializer</span>());<br>        <span class="hljs-comment">// hash的value序列化方式采用jackson</span><br>        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);<br>        redisTemplate.afterPropertiesSet();<br>        <span class="hljs-keyword">return</span> redisTemplate;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p><strong>3.启动类上添加@EnableCaching注解</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootApplication()</span><br><span class="hljs-meta">@EnableCaching</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyspringbootApplication</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        SpringApplication.run(MyspringbootApplication.class, args);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-meta">@SpringBootApplication()</span><br><span class="hljs-meta">@EnableCaching</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyspringbootApplication</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params"><code class="language-hljs java"><span class="hljs-meta">@SpringBootApplication()</span><br><span class="hljs-meta">@EnableCaching</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyspringbootApplication</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        SpringApplication.run(MyspringbootApplication.class, args);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>到这里就完成springboot集成redis了。</p>
 <h2 id="redis数据操作"><a href="#redis数据操作" class="headerlink" title="redis数据操作"></a>redis数据操作</h2><p><a target="_blank" rel="noopener" href="http://yangyewen.xyz/2022/06/30/redisTemplate%E6%93%8D%E4%BD%9Credis/">点击查看redis在springboot的操作</a></p>
 <h2 id="利用redis实现缓存功能"><a href="#利用redis实现缓存功能" class="headerlink" title="利用redis实现缓存功能"></a>利用redis实现缓存功能</h2><p>原理很简单，先在redis中查询是否有数据，若没有就去数据库查询。</p>
 <p>如果redis有，就返回redis中的数据。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-meta">@Autowired</span><br>    RedisTemplate&lt;String,Object&gt; redisTemplate;<br><br><span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-meta">@RequestMapping(value = &quot;/api/user&quot;)</span> <span class="hljs-comment">//查询数据</span><br>    <span class="hljs-keyword">public</span> List&lt;User&gt; <span class="hljs-title function_">getuser</span><span class="hljs-params">()</span> &#123;<br>        List&lt;User&gt; user;<br>        <span class="hljs-comment">//先在redis中查找</span><br>        user=( List&lt;User&gt;)redisTemplate.opsForValue().get(<span class="hljs-string">&quot;user&quot;</span>);<br>        <span class="hljs-comment">//如果redis没有就查询数据库</span><br>         <span class="hljs-keyword">if</span>(user==<span class="hljs-literal">null</span>)&#123;<br>             user=userrService.queryuser();<br>         &#125;<br>        <span class="hljs-comment">//将查到的数据放入redis缓存中</span><br>        redisTemplate.opsForValue().set(<span class="hljs-string">&quot;user&quot;</span>, user);<br>        <span class="hljs-keyword">return</span> user;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre class=" language-hljs java"> <span class="hljs-meta">@Autowired</span><br>    RedisTemplate&lt;String,Object&gt; redisTemplate;<br><br><span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-meta">@RequestMapping(value = &quot;/api/user&quot;)</span> <span class="hljs-comment">//查询数据</span><br>    <span class="hljs-keyword">public</span> List&lt;User&gt; <span class="hljs-title function_">getuser</span><span class="hljs-params">()</span> &#123;<br>        List&lt;User&gt; user;<br>        <span class="hljs-comment">//先在redis中查找</span><br>        user=( List&lt;User&gt;)redisTemplate.opsForValue().get(<span class="hljs-string">&quot;user&quot;</span>);<br>        <span class="hljs-comment">//如果redis没有就查询数据库</span><br>         <span class="hljs-keyword">if</span>(user==<span class="hljs-literal">null</span>)&#123;<br>             user=userrService.queryuser();<br>         &#125;<br>        <span class="hljs-comment">//将查到的数据放入redis缓存中</span><br>        redisTemplate.opsForValue().set(<span class="hljs-string">&quot;user&quot;</span>, user);<br>        <span class="hljs-keyword"><code class="language-hljs java"> <span class="hljs-meta">@Autowired</span><br>    RedisTemplate&lt;String,Object&gt; redisTemplate;<br><br><span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-meta">@RequestMapping(value = &quot;/api/user&quot;)</span> <span class="hljs-comment">//查询数据</span><br>    <span class="hljs-keyword">public</span> List&lt;User&gt; <span class="hljs-title function_">getuser</span><span class="hljs-params">()</span> &#123;<br>        List&lt;User&gt; user;<br>        <span class="hljs-comment">//先在redis中查找</span><br>        user=( List&lt;User&gt;)redisTemplate.opsForValue().get(<span class="hljs-string">&quot;user&quot;</span>);<br>        <span class="hljs-comment">//如果redis没有就查询数据库</span><br>         <span class="hljs-keyword">if</span>(user==<span class="hljs-literal">null</span>)&#123;<br>             user=userrService.queryuser();<br>         &#125;<br>        <span class="hljs-comment">//将查到的数据放入redis缓存中</span><br>        redisTemplate.opsForValue().set(<span class="hljs-string">&quot;user&quot;</span>, user);<br>        <span class="hljs-keyword">return</span> user;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 
               
@@ -318,7 +318,7 @@
     
       <span class="category-chain">
         
-  <a href="/myblog/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
   
   
 
@@ -339,7 +339,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>springboot集成redis</div>
-      <div>https://yangyewen.gitee.io/myblog/2022/06/30/springboot集成redis/</div>
+      <div>https://evanyangtobegreatest.github.io/2022/06/30/springboot集成redis/</div>
     </div>
     <div class="license-meta">
       
@@ -381,7 +381,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblog/2022/06/30/redisTemplate%E6%93%8D%E4%BD%9Credis/" title="redisTemplate操作redis">
+                      <a href="/2022/06/30/redisTemplate%E6%93%8D%E4%BD%9Credis/" title="redisTemplate操作redis">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">redisTemplate操作redis</span>
                         <span class="visible-mobile">上一篇</span>
@@ -391,7 +391,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblog/2022/06/27/Vue%E7%BC%96%E5%86%99token%E7%9A%84%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81/" title="Vue编写token的登录验证">
+                      <a href="/2022/06/27/Vue%E7%BC%96%E5%86%99token%E7%9A%84%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81/" title="Vue编写token的登录验证">
                         <span class="hidden-mobile">Vue编写token的登录验证</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -514,7 +514,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/myblog/img/police_beian.png" srcset="/myblog/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>粤公网安备 44011402000758号</span>
         </a>
@@ -545,8 +545,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblog/js/events.js" ></script>
-<script  src="/myblog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -570,7 +570,7 @@
 
 
   
-    <script  src="/myblog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -707,7 +707,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -715,7 +715,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblog/img/fluid.png">
-  <link rel="icon" href="/myblog/img/logo.PNG">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,17 +19,17 @@
     <meta name="description" content="动态代理（理解）： 基于反射机制。1.什么是动态代理 ？123使用jdk的反射机制，创建对象的能力， 创建的是代理类的对象。 而不用你创建类文件。不用写java文件。动态：在程序执行时，调用jdk提供的方法才能创建代理类的对象。   jdk动态代理，必须有接口，目标类必须实现接口， 没有接口时，需要使用cglib动态代理 2.知道动态代理能做什么 ？123456可以在不改变原来目标方法功能的前提">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动态代理">
-<meta property="og:url" content="https://yangyewen.gitee.io/myblog/2022/03/16/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/index.html">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/03/16/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/index.html">
 <meta property="og:site_name" content="EvanYoung">
 <meta property="og:description" content="动态代理（理解）： 基于反射机制。1.什么是动态代理 ？123使用jdk的反射机制，创建对象的能力， 创建的是代理类的对象。 而不用你创建类文件。不用写java文件。动态：在程序执行时，调用jdk提供的方法才能创建代理类的对象。   jdk动态代理，必须有接口，目标类必须实现接口， 没有接口时，需要使用cglib动态代理 2.知道动态代理能做什么 ？123456可以在不改变原来目标方法功能的前提">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yangyewen.gitee.io/myblog/img/bg4.jpg">
+<meta property="og:image" content="https://evanyangtobegreatest.github.io/img/bg4.jpg">
 <meta property="article:published_time" content="2022-03-16T01:19:23.000Z">
 <meta property="article:modified_time" content="2022-05-30T08:52:58.173Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="动态代理">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yangyewen.gitee.io/myblog/img/bg4.jpg">
+<meta name="twitter:image" content="https://evanyangtobegreatest.github.io/img/bg4.jpg">
   
   
   
@@ -57,12 +57,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -71,18 +71,18 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"yangyewen.gitee.io","root":"/myblog/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblog/local-search.xml"};
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblog/js/utils.js" ></script>
-  <script  src="/myblog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 5.4.1"></head>
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -94,7 +94,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblog/">
+    <a class="navbar-brand" href="/">
       <strong>EvanYoung</strong>
     </a>
 
@@ -113,7 +113,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -125,7 +125,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -137,7 +137,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -149,7 +149,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -161,7 +161,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -190,7 +190,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblog/img/bg10.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -273,10 +273,10 @@
             <div class="markdown-body">
               
               <hr>
-<h2 id="动态代理（理解）：-基于反射机制。"><a href="#动态代理（理解）：-基于反射机制。" class="headerlink" title="动态代理（理解）： 基于反射机制。"></a>动态代理（理解）： 基于反射机制。</h2><h3 id="1-什么是动态代理-？"><a href="#1-什么是动态代理-？" class="headerlink" title="1.什么是动态代理 ？"></a>1.什么是动态代理 ？</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs tex">使用jdk的反射机制，创建对象的能力， 创建的是代理类的对象。 而不用你创建类文件。不用写java文件。<br>动态：在程序执行时，调用jdk提供的方法才能创建代理类的对象。<br>   jdk动态代理，必须有接口，目标类必须实现接口， 没有接口时，需要使用cglib动态代理<br></code></pre></td></tr></table></figure>
-<h3 id="2-知道动态代理能做什么-？"><a href="#2-知道动态代理能做什么-？" class="headerlink" title="2.知道动态代理能做什么 ？"></a>2.知道动态代理能做什么 ？</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs tex">可以在不改变原来目标方法功能的前提下， 可以在代理中增强自己的功能代码。<br>在程序开发中的意思：<br>   比如：你所在的项目中，有一个功能是其他人（公司的其它部门，其它小组的人）写好的，你可以使用。<br>	GoNong.class ,  GoNong gn = new GoNong(), gn.print();<br>你发现这个功能，现在还缺点， 不能完全满足我项目的需要。 我需要在gn.print()执行后，需要自己在增加代码。<br>用代理实现 gn.print（）调用时， 增加自己代码， 而不用去改原来的 GoNong文件。<br></code></pre></td></tr></table></figure>
+<h2 id="动态代理（理解）：-基于反射机制。"><a href="#动态代理（理解）：-基于反射机制。" class="headerlink" title="动态代理（理解）： 基于反射机制。"></a>动态代理（理解）： 基于反射机制。</h2><h3 id="1-什么是动态代理-？"><a href="#1-什么是动态代理-？" class="headerlink" title="1.什么是动态代理 ？"></a>1.什么是动态代理 ？</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">使用jdk的反射机制，创建对象的能力， 创建的是代理类的对象。 而不用你创建类文件。不用写java文件。<br>动态：在程序执行时，调用jdk提供的方法才能创建代理类的对象。<br>   jdk动态代理，必须有接口，目标类必须实现接口， 没有接口时，需要使用cglib动态代理<br></code></pre></td></tr></table></figure>
+<h3 id="2-知道动态代理能做什么-？"><a href="#2-知道动态代理能做什么-？" class="headerlink" title="2.知道动态代理能做什么 ？"></a>2.知道动态代理能做什么 ？</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">可以在不改变原来目标方法功能的前提下， 可以在代理中增强自己的功能代码。<br>在程序开发中的意思：<br>   比如：你所在的项目中，有一个功能是其他人（公司的其它部门，其它小组的人）写好的，你可以使用。<br>	GoNong.class ,  GoNong gn = new GoNong(), gn.print();<br>你发现这个功能，现在还缺点， 不能完全满足我项目的需要。 我需要在gn.print()执行后，需要自己在增加代码。<br>用代理实现 gn.print（）调用时， 增加自己代码， 而不用去改原来的 GoNong文件。<br></code></pre></td></tr></table></figure>
 
-<p><img src="/img/java%E6%A1%86%E6%9E%B6/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86.PNG" srcset="/myblog/img/loading.gif" lazyload></p>
+<p><img src="/img/java%E6%A1%86%E6%9E%B6/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86.PNG" srcset="/img/loading.gif" lazyload></p>
 <hr>
 <h4 id="1-代理"><a href="#1-代理" class="headerlink" title="1.代理"></a>1.代理</h4><p>  代购， 中介，换ip，商家等等</p>
 <p>  比如有一家美国的大学， 可以对全世界招生。 留学中介（代理）</p>
@@ -296,9 +296,9 @@
 </ol>
 <p>&nbsp;<br>买东西都是商家卖， 商家是某个商品的代理， 你个人买东西， 肯定不会让你接触到厂家的。</p>
 <h4 id="2-在开发中也会有这样的情况，你有a类，-本来是调用c类的方法，-完成某个功能。-但是c不让a调用。"><a href="#2-在开发中也会有这样的情况，你有a类，-本来是调用c类的方法，-完成某个功能。-但是c不让a调用。" class="headerlink" title="2.在开发中也会有这样的情况，你有a类， 本来是调用c类的方法， 完成某个功能。 但是c不让a调用。"></a>2.在开发中也会有这样的情况，你有a类， 本来是调用c类的方法， 完成某个功能。 但是c不让a调用。</h4><p>a —–不能调用 c的方法。<br>在a 和 c 直接 创建一个 b 代理，    c让b访问。<br>a –访问b—访问c</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs tex">实际的例子：登录，注册有验证码， 验证码是手机短信。<br><br>中国移动，联通能发短信。 <br><br>中国移动，联通能有子公司，或者关联公司，他们面向社会提供短信的发送功能<br><br>张三项目发送短信----子公司，或者关联公司-----中国移动， 联通<br></code></pre></td></tr></table></figure>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">实际的例子：登录，注册有验证码， 验证码是手机短信。<br><br>中国移动，联通能发短信。 <br><br>中国移动，联通能有子公司，或者关联公司，他们面向社会提供短信的发送功能<br><br>张三项目发送短信----子公司，或者关联公司-----中国移动， 联通<br></code></pre></td></tr></table></figure>
 
-<h4 id="3-使用代理模式的作用"><a href="#3-使用代理模式的作用" class="headerlink" title="3.使用代理模式的作用"></a>3.使用代理模式的作用</h4> <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">1.功能增强： 在你原有的功能上，增加了额外的功能。 新增加的功能，叫做功能增强。<br>2.控制访问： 代理类不让你访问目标，例如商家不让用户访问厂家。<br></code></pre></td></tr></table></figure>
+<h4 id="3-使用代理模式的作用"><a href="#3-使用代理模式的作用" class="headerlink" title="3.使用代理模式的作用"></a>3.使用代理模式的作用</h4> <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs"><code class="language-hljs">1.功能增强： 在你原有的功能上，增加了额外的功能。 新增加的功能，叫做功能增强。<br>2.控制访问： 代理类不让你访问目标，例如商家不让用户访问厂家。<br></code></pre></td></tr></table></figure>
 
 
 <h4 id="4-实现代理的方式"><a href="#4-实现代理的方式" class="headerlink" title="4.实现代理的方式"></a>4.实现代理的方式</h4><h5 id="1-静态代理-："><a href="#1-静态代理-：" class="headerlink" title="1.静态代理 ："></a>1.静态代理 ：</h5><ul>
@@ -367,7 +367,7 @@
 </ol>
 </li>
 </ul>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs tex">参数： Object proxy:jdk创建的代理对象，无需赋值。<br>	      Method method:目标类中的方法，jdk提供method对象的<br>            Object[] args：目标类中方法的参数， jdk提供的。<br>            public Object invoke(Object proxy, Method method, Object[] args)<br></code></pre></td></tr></table></figure>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">参数： Object proxy:jdk创建的代理对象，无需赋值。<br>	      Method method:目标类中的方法，jdk提供method对象的<br>            Object[] args：目标类中方法的参数， jdk提供的。<br>            public Object invoke(Object proxy, Method method, Object[] args)<br></code></pre></td></tr></table></figure>
 
 <p> InvocationHandler 接口：表示你的代理要干什么。</p>
 <p>​    怎么用： 1.创建类实现接口InvocationHandler<br>​                    2.重写invoke（）方法， 把原来静态代理中代理类要完成的功能，写在这。          </p>
@@ -411,7 +411,7 @@
     
       <span class="category-chain">
         
-  <a href="/myblog/categories/JAVA%E6%A1%86%E6%9E%B6/" class="category-chain-item">JAVA框架</a>
+  <a href="/categories/JAVA%E6%A1%86%E6%9E%B6/" class="category-chain-item">JAVA框架</a>
   
   
 
@@ -426,7 +426,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/myblog/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">#动态代理</a>
+        <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">#动态代理</a>
       
     </div>
   
@@ -439,7 +439,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>动态代理</div>
-      <div>https://yangyewen.gitee.io/myblog/2022/03/16/动态代理/</div>
+      <div>https://evanyangtobegreatest.github.io/2022/03/16/动态代理/</div>
     </div>
     <div class="license-meta">
       
@@ -481,7 +481,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblog/2022/03/16/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java多线程">
+                      <a href="/2022/03/16/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java多线程">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Java多线程</span>
                         <span class="visible-mobile">上一篇</span>
@@ -491,7 +491,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblog/2022/03/15/JAVA%E9%9B%86%E5%90%88-0/" title="JAVA集合">
+                      <a href="/2022/03/15/JAVA%E9%9B%86%E5%90%88-0/" title="JAVA集合">
                         <span class="hidden-mobile">JAVA集合</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -614,7 +614,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/myblog/img/police_beian.png" srcset="/myblog/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>粤公网安备 44011402000758号</span>
         </a>
@@ -645,8 +645,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblog/js/events.js" ></script>
-<script  src="/myblog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -670,7 +670,7 @@
 
 
   
-    <script  src="/myblog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -807,7 +807,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -815,7 +815,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

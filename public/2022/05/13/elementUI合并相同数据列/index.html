@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblog/img/fluid.png">
-  <link rel="icon" href="/myblog/img/logo.PNG">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,20 +16,20 @@
   <meta name="author" content="Evan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="elementUI 表格 如何合并相同数据的列？在编写表格table中，会出现合并数据相同的列这种需求，如图：  实现方法添加span-method 方法，elementUI提供了span-method方法 让我们可以动态合并表格，其中有四个参数，分别是row, column, rowIndex, columnIndex 12345678910&lt;!--   row:代表当前行的值column">
+    <meta name="description" content="elementUI 表格 如何合并相同数据的列？在编写表格table中，会出现合并数据相同的列这种需求，如图：  实现方法添加span-method 方法，elementUI提供了span-method方法 让我们可以动态合并表格，其中有四个参数，分别是row, column, rowIndex, columnIndex 12345678910  objectSpanMethod的具体实现 123">
 <meta property="og:type" content="article">
 <meta property="og:title" content="elementUI合并相同数据列">
-<meta property="og:url" content="https://yangyewen.gitee.io/myblog/2022/05/13/elementUI%E5%90%88%E5%B9%B6%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E5%88%97/index.html">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/05/13/elementUI%E5%90%88%E5%B9%B6%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE%E5%88%97/index.html">
 <meta property="og:site_name" content="EvanYoung">
-<meta property="og:description" content="elementUI 表格 如何合并相同数据的列？在编写表格table中，会出现合并数据相同的列这种需求，如图：  实现方法添加span-method 方法，elementUI提供了span-method方法 让我们可以动态合并表格，其中有四个参数，分别是row, column, rowIndex, columnIndex 12345678910&lt;!--   row:代表当前行的值column">
+<meta property="og:description" content="elementUI 表格 如何合并相同数据的列？在编写表格table中，会出现合并数据相同的列这种需求，如图：  实现方法添加span-method 方法，elementUI提供了span-method方法 让我们可以动态合并表格，其中有四个参数，分别是row, column, rowIndex, columnIndex 12345678910  objectSpanMethod的具体实现 123">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yangyewen.gitee.io/img/elementui-%E7%AC%94%E8%AE%B0/objectSpanMethod.PNG">
+<meta property="og:image" content="https://evanyangtobegreatest.github.io/img/elementui-%E7%AC%94%E8%AE%B0/objectSpanMethod.PNG">
 <meta property="article:published_time" content="2022-05-13T08:42:19.000Z">
 <meta property="article:modified_time" content="2022-05-30T08:53:28.061Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="elementUI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yangyewen.gitee.io/img/elementui-%E7%AC%94%E8%AE%B0/objectSpanMethod.PNG">
+<meta name="twitter:image" content="https://evanyangtobegreatest.github.io/img/elementui-%E7%AC%94%E8%AE%B0/objectSpanMethod.PNG">
   
   
   
@@ -57,12 +57,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -71,18 +71,18 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"yangyewen.gitee.io","root":"/myblog/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblog/local-search.xml"};
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblog/js/utils.js" ></script>
-  <script  src="/myblog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 5.4.1"></head>
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -94,7 +94,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblog/">
+    <a class="navbar-brand" href="/">
       <strong>EvanYoung</strong>
     </a>
 
@@ -113,7 +113,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -125,7 +125,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -137,7 +137,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -149,7 +149,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -161,7 +161,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -190,7 +190,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblog/img/bg10.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -273,16 +273,16 @@
             <div class="markdown-body">
               
               <h2 id="elementUI-表格-如何合并相同数据的列？"><a href="#elementUI-表格-如何合并相同数据的列？" class="headerlink" title="elementUI 表格 如何合并相同数据的列？"></a>elementUI 表格 如何合并相同数据的列？</h2><p>在编写表格table中，会出现合并数据相同的列这种需求，如图：</p>
-<p><img src="/img/elementui-%E7%AC%94%E8%AE%B0/objectSpanMethod.PNG" srcset="/myblog/img/loading.gif" lazyload></p>
+<p><img src="/img/elementui-%E7%AC%94%E8%AE%B0/objectSpanMethod.PNG" srcset="/img/loading.gif" lazyload></p>
 <h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><p>添加span-method 方法，elementUI提供了span-method方法 让我们可以动态合并表格，其中有四个参数，分别是row, column, rowIndex, columnIndex</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;!--   <br>row:代表当前行的值<br>column:代表当前列的值<br>rowIndex:当前行的索引<br>columnIndex:当前列的索引<br>--&gt;<br><br>&lt;el-table :data=&quot;tableData&quot; :span-method=&quot;objectSpanMethod&quot; &gt;<br><br>&lt;!--objectSpanMethod是定义的逻辑方法，可以根据自己需求定义--&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre class=" language-hljs vue"><code class="language-hljs vue"><!--   <br>row:代表当前行的值<br>column:代表当前列的值<br>rowIndex:当前行的索引<br>columnIndex:当前列的索引<br>--><br><br><el-table :data="tableData" :span-method="objectSpanMethod" ><br><br><!--objectSpanMethod是定义的逻辑方法，可以根据自己需求定义--><br></code></pre></td></tr></table></figure>
 
 <p>objectSpanMethod的具体实现</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">setdates</span>(<span class="hljs-params">arr</span>) &#123;   <span class="hljs-comment">//获取数组</span><br>        <span class="hljs-keyword">var</span> obj = &#123;&#125;,<br>          k, arr1 = [];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = arr.<span class="hljs-property">length</span>; i &lt; len; i++) &#123;<br>          k = arr[i].<span class="hljs-property">date</span>;<span class="hljs-comment">//合并所需要的列</span><br>          <span class="hljs-keyword">if</span>(obj[k])<br>            obj[k]++;<br>          <span class="hljs-keyword">else</span><br>            obj[k] = <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj)<br>        <span class="hljs-comment">//保存结果&#123;el-&#x27;元素&#x27;，count-出现次数&#125;</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> o <span class="hljs-keyword">in</span> obj) &#123;<br>          <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;obj[o];i++)&#123;<br>            <span class="hljs-keyword">if</span>(i===<span class="hljs-number">0</span>)&#123;<br>              <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>.<span class="hljs-title function_">push</span>(obj[o])<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>              <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>.<span class="hljs-title function_">push</span>(<span class="hljs-number">0</span>)<br>            &#125;<br>          &#125;<br>        &#125;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>);<br><br>      &#125;,<br>      <span class="hljs-title function_">objectSpanMethod</span>(<span class="hljs-params">&#123; row, column, rowIndex, columnIndex &#125;</span>) &#123;<br>        <span class="hljs-keyword">if</span> (columnIndex === <span class="hljs-number">0</span> ) &#123;<br>          <span class="hljs-keyword">let</span> _row = <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>[rowIndex]<br>          <span class="hljs-keyword">let</span> _col = <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>[rowIndex] &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span><br>          <span class="hljs-keyword">return</span> [_row,_col]<br>        &#125;<br>      &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre class=" language-hljs js"><span class="hljs-title function_">setdates</span>(<span class="hljs-params">arr</span>) &#123;   <span class="hljs-comment">//获取数组</span><br>        <span class="hljs-keyword">var</span> obj = &#123;&#125;,<br>          k, arr1 = [];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = arr.<span class="hljs-property">length</span>; i &lt; len; i++) &#123;<br>          k = arr[i].<span class="hljs-property">date</span>;<span class="hljs-comment">//合并所需要的列</span><br>          <span class="hljs-keyword">if</span>(obj[k])<br>            obj[k]++;<br>          <span class="hljs-keyword">else</span><br>            obj[k] = <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj)<br>        <span class="hljs-comment">//保存结果&#123;el-&#x27;元素&#x27;，count-出现次数&#125;</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> o <span class="hljs-keyword">in</span> obj) &#123;<br>          <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;obj[o];i++)&#123;<br>            <span class="hljs-keyword">if</span>(i===<span class="hljs-number">0</span>)&#123;<br>              <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>.<span class="hljs-title function_">push</span>(obj[o])<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>              <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>.<span class="hljs-title function_">push</span>(<span class="hljs-number">0</span>)<br>            &#125;<br>          &#125;<br>        &#125;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>);<br><br>      &#125;,<br>      <span class="hljs-title function_">objectSpanMethod</span>(<span class="hljs-params">&#123; row, column, rowIndex, columnIndex &#125;</span>) &#123;<br>        <span class="hljs-keyword">if</span> (columnIndex === <span class="hljs-number">0</span> ) &#123;<br>          <span class="hljs-keyword">let</span> _row = <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>[rowIndex]<br>          <span class="hljs-keyword">let</span> _col = <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>[rowIndex] &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span><br>          <span class="hljs-keyword"><code class="language-hljs js"><span class="hljs-title function_">setdates</span>(<span class="hljs-params">arr</span>) &#123;   <span class="hljs-comment">//获取数组</span><br>        <span class="hljs-keyword">var</span> obj = &#123;&#125;,<br>          k, arr1 = [];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = arr.<span class="hljs-property">length</span>; i &lt; len; i++) &#123;<br>          k = arr[i].<span class="hljs-property">date</span>;<span class="hljs-comment">//合并所需要的列</span><br>          <span class="hljs-keyword">if</span>(obj[k])<br>            obj[k]++;<br>          <span class="hljs-keyword">else</span><br>            obj[k] = <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj)<br>        <span class="hljs-comment">//保存结果&#123;el-&#x27;元素&#x27;，count-出现次数&#125;</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> o <span class="hljs-keyword">in</span> obj) &#123;<br>          <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;obj[o];i++)&#123;<br>            <span class="hljs-keyword">if</span>(i===<span class="hljs-number">0</span>)&#123;<br>              <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>.<span class="hljs-title function_">push</span>(obj[o])<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>              <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>.<span class="hljs-title function_">push</span>(<span class="hljs-number">0</span>)<br>            &#125;<br>          &#125;<br>        &#125;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>);<br><br>      &#125;,<br>      <span class="hljs-title function_">objectSpanMethod</span>(<span class="hljs-params">&#123; row, column, rowIndex, columnIndex &#125;</span>) &#123;<br>        <span class="hljs-keyword">if</span> (columnIndex === <span class="hljs-number">0</span> ) &#123;<br>          <span class="hljs-keyword">let</span> _row = <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>[rowIndex]<br>          <span class="hljs-keyword">let</span> _col = <span class="hljs-variable language_">this</span>.<span class="hljs-property">arr1</span>[rowIndex] &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span><br>          <span class="hljs-keyword">return</span> [_row,_col]<br>        &#125;<br>      &#125;<br></code></pre></td></tr></table></figure>
 
 
 
-<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;el-table<br>    :data=&quot;tableData&quot;<br>    border<br>    style=&quot;width: 100%&quot;  :span-method=&quot;objectSpanMethod&quot; &gt;<br>    &lt;el-table-column<br>      prop=&quot;date&quot;<br>      label=&quot;日期&quot;<br>      width=&quot;180&quot;&gt;<br>    &lt;/el-table-column&gt;<br>    &lt;el-table-column<br>      prop=&quot;name&quot;<br>      label=&quot;姓名&quot;<br>      width=&quot;180&quot;&gt;<br>    &lt;/el-table-column&gt;<br>    &lt;el-table-column<br>      prop=&quot;address&quot;<br>      label=&quot;地址&quot;&gt;<br>    &lt;/el-table-column&gt;<br>  &lt;/el-table&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>  export default &#123;<br>    name: &quot;table&quot;,<br>    data() &#123;<br>      return &#123;<br>        tableData: [&#123;<br>          date: &#x27;2016-05-02&#x27;,<br>          name: &#x27;王小虎&#x27;,<br>          address: &#x27;上海市普陀区金沙江路 1518 弄&#x27;<br>        &#125;, &#123;<br>          date: &#x27;2016-05-02&#x27;,<br>          name: &#x27;王小虎&#x27;,<br>          address: &#x27;上海市普陀区金沙江路 1517 弄&#x27;<br>        &#125;, &#123;<br>          date: &#x27;2016-05-01&#x27;,<br>          name: &#x27;王小虎&#x27;,<br>          address: &#x27;上海市普陀区金沙江路 1519 弄&#x27;<br>        &#125;, &#123;<br>          date: &#x27;2016-05-03&#x27;,<br>          name: &#x27;王小虎&#x27;,<br>          address: &#x27;上海市普陀区金沙江路 1516 弄&#x27;<br>        &#125;],<br>        arr1:[],<br>        arr2:[]<br>      &#125;<br>    &#125;,<br>    created() &#123;<br>      this.setdates(this.tableData)<br>    &#125;,<br>    methods: &#123;<br>      setdates(arr) &#123;<br>        var obj = &#123;&#125;,<br>          k, arr1 = [];<br>        for(var i = 0, len = arr.length; i &lt; len; i++) &#123;<br>          k = arr[i].date;//需要合并的字段<br>          if(obj[k])<br>            obj[k]++;<br>          else<br>            obj[k] = 1;<br>        &#125;<br>        console.log(obj)<br>        //保存结果&#123;el-&#x27;元素&#x27;，count-出现次数&#125;<br>        for(var o in obj) &#123;<br>          for(let i=0;i&lt;obj[o];i++)&#123;<br>            if(i===0)&#123;<br>              this.arr1.push(obj[o])<br>            &#125;else&#123;<br>              this.arr1.push(0)<br>            &#125;<br>          &#125;<br>        &#125;<br>        console.log(this.arr1);<br><br>      &#125;,<br><br><br>      objectSpanMethod(&#123; row, column, rowIndex, columnIndex &#125;) &#123;<br>        if (columnIndex === 0 ) &#123;<br>          let _row = this.arr1[rowIndex]<br>          let _col = this.arr1[rowIndex] &gt; 0 ? 1 : 0<br>          return [_row,_col]<br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125;;<br>&lt;/script&gt;<br><br><br><br>&lt;style scoped&gt;<br><br>&lt;/style&gt;<br><br></code></pre></td></tr></table></figure>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre class=" language-hljs vue"><code class="language-hljs vue"><template><br>  <el-table<br>    :data="tableData"<br>    border<br>    style="width: 100%"  :span-method="objectSpanMethod" ><br>    <el-table-column<br>      prop="date"<br>      label="日期"<br>      width="180"><br>    </el-table-column><br>    <el-table-column<br>      prop="name"<br>      label="姓名"<br>      width="180"><br>    </el-table-column><br>    <el-table-column<br>      prop="address"<br>      label="地址"><br>    </el-table-column><br>  </el-table><br></template><br><br><script><br>  export default &#123;<br>    name: "table",<br>    data() &#123;<br>      return &#123;<br>        tableData: [&#123;<br>          date: &#x27;2016-05-02&#x27;,<br>          name: &#x27;王小虎&#x27;,<br>          address: &#x27;上海市普陀区金沙江路 1518 弄&#x27;<br>        &#125;, &#123;<br>          date: &#x27;2016-05-02&#x27;,<br>          name: &#x27;王小虎&#x27;,<br>          address: &#x27;上海市普陀区金沙江路 1517 弄&#x27;<br>        &#125;, &#123;<br>          date: &#x27;2016-05-01&#x27;,<br>          name: &#x27;王小虎&#x27;,<br>          address: &#x27;上海市普陀区金沙江路 1519 弄&#x27;<br>        &#125;, &#123;<br>          date: &#x27;2016-05-03&#x27;,<br>          name: &#x27;王小虎&#x27;,<br>          address: &#x27;上海市普陀区金沙江路 1516 弄&#x27;<br>        &#125;],<br>        arr1:[],<br>        arr2:[]<br>      &#125;<br>    &#125;,<br>    created() &#123;<br>      this.setdates(this.tableData)<br>    &#125;,<br>    methods: &#123;<br>      setdates(arr) &#123;<br>        var obj = &#123;&#125;,<br>          k, arr1 = [];<br>        for(var i = 0, len = arr.length; i < len; i++) &#123;<br>          k = arr[i].date;//需要合并的字段<br>          if(obj[k])<br>            obj[k]++;<br>          else<br>            obj[k] = 1;<br>        &#125;<br>        console.log(obj)<br>        //保存结果&#123;el-&#x27;元素&#x27;，count-出现次数&#125;<br>        for(var o in obj) &#123;<br>          for(let i=0;i<obj[o];i++)&#123;<br>            if(i===0)&#123;<br>              this.arr1.push(obj[o])<br>            &#125;else&#123;<br>              this.arr1.push(0)<br>            &#125;<br>          &#125;<br>        &#125;<br>        console.log(this.arr1);<br><br>      &#125;,<br><br><br>      objectSpanMethod(&#123; row, column, rowIndex, columnIndex &#125;) &#123;<br>        if (columnIndex === 0 ) &#123;<br>          let _row = this.arr1[rowIndex]<br>          let _col = this.arr1[rowIndex] > 0 ? 1 : 0<br>          return [_row,_col]<br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125;;<br></script><br><br><br><br><style scoped><br><br></style><br><br></code></pre></td></tr></table></figure>
 
 
               
@@ -301,7 +301,7 @@
     
       <span class="category-chain">
         
-  <a href="/myblog/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
   
   
 
@@ -316,7 +316,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/myblog/tags/elementUI/">#elementUI</a>
+        <a href="/tags/elementUI/">#elementUI</a>
       
     </div>
   
@@ -329,7 +329,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>elementUI合并相同数据列</div>
-      <div>https://yangyewen.gitee.io/myblog/2022/05/13/elementUI合并相同数据列/</div>
+      <div>https://evanyangtobegreatest.github.io/2022/05/13/elementUI合并相同数据列/</div>
     </div>
     <div class="license-meta">
       
@@ -371,7 +371,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblog/2022/05/18/%E9%A1%B5%E9%9D%A2%E6%89%93%E5%8D%B0%E8%A1%A8%E6%A0%BC%E6%8D%A2%E9%A1%B5%E9%97%AE%E9%A2%98/" title="页面打印表格换页问题">
+                      <a href="/2022/05/18/%E9%A1%B5%E9%9D%A2%E6%89%93%E5%8D%B0%E8%A1%A8%E6%A0%BC%E6%8D%A2%E9%A1%B5%E9%97%AE%E9%A2%98/" title="页面打印表格换页问题">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">页面打印表格换页问题</span>
                         <span class="visible-mobile">上一篇</span>
@@ -381,7 +381,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblog/2022/05/13/elementUI%E4%BF%AE%E6%94%B9%E8%A1%A8%E5%A4%B4%E6%8C%87%E5%AE%9A%E5%88%97/" title="elementUI修改表头指定列">
+                      <a href="/2022/05/13/elementUI%E4%BF%AE%E6%94%B9%E8%A1%A8%E5%A4%B4%E6%8C%87%E5%AE%9A%E5%88%97/" title="elementUI修改表头指定列">
                         <span class="hidden-mobile">elementUI修改表头指定列</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -504,7 +504,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/myblog/img/police_beian.png" srcset="/myblog/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>粤公网安备 44011402000758号</span>
         </a>
@@ -535,8 +535,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblog/js/events.js" ></script>
-<script  src="/myblog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -560,7 +560,7 @@
 
 
   
-    <script  src="/myblog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -697,7 +697,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -705,7 +705,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

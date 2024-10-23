@@ -7,30 +7,30 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblog/img/fluid.png">
-  <link rel="icon" href="/myblog/img/logo.PNG">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Evan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="12345title: &amp;#x27;Django使用Vue在html中按&amp;#123;&amp;#123;&amp;#125;&amp;#125;取值失败的解决办法&amp;#x27;date: 2024-02-22 17:12:06author: Evancategories: 笔记tags:  因为django本身有模版的概念，直接取值是从django的模版中取值的 而在vue的v-for中想要获取遍历之后的数据， 直接用方式">
+    <meta name="description" content="因为django本身有模版的概念，直接取值是从django的模版中取值的 而在vue的v-for中想要获取遍历之后的数据， 直接用方式取值，会取到None 这时候就需要进行特殊处理，解决办法为： 1、禁用Django的模版 12345678910111213141516&amp;#123;% verbatim %&amp;#125;&amp;#123;% endverbatim %&amp;#125;在需要不解析的DOM 上下">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EvanYoung">
-<meta property="og:url" content="https://yangyewen.gitee.io/myblog/2024/02/22/Django%E4%BD%BF%E7%94%A8Vue%E5%9C%A8html%E4%B8%AD%E6%8C%89-%E5%8F%96%E5%80%BC%E5%A4%B1%E8%B4%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/index.html">
+<meta property="og:title" content="Django使用Vue在html中按{{}}取值失败的解决办法">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2024/02/22/Django%E4%BD%BF%E7%94%A8Vue%E5%9C%A8html%E4%B8%AD%E6%8C%89-%E5%8F%96%E5%80%BC%E5%A4%B1%E8%B4%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/index.html">
 <meta property="og:site_name" content="EvanYoung">
-<meta property="og:description" content="12345title: &amp;#x27;Django使用Vue在html中按&amp;#123;&amp;#123;&amp;#125;&amp;#125;取值失败的解决办法&amp;#x27;date: 2024-02-22 17:12:06author: Evancategories: 笔记tags:  因为django本身有模版的概念，直接取值是从django的模版中取值的 而在vue的v-for中想要获取遍历之后的数据， 直接用方式">
+<meta property="og:description" content="因为django本身有模版的概念，直接取值是从django的模版中取值的 而在vue的v-for中想要获取遍历之后的数据， 直接用方式取值，会取到None 这时候就需要进行特殊处理，解决办法为： 1、禁用Django的模版 12345678910111213141516&amp;#123;% verbatim %&amp;#125;&amp;#123;% endverbatim %&amp;#125;在需要不解析的DOM 上下">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-22T09:12:06.589Z">
-<meta property="article:modified_time" content="2024-05-17T02:57:34.308Z">
+<meta property="article:published_time" content="2024-02-22T09:12:06.000Z">
+<meta property="article:modified_time" content="2024-09-24T02:17:59.867Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>EvanYoung</title>
+  <title>Django使用Vue在html中按{{}}取值失败的解决办法 - EvanYoung</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -54,12 +54,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -68,18 +68,18 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"yangyewen.gitee.io","root":"/myblog/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblog/local-search.xml"};
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblog/js/utils.js" ></script>
-  <script  src="/myblog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 5.4.1"></head>
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -91,7 +91,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblog/">
+    <a class="navbar-brand" href="/">
       <strong>EvanYoung</strong>
     </a>
 
@@ -110,7 +110,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -122,7 +122,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -134,7 +134,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -146,7 +146,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -158,7 +158,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -187,13 +187,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblog/img/bg10.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="Django使用Vue在html中按{{}}取值失败的解决办法"></span>
           
         </div>
 
@@ -216,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          967 字
         
       </span>
     
@@ -227,7 +227,7 @@
         
         
         
-          10 分钟
+          9 分钟
         
       </span>
     
@@ -265,27 +265,46 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">Django使用Vue在html中按{{}}取值失败的解决办法</h1>
             
             <div class="markdown-body">
               
-              <figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs subunit">title: &#x27;Django使用Vue在html中按&#123;&#123;&#125;&#125;取值失败的解决办法&#x27;<br>date: 2024<span class="hljs-string">-02</span><span class="hljs-string">-22</span> 17:12:06<br>author: Evan<br>categories: 笔记<br><span class="hljs-keyword">tags:</span><br></code></pre></td></tr></table></figure>
-
-<p>因为django本身有模版的概念，直接取值是从django的模版中取值的</p>
+              <p>因为django本身有模版的概念，直接取值是从django的模版中取值的</p>
 <p>而在vue的v-for中想要获取遍历之后的数据，</p>
 <p>直接用方式取值，会取到None</p>
 <p>这时候就需要进行特殊处理，解决办法为：</p>
 <p><strong>1、禁用Django的模版</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs html">&#123;% verbatim %&#125;<br>&#123;% endverbatim %&#125;<br>在需要不解析的DOM 上下 包裹 &#123;% verbatim %&#125; &#123;% endverbatim %&#125; <br>例如：<br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span> <span class="hljs-attr">v-cloak</span> <span class="hljs-attr">v-loading.fullscreen.lock</span>=<span class="hljs-string">&quot;loading&quot;</span>&gt;</span><br>    &#123;% verbatim %&#125;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;subject&quot;</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;subject in subjects&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sname&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">:href</span>=<span class="hljs-string">&quot;&#x27;/teachers?sno=&#x27; + subject.no&quot;</span>&gt;</span><br>                &#123;&#123; subject.name &#125;&#125;<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;subject.isHot&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;&#x27;</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; subject.intro &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>&#123;% endverbatim %&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre class=" language-hljs html">&#123;% verbatim %&#125;<br>&#123;% endverbatim %&#125;<br>在需要不解析的DOM 上下 包裹 &#123;% verbatim %&#125; &#123;% endverbatim %&#125; <br>例如：<br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span> <span class="hljs-attr">v-cloak</span> <span class="hljs-attr">v-loading.fullscreen.lock</span>=<span class="hljs-string">&quot;loading&quot;</span>&gt;</span><br>    &#123;% verbatim %&#125;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;subject&quot;</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;subject in subjects&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sname&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">:href</span>=<span class="hljs-string">&quot;&#x27;/teachers?sno=&#x27; + subject.no&quot;</span>&gt;</span><br>                &#123;&#123; subject.name &#125;&#125;<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;subject.isHot&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;&#x27;</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; subject.intro &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>&#123;% endverbatim %&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name"><code class="language-hljs html">&#123;% verbatim %&#125;<br>&#123;% endverbatim %&#125;<br>在需要不解析的DOM 上下 包裹 &#123;% verbatim %&#125; &#123;% endverbatim %&#125; <br>例如：<br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span> <span class="hljs-attr">v-cloak</span> <span class="hljs-attr">v-loading.fullscreen.lock</span>=<span class="hljs-string">&quot;loading&quot;</span>&gt;</span><br>    &#123;% verbatim %&#125;<br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;subject&quot;</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;subject in subjects&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sname&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">:href</span>=<span class="hljs-string">&quot;&#x27;/teachers?sno=&#x27; + subject.no&quot;</span>&gt;</span><br>                &#123;&#123; subject.name &#125;&#125;<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;subject.isHot&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;&#x27;</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; subject.intro &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>&#123;% endverbatim %&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>></span><br></code></pre></td></tr></table></figure>
 
 <p><strong>2.更改Vue的中括号</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//改成其他 例如：&quot;&#123;[ ]&#125;&quot;等等，修改方式如下：</span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-property">config</span>.<span class="hljs-property">delimiters</span> = [<span class="hljs-string">&quot;&#123;[&quot;</span>, <span class="hljs-string">&quot;]&#125;&quot;</span>]<br>或者<br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;<br>  <span class="hljs-attr">delimiters</span>:[<span class="hljs-string">&#x27;&#123;[&#x27;</span>, <span class="hljs-string">&#x27;]&#125;&#x27;</span>],<br>  <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;.el&#x27;</span>,<br>  <span class="hljs-attr">data</span>:&#123;&#125;<br> &#125;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre class=" language-hljs js"><span class="hljs-comment">//改成其他 例如：&quot;&#123;[ ]&#125;&quot;等等，修改方式如下：</span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-property">config</span>.<span class="hljs-property">delimiters</span> = [<span class="hljs-string">&quot;&#123;[&quot;</span>, <span class="hljs-string">&quot;]&#125;&quot;</span>]<br>或者<br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;<br>  <span class="hljs-attr">delimiters</span>:[<span class="hljs-string">&#x27;&#123;[&#x27;</span>, <span class="hljs-string">&#x27;]&#125;&#x27;</span>],<br>  <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;.el&#x27;</span>,<br>  <span class="hljs-attr"><code class="language-hljs js"><span class="hljs-comment">//改成其他 例如：&quot;&#123;[ ]&#125;&quot;等等，修改方式如下：</span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-property">config</span>.<span class="hljs-property">delimiters</span> = [<span class="hljs-string">&quot;&#123;[&quot;</span>, <span class="hljs-string">&quot;]&#125;&quot;</span>]<br>或者<br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;<br>  <span class="hljs-attr">delimiters</span>:[<span class="hljs-string">&#x27;&#123;[&#x27;</span>, <span class="hljs-string">&#x27;]&#125;&#x27;</span>],<br>  <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;.el&#x27;</span>,<br>  <span class="hljs-attr">data</span>:&#123;&#125;<br> &#125;)<br></code></pre></td></tr></table></figure>
 
               
             </div>
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>
@@ -296,14 +315,14 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
-      <div>https://yangyewen.gitee.io/myblog/2024/02/22/Django使用Vue在html中按-取值失败的解决办法/</div>
+      <div>Django使用Vue在html中按{{}}取值失败的解决办法</div>
+      <div>https://evanyangtobegreatest.github.io/2024/02/22/Django使用Vue在html中按-取值失败的解决办法/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>John Doe</div>
+          <div>Evan</div>
         </div>
       
       
@@ -339,7 +358,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblog/2024/03/12/Vue-%E6%8A%A5%E9%94%99error-0308010C-digital-envelope-routines-unsupported/" title="Vue 报错error:0308010C:digital envelope routines::unsupported">
+                      <a href="/2024/03/12/Vue-%E6%8A%A5%E9%94%99error-0308010C-digital-envelope-routines-unsupported/" title="Vue 报错error:0308010C:digital envelope routines::unsupported">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Vue 报错error:0308010C:digital envelope routines::unsupported</span>
                         <span class="visible-mobile">上一篇</span>
@@ -349,7 +368,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblog/2024/02/21/WSGIRequest%E2%80%99-object-has-no-attribute-%E2%80%98is-ajax%E2%80%99/" title="WSGIRequest’ object has no attribute ‘is_ajax’">
+                      <a href="/2024/02/21/WSGIRequest%E2%80%99-object-has-no-attribute-%E2%80%98is-ajax%E2%80%99/" title="WSGIRequest’ object has no attribute ‘is_ajax’">
                         <span class="hidden-mobile">WSGIRequest’ object has no attribute ‘is_ajax’</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -472,7 +491,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/myblog/img/police_beian.png" srcset="/myblog/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>粤公网安备 44011402000758号</span>
         </a>
@@ -503,8 +522,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblog/js/events.js" ></script>
-<script  src="/myblog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -528,7 +547,7 @@
 
 
   
-    <script  src="/myblog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -665,7 +684,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -673,7 +692,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

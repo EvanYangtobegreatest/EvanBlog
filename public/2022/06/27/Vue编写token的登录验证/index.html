@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblog/img/fluid.png">
-  <link rel="icon" href="/myblog/img/logo.PNG">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="实现Vue根据token拦截访问页面实现步骤1.前端登录，把用户信息传到后端。 2.后端验证通过后生成token返回前端。 3.前端获取token后用vuex和localStorage管理，进入其他页面。 4.之后前端每一次权限操作如跳转路由，都需要判断是否存在token，若不存在，跳转至登录页。 5.前端的请求操作都要在请求头带上token，后端验证请求头有token之后才开放接口。 6.如果t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue编写token的登录验证">
-<meta property="og:url" content="https://yangyewen.gitee.io/myblog/2022/06/27/Vue%E7%BC%96%E5%86%99token%E7%9A%84%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81/index.html">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/06/27/Vue%E7%BC%96%E5%86%99token%E7%9A%84%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81/index.html">
 <meta property="og:site_name" content="EvanYoung">
 <meta property="og:description" content="实现Vue根据token拦截访问页面实现步骤1.前端登录，把用户信息传到后端。 2.后端验证通过后生成token返回前端。 3.前端获取token后用vuex和localStorage管理，进入其他页面。 4.之后前端每一次权限操作如跳转路由，都需要判断是否存在token，若不存在，跳转至登录页。 5.前端的请求操作都要在请求头带上token，后端验证请求头有token之后才开放接口。 6.如果t">
 <meta property="og:locale" content="zh_CN">
@@ -54,12 +54,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -68,18 +68,18 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"yangyewen.gitee.io","root":"/myblog/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblog/local-search.xml"};
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblog/js/utils.js" ></script>
-  <script  src="/myblog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 5.4.1"></head>
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -91,7 +91,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblog/">
+    <a class="navbar-brand" href="/">
       <strong>EvanYoung</strong>
     </a>
 
@@ -110,7 +110,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -122,7 +122,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -134,7 +134,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -146,7 +146,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -158,7 +158,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -187,7 +187,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblog/img/bg10.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -276,17 +276,17 @@
 <p>5.前端的请求操作都要在请求头带上token，后端验证请求头有token之后才开放接口。</p>
 <p>6.如果token已过期，清除token信息，跳转至登录页。</p>
 <h2 id="vue实现"><a href="#vue实现" class="headerlink" title="vue实现"></a>vue实现</h2><p><strong>1.获取后端传来的token</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js">login () &#123;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">$axios</span><br>                    .<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/login&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">$qs</span>.<span class="hljs-title function_">stringify</span>(&#123;<span class="hljs-attr">name</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">loginForm</span>.<span class="hljs-property">name</span>,<br>                        <span class="hljs-attr">password</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">loginForm</span>.<span class="hljs-property">password</span><br>                    &#125;))<br>                    .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">successResponse</span> =&gt;</span> &#123;<br>                        <span class="hljs-keyword">if</span> (successResponse.<span class="hljs-property">data</span>.<span class="hljs-property">code</span> === <span class="hljs-number">200</span>) &#123;<br>                            <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>,successResponse.<span class="hljs-property">data</span>.<span class="hljs-property">data</span>);<span class="hljs-comment">//存储token信息</span><br>                            <span class="hljs-variable language_">this</span>.<span class="hljs-property">$router</span>.<span class="hljs-title function_">replace</span>(&#123;<span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/dashboard&#x27;</span>&#125;)<br>                        &#125;<br>                        <span class="hljs-keyword">else</span>&#123;<br>                            <span class="hljs-title function_">alert</span>(successResponse.<span class="hljs-property">data</span>.<span class="hljs-property">message</span>);<br>                        &#125;<br>                    &#125;)<br>                    .<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">failResponse</span> =&gt;</span> &#123;<br><br>                    &#125;)<br>            &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre class=" language-hljs js">login () &#123;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">$axios</span><br>                    .<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/login&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">$qs</span>.<span class="hljs-title function_">stringify</span>(&#123;<span class="hljs-attr">name</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">loginForm</span>.<span class="hljs-property">name</span>,<br>                        <span class="hljs-attr">password</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">loginForm</span>.<span class="hljs-property">password</span><br>                    &#125;))<br>                    .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">successResponse</span> =&gt;</span> &#123;<br>                        <span class="hljs-keyword">if</span> (successResponse.<span class="hljs-property">data</span>.<span class="hljs-property">code</span> === <span class="hljs-number">200</span>) &#123;<br>                            <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>,successResponse.<span class="hljs-property">data</span>.<span class="hljs-property">data</span>);<span class="hljs-comment">//存储token信息</span><br>                            <span class="hljs-variable language_">this</span>.<span class="hljs-property">$router</span>.<span class="hljs-title function_">replace</span>(&#123;<span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/dashboard&#x27;</span>&#125;)<br>                        &#125;<br>                        <span class="hljs-keyword">else</span>&#123;<br>                            <span class="hljs-title function_">alert</span>(successResponse.<span class="hljs-property">data</span>.<span class="hljs-property">message</span>);<br>                        &#125;<br>                    &#125;)<br>                    .<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params"><code class="language-hljs js">login () &#123;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">$axios</span><br>                    .<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/login&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">$qs</span>.<span class="hljs-title function_">stringify</span>(&#123;<span class="hljs-attr">name</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">loginForm</span>.<span class="hljs-property">name</span>,<br>                        <span class="hljs-attr">password</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">loginForm</span>.<span class="hljs-property">password</span><br>                    &#125;))<br>                    .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">successResponse</span> =&gt;</span> &#123;<br>                        <span class="hljs-keyword">if</span> (successResponse.<span class="hljs-property">data</span>.<span class="hljs-property">code</span> === <span class="hljs-number">200</span>) &#123;<br>                            <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>,successResponse.<span class="hljs-property">data</span>.<span class="hljs-property">data</span>);<span class="hljs-comment">//存储token信息</span><br>                            <span class="hljs-variable language_">this</span>.<span class="hljs-property">$router</span>.<span class="hljs-title function_">replace</span>(&#123;<span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/dashboard&#x27;</span>&#125;)<br>                        &#125;<br>                        <span class="hljs-keyword">else</span>&#123;<br>                            <span class="hljs-title function_">alert</span>(successResponse.<span class="hljs-property">data</span>.<span class="hljs-property">message</span>);<br>                        &#125;<br>                    &#125;)<br>                    .<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">failResponse</span> =></span> &#123;<br><br>                    &#125;)<br>            &#125;<br></code></pre></td></tr></table></figure>
 
 <p><strong>2.在路由中添加拦截</strong></p>
 <p>requireAuth属性作用是表明该路由是否需要登录验证，在进行全局拦截时，我们将通过该属性判断路由的跳转，该属性包含在meta属性中:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js">routes = [<br>    &#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;dashboard&#x27;</span>,<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/dashboard&#x27;</span>,<br>        <span class="hljs-attr">meta</span>: &#123;<br>            <span class="hljs-attr">requireAuth</span>: <span class="hljs-literal">true</span><br>        &#125;<br>    &#125;,<br>    &#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;login&#x27;</span>,<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/login&#x27;</span><br>    &#125;<br>]<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre class=" language-hljs js">routes = [<br>    &#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;dashboard&#x27;</span>,<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/dashboard&#x27;</span>,<br>        <span class="hljs-attr">meta</span>: &#123;<br>            <span class="hljs-attr">requireAuth</span>: <span class="hljs-literal">true</span><br>        &#125;<br>    &#125;,<br>    &#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;login&#x27;</span>,<br>        <span class="hljs-attr">path</span>: <span class="hljs-string"><code class="language-hljs js">routes = [<br>    &#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;dashboard&#x27;</span>,<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/dashboard&#x27;</span>,<br>        <span class="hljs-attr">meta</span>: &#123;<br>            <span class="hljs-attr">requireAuth</span>: <span class="hljs-literal">true</span><br>        &#125;<br>    &#125;,<br>    &#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;login&#x27;</span>,<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/login&#x27;</span><br>    &#125;<br>]<br></code></pre></td></tr></table></figure>
 
 <p><strong>3.在router/index.js添加路由守卫</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-comment">// 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆</span><br>router.<span class="hljs-title function_">beforeEach</span>(<span class="hljs-function">(<span class="hljs-params">to,<span class="hljs-keyword">from</span>,next</span>)=&gt;</span>&#123;<br>    <span class="hljs-comment">//to 将要访问的路径</span><br>    <span class="hljs-comment">//from 代表从哪个路径而来</span><br>    <span class="hljs-comment">//next() 代表放行 next(&#x27;xxx&#x27;) 强制放行的xxx的路径</span><br>    <span class="hljs-keyword">if</span>(to.<span class="hljs-property">path</span>===<span class="hljs-string">&#x27;/&#x27;</span>||to.<span class="hljs-property">path</span>===<span class="hljs-string">&#x27;/Login&#x27;</span>)&#123;<br>        <span class="hljs-title function_">next</span>();<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">const</span> tokenStr=<span class="hljs-variable language_">window</span>.<span class="hljs-property">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>)<br>        <span class="hljs-keyword">if</span>(!tokenStr)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-title function_">next</span>(<span class="hljs-string">&#x27;/Login&#x27;</span>)<br>        &#125;<br>        <span class="hljs-title function_">next</span>()<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre class=" language-hljs js"><br><span class="hljs-comment">// 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆</span><br>router.<span class="hljs-title function_">beforeEach</span>(<span class="hljs-function">(<span class="hljs-params">to,<span class="hljs-keyword">from</span>,next</span>)=&gt;</span>&#123;<br>    <span class="hljs-comment">//to 将要访问的路径</span><br>    <span class="hljs-comment">//from 代表从哪个路径而来</span><br>    <span class="hljs-comment">//next() 代表放行 next(&#x27;xxx&#x27;) 强制放行的xxx的路径</span><br>    <span class="hljs-keyword">if</span>(to.<span class="hljs-property">path</span>===<span class="hljs-string">&#x27;/&#x27;</span>||to.<span class="hljs-property">path</span>===<span class="hljs-string">&#x27;/Login&#x27;</span>)&#123;<br>        <span class="hljs-title function_">next</span>();<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">const</span> tokenStr=<span class="hljs-variable language_">window</span>.<span class="hljs-property">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>)<br>        <span class="hljs-keyword">if</span>(!tokenStr)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-title function_">next</span>(<span class="hljs-string">&#x27;/Login&#x27;</span>)<br>        &#125;<br>        <span class="hljs-title function_"><code class="language-hljs js"><br><span class="hljs-comment">// 使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆</span><br>router.<span class="hljs-title function_">beforeEach</span>(<span class="hljs-function">(<span class="hljs-params">to,<span class="hljs-keyword">from</span>,next</span>)=&gt;</span>&#123;<br>    <span class="hljs-comment">//to 将要访问的路径</span><br>    <span class="hljs-comment">//from 代表从哪个路径而来</span><br>    <span class="hljs-comment">//next() 代表放行 next(&#x27;xxx&#x27;) 强制放行的xxx的路径</span><br>    <span class="hljs-keyword">if</span>(to.<span class="hljs-property">path</span>===<span class="hljs-string">&#x27;/&#x27;</span>||to.<span class="hljs-property">path</span>===<span class="hljs-string">&#x27;/Login&#x27;</span>)&#123;<br>        <span class="hljs-title function_">next</span>();<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">const</span> tokenStr=<span class="hljs-variable language_">window</span>.<span class="hljs-property">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>)<br>        <span class="hljs-keyword">if</span>(!tokenStr)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-title function_">next</span>(<span class="hljs-string">&#x27;/Login&#x27;</span>)<br>        &#125;<br>        <span class="hljs-title function_">next</span>()<br>    &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
 
 <p><strong>4.在main.js设置token请求头</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//将token添加到axios请求头部</span><br>axios.<span class="hljs-property">interceptors</span>.<span class="hljs-property">request</span>.<span class="hljs-title function_">use</span>(<br>    <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>)) &#123;<br>            config.<span class="hljs-property">headers</span>.<span class="hljs-property">token</span> = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>)<br>        &#125;<br>        <span class="hljs-keyword">return</span> config<br>    &#125;,<br>    <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(error)<br>    &#125;<br>)<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre class=" language-hljs js"><span class="hljs-comment">//将token添加到axios请求头部</span><br>axios.<span class="hljs-property">interceptors</span>.<span class="hljs-property">request</span>.<span class="hljs-title function_">use</span>(<br>    <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>)) &#123;<br>            config.<span class="hljs-property">headers</span>.<span class="hljs-property">token</span> = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>)<br>        &#125;<br>        <span class="hljs-keyword">return</span> config<br>    &#125;,<br>    <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_"><code class="language-hljs js"><span class="hljs-comment">//将token添加到axios请求头部</span><br>axios.<span class="hljs-property">interceptors</span>.<span class="hljs-property">request</span>.<span class="hljs-title function_">use</span>(<br>    <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>)) &#123;<br>            config.<span class="hljs-property">headers</span>.<span class="hljs-property">token</span> = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>)<br>        &#125;<br>        <span class="hljs-keyword">return</span> config<br>    &#125;,<br>    <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(error)<br>    &#125;<br>)<br><br></code></pre></td></tr></table></figure>
 
 <p><strong>5.结合后端写好的token方法即完成</strong></p>
 
@@ -306,7 +306,7 @@
     
       <span class="category-chain">
         
-  <a href="/myblog/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
   
   
 
@@ -327,7 +327,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Vue编写token的登录验证</div>
-      <div>https://yangyewen.gitee.io/myblog/2022/06/27/Vue编写token的登录验证/</div>
+      <div>https://evanyangtobegreatest.github.io/2022/06/27/Vue编写token的登录验证/</div>
     </div>
     <div class="license-meta">
       
@@ -369,7 +369,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblog/2022/06/30/springboot%E9%9B%86%E6%88%90redis/" title="springboot集成redis">
+                      <a href="/2022/06/30/springboot%E9%9B%86%E6%88%90redis/" title="springboot集成redis">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">springboot集成redis</span>
                         <span class="visible-mobile">上一篇</span>
@@ -379,7 +379,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblog/2022/06/27/Java%E5%90%8E%E7%AB%AF%E5%AE%9E%E7%8E%B0token%E7%9A%84%E7%94%9F%E6%88%90%E5%92%8C%E9%AA%8C%E8%AF%81/" title="Java后端实现token的生成和验证">
+                      <a href="/2022/06/27/Java%E5%90%8E%E7%AB%AF%E5%AE%9E%E7%8E%B0token%E7%9A%84%E7%94%9F%E6%88%90%E5%92%8C%E9%AA%8C%E8%AF%81/" title="Java后端实现token的生成和验证">
                         <span class="hidden-mobile">Java后端实现token的生成和验证</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -502,7 +502,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/myblog/img/police_beian.png" srcset="/myblog/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>粤公网安备 44011402000758号</span>
         </a>
@@ -533,8 +533,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblog/js/events.js" ></script>
-<script  src="/myblog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -558,7 +558,7 @@
 
 
   
-    <script  src="/myblog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -695,7 +695,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -703,7 +703,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

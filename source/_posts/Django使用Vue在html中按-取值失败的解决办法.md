@@ -1,10 +1,10 @@
-```
+---
 title: 'Django使用Vue在html中按{{}}取值失败的解决办法'
 date: 2024-02-22 17:12:06
 author: Evan
 categories: 笔记
 tags:
-```
+---
 
 因为django本身有模版的概念，直接取值是从django的模版中取值的
 

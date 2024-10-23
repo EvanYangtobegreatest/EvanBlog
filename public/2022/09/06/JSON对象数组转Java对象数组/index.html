@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblog/img/fluid.png">
-  <link rel="icon" href="/myblog/img/logo.PNG">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="JSON对象数组转Java对象数组引入阿里的fastjson 12345&lt;dependency&gt;       &lt;groupId&gt;com.alibaba&lt;&#x2F;groupId&gt;       &lt;artifactId&gt;fastjson&lt;&#x2F;artifactId&gt;       &lt;version&gt;1.2.60&lt;&#x2F;version&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSON对象数组转Java对象数组">
-<meta property="og:url" content="https://yangyewen.gitee.io/myblog/2022/09/06/JSON%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E8%BD%ACJava%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/09/06/JSON%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E8%BD%ACJava%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="EvanYoung">
 <meta property="og:description" content="JSON对象数组转Java对象数组引入阿里的fastjson 12345&lt;dependency&gt;       &lt;groupId&gt;com.alibaba&lt;&#x2F;groupId&gt;       &lt;artifactId&gt;fastjson&lt;&#x2F;artifactId&gt;       &lt;version&gt;1.2.60&lt;&#x2F;version&gt;">
 <meta property="og:locale" content="zh_CN">
@@ -54,12 +54,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -68,18 +68,18 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"yangyewen.gitee.io","root":"/myblog/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblog/local-search.xml"};
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblog/js/utils.js" ></script>
-  <script  src="/myblog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
-<meta name="generator" content="Hexo 5.4.1"></head>
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -91,7 +91,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblog/">
+    <a class="navbar-brand" href="/">
       <strong>EvanYoung</strong>
     </a>
 
@@ -110,7 +110,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -122,7 +122,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -134,7 +134,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -146,7 +146,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -158,7 +158,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -187,7 +187,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblog/img/bg10.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -270,18 +270,18 @@
             <div class="markdown-body">
               
               <h2 id="JSON对象数组转Java对象数组"><a href="#JSON对象数组转Java对象数组" class="headerlink" title="JSON对象数组转Java对象数组"></a>JSON对象数组转Java对象数组</h2><p><strong>引入阿里的fastjson</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>fastjson<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.60<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre class=" language-hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>fastjson<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.60<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name"><code class="language-hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>fastjson<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.60<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>></span><br></code></pre></td></tr></table></figure>
 
 <p><strong>创建对应JSON数据的实体类</strong></p>
 <p>可以用JSON工具一键生成实体类代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JsonRootBean</span> &#123;<br><br>    <span class="hljs-keyword">private</span> String Name;<br>    <span class="hljs-keyword">private</span> String SEX;<br>    <span class="hljs-keyword">private</span> String age;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String Name)</span> &#123;<br>         <span class="hljs-built_in">this</span>.Name = Name;<br>     &#125;<br>     <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;<br>         <span class="hljs-keyword">return</span> Name;<br>     &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setSEX</span><span class="hljs-params">(String SEX)</span> &#123;<br>         <span class="hljs-built_in">this</span>.SEX = SEX;<br>     &#125;<br>     <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getSEX</span><span class="hljs-params">()</span> &#123;<br>         <span class="hljs-keyword">return</span> SEX;<br>     &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setAge</span><span class="hljs-params">(String age)</span> &#123;<br>         <span class="hljs-built_in">this</span>.age = age;<br>     &#125;<br>     <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getAge</span><span class="hljs-params">()</span> &#123;<br>         <span class="hljs-keyword">return</span> age;<br>     &#125;<br><span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;JsonRootBean&#123;&quot;</span> +<br>                <span class="hljs-string">&quot;SampleName=&#x27;&quot;</span> + SampleName + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, Marker=&#x27;&quot;</span> + Marker + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, Peak1=&#x27;&quot;</span> + Peak1 + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, Peak2=&#x27;&quot;</span> + Peak2 + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&#x27;&#125;&#x27;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JsonRootBean</span> &#123;<br><br>    <span class="hljs-keyword">private</span> String Name;<br>    <span class="hljs-keyword">private</span> String SEX;<br>    <span class="hljs-keyword">private</span> String age;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String Name)</span> &#123;<br>         <span class="hljs-built_in">this</span>.Name = Name;<br>     &#125;<br>     <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;<br>         <span class="hljs-keyword">return</span> Name;<br>     &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setSEX</span><span class="hljs-params">(String SEX)</span> &#123;<br>         <span class="hljs-built_in">this</span>.SEX = SEX;<br>     &#125;<br>     <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getSEX</span><span class="hljs-params">()</span> &#123;<br>         <span class="hljs-keyword">return</span> SEX;<br>     &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setAge</span><span class="hljs-params">(String age)</span> &#123;<br>         <span class="hljs-built_in">this</span>.age = age;<br>     &#125;<br>     <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getAge</span><span class="hljs-params">()</span> &#123;<br>         <span class="hljs-keyword">return</span> age;<br>     &#125;<br><span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;JsonRootBean&#123;&quot;</span> +<br>                <span class="hljs-string">&quot;SampleName=&#x27;&quot;</span> + SampleName + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, Marker=&#x27;&quot;</span> + Marker + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, Peak1=&#x27;&quot;</span> + Peak1 + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, Peak2=&#x27;&quot;</span> + Peak2 + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string"><code class="language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JsonRootBean</span> &#123;<br><br>    <span class="hljs-keyword">private</span> String Name;<br>    <span class="hljs-keyword">private</span> String SEX;<br>    <span class="hljs-keyword">private</span> String age;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String Name)</span> &#123;<br>         <span class="hljs-built_in">this</span>.Name = Name;<br>     &#125;<br>     <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;<br>         <span class="hljs-keyword">return</span> Name;<br>     &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setSEX</span><span class="hljs-params">(String SEX)</span> &#123;<br>         <span class="hljs-built_in">this</span>.SEX = SEX;<br>     &#125;<br>     <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getSEX</span><span class="hljs-params">()</span> &#123;<br>         <span class="hljs-keyword">return</span> SEX;<br>     &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setAge</span><span class="hljs-params">(String age)</span> &#123;<br>         <span class="hljs-built_in">this</span>.age = age;<br>     &#125;<br>     <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getAge</span><span class="hljs-params">()</span> &#123;<br>         <span class="hljs-keyword">return</span> age;<br>     &#125;<br><span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;JsonRootBean&#123;&quot;</span> +<br>                <span class="hljs-string">&quot;SampleName=&#x27;&quot;</span> + SampleName + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, Marker=&#x27;&quot;</span> + Marker + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, Peak1=&#x27;&quot;</span> + Peak1 + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&quot;, Peak2=&#x27;&quot;</span> + Peak2 + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +<br>                <span class="hljs-string">&#x27;&#125;&#x27;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p><strong>编写生成方法</strong></p>
 <p>记得修改相关类名</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ArrayList&lt;JsonRootBean&gt; <span class="hljs-title function_">getPlatformList</span><span class="hljs-params">(String arrStr)</span> &#123;<br>      ArrayList&lt;JsonRootBean&gt; jsonContents = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;JsonRootBean&gt;();<br>      <span class="hljs-type">JSONArray</span> <span class="hljs-variable">jsonContentList</span> <span class="hljs-operator">=</span> JSON.parseArray(arrStr);<br>      <span class="hljs-keyword">for</span> (Object jsonObject : jsonContentList) &#123;<br>          <span class="hljs-type">JsonRootBean</span> <span class="hljs-variable">jsonContent</span> <span class="hljs-operator">=</span> JSONObject.parseObject(jsonObject.toString(), JsonRootBean.class);<br>          jsonContents.add(jsonContent);<br>      &#125;<br>      <span class="hljs-keyword">return</span> jsonContents;<br>  &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ArrayList&lt;JsonRootBean&gt; <span class="hljs-title function_">getPlatformList</span><span class="hljs-params">(String arrStr)</span> &#123;<br>      ArrayList&lt;JsonRootBean&gt; jsonContents = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;JsonRootBean&gt;();<br>      <span class="hljs-type">JSONArray</span> <span class="hljs-variable">jsonContentList</span> <span class="hljs-operator">=</span> JSON.parseArray(arrStr);<br>      <span class="hljs-keyword">for</span> (Object jsonObject : jsonContentList) &#123;<br>          <span class="hljs-type">JsonRootBean</span> <span class="hljs-variable">jsonContent</span> <span class="hljs-operator">=</span> JSONObject.parseObject(jsonObject.toString(), JsonRootBean.class);<br>          jsonContents.add(jsonContent);<br>      &#125;<br>      <span class="hljs-keyword"><code class="language-hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ArrayList&lt;JsonRootBean&gt; <span class="hljs-title function_">getPlatformList</span><span class="hljs-params">(String arrStr)</span> &#123;<br>      ArrayList&lt;JsonRootBean&gt; jsonContents = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;JsonRootBean&gt;();<br>      <span class="hljs-type">JSONArray</span> <span class="hljs-variable">jsonContentList</span> <span class="hljs-operator">=</span> JSON.parseArray(arrStr);<br>      <span class="hljs-keyword">for</span> (Object jsonObject : jsonContentList) &#123;<br>          <span class="hljs-type">JsonRootBean</span> <span class="hljs-variable">jsonContent</span> <span class="hljs-operator">=</span> JSONObject.parseObject(jsonObject.toString(), JsonRootBean.class);<br>          jsonContents.add(jsonContent);<br>      &#125;<br>      <span class="hljs-keyword">return</span> jsonContents;<br>  &#125;<br></code></pre></td></tr></table></figure>
 
 <p><strong>调用方法</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Java">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] arg)</span> &#123;<br>  <span class="hljs-type">String</span> <span class="hljs-variable">jsonStr</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;[&#123;</span><br><span class="hljs-string">        &quot;</span>Name<span class="hljs-string">&quot;: &quot;</span>YYW<span class="hljs-string">&quot;,</span><br><span class="hljs-string">        &quot;</span>SEX<span class="hljs-string">&quot;: &quot;</span>男<span class="hljs-string">&quot;,</span><br><span class="hljs-string">        &quot;</span>age<span class="hljs-string">&quot;: &quot;</span><span class="hljs-number">17</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">&#125;,</span><br><span class="hljs-string">    &#123;</span><br><span class="hljs-string">        &quot;</span>Name<span class="hljs-string">&quot;: &quot;</span>JAVA<span class="hljs-string">&quot;,</span><br><span class="hljs-string">        &quot;</span>SEX<span class="hljs-string">&quot;: &quot;</span>男<span class="hljs-string">&quot;,</span><br><span class="hljs-string">        &quot;</span>age<span class="hljs-string">&quot;: &quot;</span><span class="hljs-number">22</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">]&quot;</span><br><span class="hljs-comment">//调用getPlatformList方法</span><br>  ArrayList&lt;JsonRootBean&gt; platformList = getPlatformList(jsonStr);<br><span class="hljs-comment">//检验结果</span><br>   <span class="hljs-keyword">for</span> (JsonRootBean JsonRootBean: platformList)&#123;<br>            System.out.println(JsonRootBean);<br>        &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre class=" language-hljs Java">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] arg)</span> &#123;<br>  <span class="hljs-type">String</span> <span class="hljs-variable">jsonStr</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;[&#123;</span><br><span class="hljs-string">        &quot;</span>Name<span class="hljs-string">&quot;: &quot;</span>YYW<span class="hljs-string">&quot;,</span><br><span class="hljs-string">        &quot;</span>SEX<span class="hljs-string">&quot;: &quot;</span>男<span class="hljs-string">&quot;,</span><br><span class="hljs-string">        &quot;</span>age<span class="hljs-string">&quot;: &quot;</span><span class="hljs-number">17</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">&#125;,</span><br><span class="hljs-string">    &#123;</span><br><span class="hljs-string">        &quot;</span>Name<span class="hljs-string">&quot;: &quot;</span>JAVA<span class="hljs-string">&quot;,</span><br><span class="hljs-string">        &quot;</span>SEX<span class="hljs-string">&quot;: &quot;</span>男<span class="hljs-string">&quot;,</span><br><span class="hljs-string">        &quot;</span>age<span class="hljs-string">&quot;: &quot;</span><span class="hljs-number">22</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">]&quot;</span><br><span class="hljs-comment">//调用getPlatformList方法</span><br>  ArrayList&lt;JsonRootBean&gt; platformList = getPlatformList(jsonStr);<br><span class="hljs-comment">//检验结果</span><br>   <span class="hljs-keyword"><code class="language-hljs Java">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] arg)</span> &#123;<br>  <span class="hljs-type">String</span> <span class="hljs-variable">jsonStr</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;[&#123;</span><br><span class="hljs-string">        &quot;</span>Name<span class="hljs-string">&quot;: &quot;</span>YYW<span class="hljs-string">&quot;,</span><br><span class="hljs-string">        &quot;</span>SEX<span class="hljs-string">&quot;: &quot;</span>男<span class="hljs-string">&quot;,</span><br><span class="hljs-string">        &quot;</span>age<span class="hljs-string">&quot;: &quot;</span><span class="hljs-number">17</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">&#125;,</span><br><span class="hljs-string">    &#123;</span><br><span class="hljs-string">        &quot;</span>Name<span class="hljs-string">&quot;: &quot;</span>JAVA<span class="hljs-string">&quot;,</span><br><span class="hljs-string">        &quot;</span>SEX<span class="hljs-string">&quot;: &quot;</span>男<span class="hljs-string">&quot;,</span><br><span class="hljs-string">        &quot;</span>age<span class="hljs-string">&quot;: &quot;</span><span class="hljs-number">22</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string">]&quot;</span><br><span class="hljs-comment">//调用getPlatformList方法</span><br>  ArrayList&lt;JsonRootBean&gt; platformList = getPlatformList(jsonStr);<br><span class="hljs-comment">//检验结果</span><br>   <span class="hljs-keyword">for</span> (JsonRootBean JsonRootBean: platformList)&#123;<br>            System.out.println(JsonRootBean);<br>        &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
 
 <p><strong>完成</strong></p>
 
@@ -301,7 +301,7 @@
     
       <span class="category-chain">
         
-  <a href="/myblog/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
   
   
 
@@ -322,7 +322,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>JSON对象数组转Java对象数组</div>
-      <div>https://yangyewen.gitee.io/myblog/2022/09/06/JSON对象数组转Java对象数组/</div>
+      <div>https://evanyangtobegreatest.github.io/2022/09/06/JSON对象数组转Java对象数组/</div>
     </div>
     <div class="license-meta">
       
@@ -364,7 +364,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblog/2022/10/28/%E8%B0%83%E7%94%A8%E6%A6%9B%E5%AD%90%E4%BA%91%E7%9F%AD%E4%BF%A1api%E6%9C%8D%E5%8A%A1/" title="调用榛子云短信api服务">
+                      <a href="/2022/10/28/%E8%B0%83%E7%94%A8%E6%A6%9B%E5%AD%90%E4%BA%91%E7%9F%AD%E4%BF%A1api%E6%9C%8D%E5%8A%A1/" title="调用榛子云短信api服务">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">调用榛子云短信api服务</span>
                         <span class="visible-mobile">上一篇</span>
@@ -374,7 +374,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblog/2022/09/05/vue-springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%BB%93%E5%90%88easyexcel%E5%AE%9E%E7%8E%B0excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%8A%9F%E8%83%BD/" title="vue+springboot前后端分离结合easyexcel实现excel导入导出功能">
+                      <a href="/2022/09/05/vue-springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%BB%93%E5%90%88easyexcel%E5%AE%9E%E7%8E%B0excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%8A%9F%E8%83%BD/" title="vue+springboot前后端分离结合easyexcel实现excel导入导出功能">
                         <span class="hidden-mobile">vue+springboot前后端分离结合easyexcel实现excel导入导出功能</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -497,7 +497,7 @@
         >
           
             <span style="visibility: hidden; width: 0">|</span>
-            <img src="/myblog/img/police_beian.png" srcset="/myblog/img/loading.gif" lazyload alt="police-icon"/>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
           
           <span>粤公网安备 44011402000758号</span>
         </a>
@@ -528,8 +528,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblog/js/events.js" ></script>
-<script  src="/myblog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -553,7 +553,7 @@
 
 
   
-    <script  src="/myblog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -690,7 +690,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -698,7 +698,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
