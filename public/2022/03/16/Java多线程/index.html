@@ -1,0 +1,1073 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Evan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Java多线程1 线程简介案例:英雄联盟，微信聊天。 多任务：边吃饭比那玩手机，边开车边打电话，但同一瞬间依旧只做了一件事。 多线程：多条路解决阻塞问题。王者荣耀。 1.1 普通方法调用和多线程  进程：操作系统中运行的程序 线程：一个进程里面可以有多个线程，视频中，同时有声音，图像等  1.2 Process与Thread 说起线程，就不得不说下程序，程序时指令和数据的有序集合，其本身没有任何运">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java多线程">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/03/16/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:site_name" content="EvanYoung">
+<meta property="og:description" content="Java多线程1 线程简介案例:英雄联盟，微信聊天。 多任务：边吃饭比那玩手机，边开车边打电话，但同一瞬间依旧只做了一件事。 多线程：多条路解决阻塞问题。王者荣耀。 1.1 普通方法调用和多线程  进程：操作系统中运行的程序 线程：一个进程里面可以有多个线程，视频中，同时有声音，图像等  1.2 Process与Thread 说起线程，就不得不说下程序，程序时指令和数据的有序集合，其本身没有任何运">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://evanyangtobegreatest.github.io/img/bg3.jpg">
+<meta property="article:published_time" content="2022-03-16T03:54:35.000Z">
+<meta property="article:modified_time" content="2022-06-08T01:12:33.669Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="多线程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://evanyangtobegreatest.github.io/img/bg3.jpg">
+  
+  
+  
+  <title>Java多线程 - EvanYoung</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>EvanYoung</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Java多线程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-16 11:54" pubdate>
+          2022年3月16日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          21k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          173 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java多线程</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="Java多线程"><a href="#Java多线程" class="headerlink" title="Java多线程"></a>Java多线程</h1><h2 id="1-线程简介"><a href="#1-线程简介" class="headerlink" title="1 线程简介"></a>1 线程简介</h2><p>案例:英雄联盟，微信聊天。</p>
+<p>多任务：边吃饭比那玩手机，边开车边打电话，但同一瞬间依旧只做了一件事。</p>
+<p>多线程：多条路解决阻塞问题。王者荣耀。</p>
+<h3 id="1-1-普通方法调用和多线程"><a href="#1-1-普通方法调用和多线程" class="headerlink" title="1.1 普通方法调用和多线程"></a>1.1 普通方法调用和多线程</h3><p><img src="/img/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/pic1.PNG" srcset="/img/loading.gif" lazyload alt="image"></p>
+<ul>
+<li>进程：操作系统中运行的程序</li>
+<li>线程：一个进程里面可以有多个线程，视频中，同时有声音，图像等</li>
+</ul>
+<h3 id="1-2-Process与Thread"><a href="#1-2-Process与Thread" class="headerlink" title="1.2 Process与Thread"></a>1.2 Process与Thread</h3><ul>
+<li><p>说起线程，就不得不说下程序，程序时指令和数据的有序集合，其本身没有任何运行的含义，是一个静态的概念。</p>
+</li>
+<li><p>而<strong>进程</strong>则是执行程序的一次执行过程，它是一个动态的概念。时系统资源分配的单位</p>
+</li>
+<li><p>通常在一个进程中可以包若干个线程，当然一个进程至少有一个线程，不然没有存在的意义。线程时CPU调度和执行的单位。</p>
+<p>注意：很多多线程是模拟出来的，真正的多线程是指多个cpu，即多核，如服务器。<br>如果是模拟出来的多线程，即在一个cpu的情况下，在同一个时间点，cpu只能执行一个代码，因为切换的很快，所以就有同时执行的错局。</p>
+</li>
+<li><p>线程就是独立的执行路径；</p>
+</li>
+<li><p>在程序运行时，即使没有直接创建线程，后台也会有多个线程，如主线程，gc线程；</p>
+</li>
+<li><p>main()称之为主线程，为系统的入口，用于执行整个程序；</p>
+</li>
+<li><p>在一个进程中，如果开辟了多个线程，线程的运行由调度器安排调度，调度器是与操作系统紧密相关的，先后顺序是不能人为的干预的。</p>
+</li>
+<li><p>对于同一份资源的操作时，会存在资源抢夺的问题，需要加入并发控制；</p>
+</li>
+<li><p>线程会带来额外的开销，如cpu调度时间，并发控制开销。</p>
+</li>
+<li><p>每个线程在自己的工作内存交互，内存控制不当会造成数据不一致。</p>
+</li>
+</ul>
+<hr>
+<h2 id="2-线程创建"><a href="#2-线程创建" class="headerlink" title="2 线程创建"></a>2 线程创建</h2><h3 id="2-1-继承Thread类"><a href="#2-1-继承Thread类" class="headerlink" title="2.1 继承Thread类"></a>2.1 继承Thread类</h3><ul>
+<li><p>自定义线程类继承Thread类</p>
+</li>
+<li><p>重写run()方法，编写线程执行体</p>
+</li>
+<li><p>创建线程对象，调用start()方法启动线程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">startThread1</span>  <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;<br>	<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++) &#123;<br>		System.out.println(<span class="hljs-string">&quot;我在上班&quot;</span>);<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		startThread1 thread=<span class="hljs-keyword">new</span> <span class="hljs-title class_">startThread1</span>();<br>		thread.start();<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++) &#123;<br>			System.out.println(<span class="hljs-string"><code class="language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">startThread1</span>  <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;<br>	<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++) &#123;<br>		System.out.println(<span class="hljs-string">&quot;我在上班&quot;</span>);<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		startThread1 thread=<span class="hljs-keyword">new</span> <span class="hljs-title class_">startThread1</span>();<br>		thread.start();<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++) &#123;<br>			System.out.println(<span class="hljs-string">"我在摸鱼"</span>);<br>			&#125;<br>		<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-实现Runnable接口（最核心"><a href="#2-2-实现Runnable接口（最核心" class="headerlink" title="2.2 实现Runnable接口（最核心)"></a>2.2 实现Runnable接口（最核心)</h3></li>
+<li><p>实现MyRunnable类实现Runnable接口</p>
+</li>
+<li><p>实现run()方法，编写线程执行体</p>
+</li>
+<li><p>创建线程对象，调用start()方法启动线程</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">startThread2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span>&#123;<br><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		startThread2 t2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">startThread2</span>();<br>		Thread thread=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(t2);<br>		thread.start();<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++) &#123;<br>			System.out.println(<span class="hljs-string">&quot;我在摸鱼&quot;</span>);<br>		&#125;<br>	&#125;<br>	<br>	<span class="hljs-meta">@Override</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++) &#123;<br>			System.out.println(<span class="hljs-string"><code class="language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">startThread2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span>&#123;<br><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		startThread2 t2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">startThread2</span>();<br>		Thread thread=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(t2);<br>		thread.start();<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++) &#123;<br>			System.out.println(<span class="hljs-string">&quot;我在摸鱼&quot;</span>);<br>		&#125;<br>	&#125;<br>	<br>	<span class="hljs-meta">@Override</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++) &#123;<br>			System.out.println(<span class="hljs-string">"我在上班"</span>);<br>		&#125;<br>		<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>推荐使用Runnable对象，因为Java单继承的局限性</strong></p>
+<ul>
+<li>继承Thread类<ul>
+<li>子类继承Thread类具备多线程能力</li>
+<li>启动线程：子类对象.start()</li>
+<li>不建议使用:避免OOP单继承局限性</li>
+</ul>
+</li>
+<li>实现Runnable接口<ul>
+<li>实现接口Runnable具有多线程能力</li>
+<li>启动线程：传入目标对象+Thread对象.start()</li>
+<li>推荐使用：避免单继承局限性，灵活方便，方便同一对象被多个线程使用</li>
+</ul>
+</li>
+</ul>
+<p>案例:龟兔赛跑</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 1.首先来个赛道距离，然后要离终点越来越近</span><br><span class="hljs-comment"> * 2.判断比赛是否结束</span><br><span class="hljs-comment"> * 3.打印出胜利者</span><br><span class="hljs-comment"> * 4.龟兔赛跑开始</span><br><span class="hljs-comment"> * 5.故事中乌龟赢的，兔子需要睡觉，所以我们来模拟兔子睡觉</span><br><span class="hljs-comment"> * 6.终于，乌龟赢得比赛</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Race</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span> &#123;  <br> <span class="hljs-comment">/**胜利者*/</span>  <br> <span class="hljs-keyword">private</span> String winner;  <br> <span class="hljs-meta">@Override</span>  <br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>     <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">1000</span>; i++) &#123;  <br>         <span class="hljs-keyword">if</span> (getOver(i)) &#123;  <br>             <span class="hljs-keyword">break</span>;  <br>         &#125;  <br>        <span class="hljs-comment">//兔子轻敌，睡觉去了 </span><br>         <span class="hljs-keyword">if</span>(Thread.currentThread().getName().equals(<span class="hljs-string">&quot;兔&quot;</span>)&amp;&amp;i==<span class="hljs-number">50</span>)&#123;  <br>             <span class="hljs-keyword">try</span> &#123;  <br>                 Thread.sleep(<span class="hljs-number">10</span>);  <br>                 System.out.println(<span class="hljs-string">&quot;兔子睡着了!&quot;</span>);  <br>                 &#125; <br>             <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;  <br>                 e.printStackTrace();  <br>             &#125;  <br>         &#125; <br>         System.out.println(Thread.currentThread().getName()+<span class="hljs-string">&quot;跑了&quot;</span>+i+<span class="hljs-string">&quot;步;&quot;</span>);  <br>     &#125;  <br> &#125;  <br> <span class="hljs-comment">/**判断比赛是否结束*/</span>  <br> <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">getOver</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span>&#123;  <br>     <span class="hljs-keyword">if</span>(winner!=<span class="hljs-literal">null</span>)&#123;  <br>         <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;  <br>     &#125;<span class="hljs-keyword">else</span> &#123;  <br>         <span class="hljs-keyword">if</span>(i==<span class="hljs-number">100</span>)&#123;  <br>             winner = Thread.currentThread().getName();  <br>             System.out.println(winner+<span class="hljs-string">&quot;赢得了比赛!&quot;</span>);  <br>             <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;  <br>         &#125;  <br>     &#125; <br>     <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <br> &#125;  <br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>     <span class="hljs-type">Race</span> <span class="hljs-variable">race</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Race</span>();  <br>     <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(race,<span class="hljs-string">&quot;兔&quot;</span>).start();  <br>     <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(race,<span class="hljs-string"><code class="language-hljs java"><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 1.首先来个赛道距离，然后要离终点越来越近</span><br><span class="hljs-comment"> * 2.判断比赛是否结束</span><br><span class="hljs-comment"> * 3.打印出胜利者</span><br><span class="hljs-comment"> * 4.龟兔赛跑开始</span><br><span class="hljs-comment"> * 5.故事中乌龟赢的，兔子需要睡觉，所以我们来模拟兔子睡觉</span><br><span class="hljs-comment"> * 6.终于，乌龟赢得比赛</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Race</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span> &#123;  <br> <span class="hljs-comment">/**胜利者*/</span>  <br> <span class="hljs-keyword">private</span> String winner;  <br> <span class="hljs-meta">@Override</span>  <br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>     <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">1000</span>; i++) &#123;  <br>         <span class="hljs-keyword">if</span> (getOver(i)) &#123;  <br>             <span class="hljs-keyword">break</span>;  <br>         &#125;  <br>        <span class="hljs-comment">//兔子轻敌，睡觉去了 </span><br>         <span class="hljs-keyword">if</span>(Thread.currentThread().getName().equals(<span class="hljs-string">&quot;兔&quot;</span>)&amp;&amp;i==<span class="hljs-number">50</span>)&#123;  <br>             <span class="hljs-keyword">try</span> &#123;  <br>                 Thread.sleep(<span class="hljs-number">10</span>);  <br>                 System.out.println(<span class="hljs-string">&quot;兔子睡着了!&quot;</span>);  <br>                 &#125; <br>             <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;  <br>                 e.printStackTrace();  <br>             &#125;  <br>         &#125; <br>         System.out.println(Thread.currentThread().getName()+<span class="hljs-string">&quot;跑了&quot;</span>+i+<span class="hljs-string">&quot;步;&quot;</span>);  <br>     &#125;  <br> &#125;  <br> <span class="hljs-comment">/**判断比赛是否结束*/</span>  <br> <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">getOver</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span>&#123;  <br>     <span class="hljs-keyword">if</span>(winner!=<span class="hljs-literal">null</span>)&#123;  <br>         <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;  <br>     &#125;<span class="hljs-keyword">else</span> &#123;  <br>         <span class="hljs-keyword">if</span>(i==<span class="hljs-number">100</span>)&#123;  <br>             winner = Thread.currentThread().getName();  <br>             System.out.println(winner+<span class="hljs-string">&quot;赢得了比赛!&quot;</span>);  <br>             <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;  <br>         &#125;  <br>     &#125; <br>     <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <br> &#125;  <br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>     <span class="hljs-type">Race</span> <span class="hljs-variable">race</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Race</span>();  <br>     <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(race,<span class="hljs-string">&quot;兔&quot;</span>).start();  <br>     <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(race,<span class="hljs-string">"龟"</span>).start();  <br> &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-3-实现Callable接口"><a href="#2-3-实现Callable接口" class="headerlink" title="2.3 实现Callable接口"></a>2.3 实现Callable接口</h3><p>1.实现Callable接口，需要返回值类型</p>
+<p>2.重写call方法，需要抛出异常</p>
+<p>3.创建目标对象</p>
+<p>4.创建执行服务：<code>ExecutorService ser=Executors.newFixedThreadPool(1);</code></p>
+<p>5.提交执行：<code>Future&lt;Boolean&gt; result1=ser.submit(t1);</code></p>
+<p>6.获取结果：<code>boolean r1 =result1.get()</code></p>
+<p>7.关闭服务：<code>ser.shutdownNow();</code></p>
+<p>用 Callable 接口改造下载图片案例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">import</span> org.apache.commons.io.FileUtils;<br><span class="hljs-keyword">import</span> java.io.File;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.net.URL;<br><span class="hljs-keyword">import</span> java.util.concurrent.*;<br><span class="hljs-comment">//创建线程3 实现Callable 接口</span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">callable 的好处</span><br><span class="hljs-comment">1、可以定义返回值</span><br><span class="hljs-comment">2、可以抛出异常</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestCallable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Callable</span>&lt;Boolean&gt; &#123;<br>    <span class="hljs-keyword">private</span> String url; <span class="hljs-comment">//网络文件路径</span><br>    <span class="hljs-keyword">private</span> String name;<span class="hljs-comment">// 需要保存为什么文件名称</span><br>    <span class="hljs-keyword">public</span>  <span class="hljs-title function_">TestCallable</span><span class="hljs-params">(String url,String name)</span>&#123;<br>        <span class="hljs-built_in">this</span>.url = url;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-keyword">public</span> Boolean <span class="hljs-title function_">call</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">webDownLoader</span> <span class="hljs-variable">webDownLoader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">webDownLoader</span>();<br>        webDownLoader.downLoader(url,name);<br>        System.out.println(<span class="hljs-string">&quot;下载了文件 ：&quot;</span>  + name);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ExecutionException, InterruptedException &#123;<br>        <span class="hljs-type">TestCallable</span> <span class="hljs-variable">thread01</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestCallable</span>(<span class="hljs-string">&quot;图片路径&quot;</span>,<span class="hljs-string">&quot;1.jpg&quot;</span>);<br>        <span class="hljs-type">TestCallable</span> <span class="hljs-variable">thread02</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestCallable</span>(<span class="hljs-string">&quot;图片路径&quot;</span>,<span class="hljs-string">&quot;2.jpg&quot;</span>);<br>        <span class="hljs-type">TestCallable</span> <span class="hljs-variable">thread03</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestCallable</span>(<span class="hljs-string">&quot;图片路径&quot;</span>,<span class="hljs-string">&quot;3.jpg&quot;</span>);<br>        <span class="hljs-comment">//创建执行服务:  3 条线程</span><br>        <span class="hljs-type">ExecutorService</span> <span class="hljs-variable">ser</span> <span class="hljs-operator">=</span> Executors.newFixedThreadPool(<span class="hljs-number">3</span>);<br>        <span class="hljs-comment">//提交执行:</span><br>        Future&lt;Boolean&gt; result1 = ser.submit(thread01);<br>        Future&lt;Boolean&gt; result2 = ser.submit(thread02);<br>        Future&lt;Boolean&gt; result3 = ser.submit(thread03);<br>        <span class="hljs-comment">//获取结果: 就是call 方法 返回的值</span><br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">r1</span> <span class="hljs-operator">=</span> result1.get();<br>        <span class="hljs-type">boolean</span> r2= result2.get();<br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">r3</span> <span class="hljs-operator">=</span> result3.get();<br>        <span class="hljs-comment">//关闭服务</span><br>        ser.shutdownNow();<br>    &#125;<br>&#125;<br><span class="hljs-comment">//下载器</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">webDownLoader</span>&#123;<br>    <span class="hljs-comment">//下载方法</span><br>    <span class="hljs-keyword">public</span>  <span class="hljs-keyword">void</span> <span class="hljs-title function_">downLoader</span><span class="hljs-params">(String url, String name)</span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            FileUtils.copyURLToFile(<span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>(url),<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(name));<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>            System.out.println(<span class="hljs-string"><code class="language-hljs java"><span class="hljs-keyword">import</span> org.apache.commons.io.FileUtils;<br><span class="hljs-keyword">import</span> java.io.File;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.net.URL;<br><span class="hljs-keyword">import</span> java.util.concurrent.*;<br><span class="hljs-comment">//创建线程3 实现Callable 接口</span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">callable 的好处</span><br><span class="hljs-comment">1、可以定义返回值</span><br><span class="hljs-comment">2、可以抛出异常</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestCallable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Callable</span>&lt;Boolean&gt; &#123;<br>    <span class="hljs-keyword">private</span> String url; <span class="hljs-comment">//网络文件路径</span><br>    <span class="hljs-keyword">private</span> String name;<span class="hljs-comment">// 需要保存为什么文件名称</span><br>    <span class="hljs-keyword">public</span>  <span class="hljs-title function_">TestCallable</span><span class="hljs-params">(String url,String name)</span>&#123;<br>        <span class="hljs-built_in">this</span>.url = url;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-keyword">public</span> Boolean <span class="hljs-title function_">call</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">webDownLoader</span> <span class="hljs-variable">webDownLoader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">webDownLoader</span>();<br>        webDownLoader.downLoader(url,name);<br>        System.out.println(<span class="hljs-string">&quot;下载了文件 ：&quot;</span>  + name);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ExecutionException, InterruptedException &#123;<br>        <span class="hljs-type">TestCallable</span> <span class="hljs-variable">thread01</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestCallable</span>(<span class="hljs-string">&quot;图片路径&quot;</span>,<span class="hljs-string">&quot;1.jpg&quot;</span>);<br>        <span class="hljs-type">TestCallable</span> <span class="hljs-variable">thread02</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestCallable</span>(<span class="hljs-string">&quot;图片路径&quot;</span>,<span class="hljs-string">&quot;2.jpg&quot;</span>);<br>        <span class="hljs-type">TestCallable</span> <span class="hljs-variable">thread03</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestCallable</span>(<span class="hljs-string">&quot;图片路径&quot;</span>,<span class="hljs-string">&quot;3.jpg&quot;</span>);<br>        <span class="hljs-comment">//创建执行服务:  3 条线程</span><br>        <span class="hljs-type">ExecutorService</span> <span class="hljs-variable">ser</span> <span class="hljs-operator">=</span> Executors.newFixedThreadPool(<span class="hljs-number">3</span>);<br>        <span class="hljs-comment">//提交执行:</span><br>        Future&lt;Boolean&gt; result1 = ser.submit(thread01);<br>        Future&lt;Boolean&gt; result2 = ser.submit(thread02);<br>        Future&lt;Boolean&gt; result3 = ser.submit(thread03);<br>        <span class="hljs-comment">//获取结果: 就是call 方法 返回的值</span><br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">r1</span> <span class="hljs-operator">=</span> result1.get();<br>        <span class="hljs-type">boolean</span> r2= result2.get();<br>        <span class="hljs-type">boolean</span> <span class="hljs-variable">r3</span> <span class="hljs-operator">=</span> result3.get();<br>        <span class="hljs-comment">//关闭服务</span><br>        ser.shutdownNow();<br>    &#125;<br>&#125;<br><span class="hljs-comment">//下载器</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">webDownLoader</span>&#123;<br>    <span class="hljs-comment">//下载方法</span><br>    <span class="hljs-keyword">public</span>  <span class="hljs-keyword">void</span> <span class="hljs-title function_">downLoader</span><span class="hljs-params">(String url, String name)</span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            FileUtils.copyURLToFile(<span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>(url),<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(name));<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>            System.out.println(<span class="hljs-string">"IO downLoader 方法异常。"</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-线程状态"><a href="#3-线程状态" class="headerlink" title="3 线程状态"></a>3 线程状态</h2><p><img src="/img/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/pic2.PNG" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/pic3.PNG" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/pic4.PNG" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-1-停止线程"><a href="#3-1-停止线程" class="headerlink" title="3.1 停止线程"></a>3.1 停止线程</h3><ul>
+<li>不推荐使用JDK提供的stop()、destroy()方法。【已废弃】</li>
+<li>推荐线程之间停止下来</li>
+<li>建议使用一个标志位进行终止变量</li>
+</ul>
+<p>当flag=false，则终止线程运行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestStop</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span> &#123;<br>	<span class="hljs-comment">//1.线程中定义线程体使用的标识</span><br>	<span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span><span class="hljs-literal">true</span>;<br>	<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-comment">//2.线程体使用该标识</span><br>		<span class="hljs-keyword">while</span> (flag) &#123;<br>			System.out.println(<span class="hljs-string">&quot;run...Thread&quot;</span>);<br>		&#125;<br>	&#125;<br>	<span class="hljs-comment">//3.对外提供方法改变标识</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">stop</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-built_in">this</span>.flag=<span class="hljs-literal"><code class="language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestStop</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span> &#123;<br>	<span class="hljs-comment">//1.线程中定义线程体使用的标识</span><br>	<span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span><span class="hljs-literal">true</span>;<br>	<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-comment">//2.线程体使用该标识</span><br>		<span class="hljs-keyword">while</span> (flag) &#123;<br>			System.out.println(<span class="hljs-string">&quot;run...Thread&quot;</span>);<br>		&#125;<br>	&#125;<br>	<span class="hljs-comment">//3.对外提供方法改变标识</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">stop</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-built_in">this</span>.flag=<span class="hljs-literal">false</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="4-线程休眠"><a href="#4-线程休眠" class="headerlink" title="4 线程休眠"></a>4 线程休眠</h2><ul>
+<li>sleep(时间)指定当前线程阻塞的毫秒数；</li>
+<li>sleep存在异常InterrupterException；</li>
+<li>sleep时间达到后线程进入就绪状态；</li>
+<li>sleep可以模拟网络延时，倒计时等。</li>
+<li>每一个对象都有一个锁，sleep不会释放锁；</li>
+</ul>
+<p>网络延时的作用：放大问题的发生性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestSleep</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            tenDown();<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">tenDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)&#123;<br>            Thread.sleep(<span class="hljs-number">1000</span>);<br>            System.out.println(num--);<br>            <span class="hljs-keyword">if</span>(num&lt;=<span class="hljs-number">0</span>)&#123;<br>                <span class="hljs-keyword"><code class="language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestSleep</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            tenDown();<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">tenDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)&#123;<br>            Thread.sleep(<span class="hljs-number">1000</span>);<br>            System.out.println(num--);<br>            <span class="hljs-keyword">if</span>(num&lt;=<span class="hljs-number">0</span>)&#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="5-线程礼让"><a href="#5-线程礼让" class="headerlink" title="5 线程礼让"></a>5 线程礼让</h2><ul>
+<li>礼让线程，让当前正在执行的线程暂停，但不阻塞</li>
+<li>将线程从运行状态转为就绪状态</li>
+<li>让cpu重新调度，礼让不一定成功！看CPU心情</li>
+</ul>
+<p>例如：CPU正在运行A线程，此时A调用Thread.yield，变为就绪状态，Cpu重新调度A、B线程，</p>
+<p>可能还是接着执行A线程，也有可能礼让成功，执行B线程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestYield</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">MyYield</span> <span class="hljs-variable">myYield</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyYield</span>();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(myYield,<span class="hljs-string">&quot;a&quot;</span>).start();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(myYield,<span class="hljs-string">&quot;b&quot;</span>).start();<br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyYield</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(Thread.currentThread().getName()+<span class="hljs-string">&quot;线程开始执行&quot;</span>);<br>        Thread.yield();<br>        System.out.println(Thread.currentThread().getName()+<span class="hljs-string">&quot;线程停止执行&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">//a线程开始执行</span><br><span class="hljs-comment">//b线程开始执行</span><br><span class="hljs-comment">//b线程停止执行</span><br><span class="hljs-comment"><code class="language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestYield</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">MyYield</span> <span class="hljs-variable">myYield</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyYield</span>();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(myYield,<span class="hljs-string">&quot;a&quot;</span>).start();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(myYield,<span class="hljs-string">&quot;b&quot;</span>).start();<br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyYield</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(Thread.currentThread().getName()+<span class="hljs-string">&quot;线程开始执行&quot;</span>);<br>        Thread.yield();<br>        System.out.println(Thread.currentThread().getName()+<span class="hljs-string">&quot;线程停止执行&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">//a线程开始执行</span><br><span class="hljs-comment">//b线程开始执行</span><br><span class="hljs-comment">//b线程停止执行</span><br><span class="hljs-comment">//a线程停止执行</span><br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="6-线程强制执行"><a href="#6-线程强制执行" class="headerlink" title="6 线程强制执行"></a>6 线程强制执行</h2><ul>
+<li>Join合并线程，待此线程执行完成后，再执行其他线程，其他线程阻塞</li>
+<li>可以想象成插队</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestJoin</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span>&#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException &#123;<br>		TestJoin testJoin=<span class="hljs-keyword">new</span> <span class="hljs-title class_">TestJoin</span>();<br>		Thread thread=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(testJoin);<br>			thread.start();<br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">100</span>;i++) &#123;<br>				<span class="hljs-keyword">if</span>(i==<span class="hljs-number">50</span>) &#123;<br>					thread.join();<br>				&#125;<br>				System.out.println(<span class="hljs-string">&quot;main--&quot;</span>+i);<br>			&#125;<br>	&#125;<br><br>	<span class="hljs-meta">@Override</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">1000</span>;i++) &#123;<br>			System.out.println(<span class="hljs-string"><code class="language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestJoin</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span>&#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException &#123;<br>		TestJoin testJoin=<span class="hljs-keyword">new</span> <span class="hljs-title class_">TestJoin</span>();<br>		Thread thread=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(testJoin);<br>			thread.start();<br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">100</span>;i++) &#123;<br>				<span class="hljs-keyword">if</span>(i==<span class="hljs-number">50</span>) &#123;<br>					thread.join();<br>				&#125;<br>				System.out.println(<span class="hljs-string">&quot;main--&quot;</span>+i);<br>			&#125;<br>	&#125;<br><br>	<span class="hljs-meta">@Override</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">1000</span>;i++) &#123;<br>			System.out.println(<span class="hljs-string">"join---"</span>+i);<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="7-观测线程状态"><a href="#7-观测线程状态" class="headerlink" title="7 观测线程状态"></a>7 观测线程状态</h2><p><code>Thread.State</code></p>
+<p> 线程状态。线程可以处于一下状态之一：</p>
+<ul>
+<li><p>NEW</p>
+<p>尚未启动的线程处于此状态</p>
+</li>
+<li><p>RUNNABLE</p>
+<p>在Java虚拟机中执行的线程处于此状态。</p>
+</li>
+<li><p>BLOCKED</p>
+<p>被阻塞等待监视器锁定的线程处于此状态。</p>
+</li>
+<li><p>WAITING</p>
+<p> 正在等待另一个线程执行特定动作的线程处于此状态。</p>
+</li>
+<li><p>TIMED_WAITING</p>
+<p>正在等待另一个线程执行动作达到指定等待时间的线程处于此状态。</p>
+</li>
+<li><p>TERMINATED</p>
+<p>已退出的线程处于此状态。</p>
+</li>
+</ul>
+<p>一个线程可以在给定时间点处于一个状态。这些状态是不反映任何操作系统线程状态的虚拟机状态。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThreadState</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span> &#123;  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>         <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;  <br>             <span class="hljs-keyword">if</span>(i==<span class="hljs-number">5</span> &amp;&amp; i&lt;<span class="hljs-number">10</span>)&#123;  <br>                 <span class="hljs-keyword">try</span> &#123;  <br>                     Thread.sleep(<span class="hljs-number">1</span>);  <br>                     System.out.println(<span class="hljs-string">&quot;阻塞时的状态&quot;</span>+Thread.currentThread().getState());  <br>                 &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;  <br>                     e.printStackTrace();  <br>                  &#125;  <br>             &#125; <br>             System.out.println(Thread.currentThread().getName()+i+<span class="hljs-string"><code class="language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThreadState</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span> &#123;  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>         <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;  <br>             <span class="hljs-keyword">if</span>(i==<span class="hljs-number">5</span> &amp;&amp; i&lt;<span class="hljs-number">10</span>)&#123;  <br>                 <span class="hljs-keyword">try</span> &#123;  <br>                     Thread.sleep(<span class="hljs-number">1</span>);  <br>                     System.out.println(<span class="hljs-string">&quot;阻塞时的状态&quot;</span>+Thread.currentThread().getState());  <br>                 &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;  <br>                     e.printStackTrace();  <br>                  &#125;  <br>             &#125; <br>             System.out.println(Thread.currentThread().getName()+i+<span class="hljs-string">"线程正在执行的状态："</span>+Thread.currentThread().getState());  <br>         &#125;  <br>     &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br> <span class="hljs-type">MyThreadState</span> <span class="hljs-variable">myThreadState</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyThreadState</span>();  <br>    <span class="hljs-type">Thread</span> <span class="hljs-variable">thread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(myThreadState);  <br>    Thread.<span class="hljs-type">State</span> <span class="hljs-variable">state</span> <span class="hljs-operator">=</span> thread.getState();  <br>    System.out.println(<span class="hljs-string">&quot;线程创建未启动时状态:&quot;</span>+state);  <br>    thread.start();  <br>    state = thread.getState();  <br>    System.out.println(<span class="hljs-string">&quot;线程启动后的状态:&quot;</span>+state);  <br>    <span class="hljs-keyword">while</span> (thread.getState()!= Thread.State.TERMINATED)&#123;  <br>        state = thread.getState();  <br>        System.out.println(thread.getName()+<span class="hljs-string">&quot;线程运行时状态:&quot;</span>+state);  <br>    &#125;  <br>    state = thread.getState();  <br>    System.out.println(<span class="hljs-string">&quot;线程结束状态：&quot;</span>+state);  <br>    System.out.println(Thread.currentThread().getName()+<span class="hljs-string"><code class="language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br> <span class="hljs-type">MyThreadState</span> <span class="hljs-variable">myThreadState</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyThreadState</span>();  <br>    <span class="hljs-type">Thread</span> <span class="hljs-variable">thread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(myThreadState);  <br>    Thread.<span class="hljs-type">State</span> <span class="hljs-variable">state</span> <span class="hljs-operator">=</span> thread.getState();  <br>    System.out.println(<span class="hljs-string">&quot;线程创建未启动时状态:&quot;</span>+state);  <br>    thread.start();  <br>    state = thread.getState();  <br>    System.out.println(<span class="hljs-string">&quot;线程启动后的状态:&quot;</span>+state);  <br>    <span class="hljs-keyword">while</span> (thread.getState()!= Thread.State.TERMINATED)&#123;  <br>        state = thread.getState();  <br>        System.out.println(thread.getName()+<span class="hljs-string">&quot;线程运行时状态:&quot;</span>+state);  <br>    &#125;  <br>    state = thread.getState();  <br>    System.out.println(<span class="hljs-string">&quot;线程结束状态：&quot;</span>+state);  <br>    System.out.println(Thread.currentThread().getName()+<span class="hljs-string">"线程优先级"</span>+Thread.currentThread().getPriority());  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="8-线程优先级"><a href="#8-线程优先级" class="headerlink" title="8 线程优先级"></a>8 线程优先级</h2><ul>
+<li><p>Java提供一个线程调度器来监控程序中启动后进入就绪状态的所有线程，线程调度器按照优先级决定应该调度哪个线程来执行。</p>
+</li>
+<li><p>线程的优先级用数字表示，范围从1~10.</p>
+<ul>
+<li>Thread.MIN_PRIORITY = 1 ;</li>
+<li>Thread.MAX_PRIORITY = 10 ;</li>
+<li>Thread.NORM_PRIORITY = 5 ;</li>
+</ul>
+</li>
+<li><p>使用以下方式改变或获取优先级</p>
+<ul>
+<li>getPriority().setPriority(int xxx)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestPriority</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>     System.out.println(TestPriority.currentThread().getName()+<span class="hljs-string"><code class="language-hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestPriority</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>     System.out.println(TestPriority.currentThread().getName()+<span class="hljs-string">"的优先级"</span>+TestPriority.currentThread().getPriority());  <br>     &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThreadPriority</span> &#123;  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>        <span class="hljs-type">TestPriority</span> <span class="hljs-variable">priority1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestPriority</span>();  <br>        <span class="hljs-type">TestPriority</span> <span class="hljs-variable">priority2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestPriority</span>();  <br>        <span class="hljs-type">TestPriority</span> <span class="hljs-variable">priority3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestPriority</span>();  <br>        <span class="hljs-type">TestPriority</span> <span class="hljs-variable">priority4</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestPriority</span>();  <br>        <span class="hljs-type">TestPriority</span> <span class="hljs-variable">priority5</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestPriority</span>();  <br>        System.out.println(Thread.currentThread().getName()+<span class="hljs-string">&quot;线程优先级&quot;</span>+Thread.currentThread().getPriority());  <br>        priority1.setPriority(<span class="hljs-number">6</span>);  <br>        priority1.start();  <br><span class="hljs-comment">//        System.out.println(&quot;priority1&quot;+priority1.getPriority());  </span><br>        priority2.setPriority(<span class="hljs-number">2</span>);  <br>        priority2.start();  <br><span class="hljs-comment">//        System.out.println(&quot;priority2&quot;+priority2.getPriority());  </span><br>        priority3.setPriority(<span class="hljs-number">3</span>);  <br>        priority3.start();  <br><span class="hljs-comment">//        System.out.println(&quot;priority3&quot;+priority3.getPriority());  </span><br>        priority4.setPriority(<span class="hljs-number">8</span>);  <br>        priority4.start();  <br><span class="hljs-comment">//        System.out.println(&quot;priority4&quot;+priority4.getPriority());  </span><br>        priority5.setPriority(<span class="hljs-number">5</span>);  <br>        priority5.start();  <br><span class="hljs-comment"><code class="language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThreadPriority</span> &#123;  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>        <span class="hljs-type">TestPriority</span> <span class="hljs-variable">priority1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestPriority</span>();  <br>        <span class="hljs-type">TestPriority</span> <span class="hljs-variable">priority2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestPriority</span>();  <br>        <span class="hljs-type">TestPriority</span> <span class="hljs-variable">priority3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestPriority</span>();  <br>        <span class="hljs-type">TestPriority</span> <span class="hljs-variable">priority4</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestPriority</span>();  <br>        <span class="hljs-type">TestPriority</span> <span class="hljs-variable">priority5</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestPriority</span>();  <br>        System.out.println(Thread.currentThread().getName()+<span class="hljs-string">&quot;线程优先级&quot;</span>+Thread.currentThread().getPriority());  <br>        priority1.setPriority(<span class="hljs-number">6</span>);  <br>        priority1.start();  <br><span class="hljs-comment">//        System.out.println(&quot;priority1&quot;+priority1.getPriority());  </span><br>        priority2.setPriority(<span class="hljs-number">2</span>);  <br>        priority2.start();  <br><span class="hljs-comment">//        System.out.println(&quot;priority2&quot;+priority2.getPriority());  </span><br>        priority3.setPriority(<span class="hljs-number">3</span>);  <br>        priority3.start();  <br><span class="hljs-comment">//        System.out.println(&quot;priority3&quot;+priority3.getPriority());  </span><br>        priority4.setPriority(<span class="hljs-number">8</span>);  <br>        priority4.start();  <br><span class="hljs-comment">//        System.out.println(&quot;priority4&quot;+priority4.getPriority());  </span><br>        priority5.setPriority(<span class="hljs-number">5</span>);  <br>        priority5.start();  <br><span class="hljs-comment">//        System.out.println("priority5"+priority5.getPriority());  </span><br>     &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="9-守护线程"><a href="#9-守护线程" class="headerlink" title="9 守护线程"></a>9 守护线程</h2><ul>
+<li>线程分为用户线程和守护线程</li>
+<li>虚拟机必须确保用户线程执行完毕</li>
+<li>虚拟机不用的等待守护线程执行完毕</li>
+<li>如，后台记录操作日志，监控内存，垃圾回收等</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 上帝，守护线程  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">God</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span>&#123;  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>         <span class="hljs-type">long</span> <span class="hljs-variable">l</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>         <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)&#123;  <br>             out.println(<span class="hljs-string"><code class="language-hljs java"><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 上帝，守护线程  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">God</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span>&#123;  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>         <span class="hljs-type">long</span> <span class="hljs-variable">l</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>         <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)&#123;  <br>             out.println(<span class="hljs-string">"上帝保佑你！"</span>+l++);  <br>         &#125;  <br>     &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * you 用户线程  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">You</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span>&#123;  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>         <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">35000</span>; i++) &#123;  <br>             out.println(<span class="hljs-string">&quot;每天都在健康的活着&quot;</span>+i);  <br>         &#125;  <br>         out.println(<span class="hljs-string"><code class="language-hljs java"><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * you 用户线程  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">You</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span>&#123;  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>         <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">35000</span>; i++) &#123;  <br>             out.println(<span class="hljs-string">&quot;每天都在健康的活着&quot;</span>+i);  <br>         &#125;  <br>         out.println(<span class="hljs-string">"you goodBye world!"</span>);  <br>     &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 启动用户线程和守护线程</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThreadDaemon</span> &#123;  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>        <span class="hljs-type">You</span> <span class="hljs-variable">you</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">You</span>();  <br>        <span class="hljs-type">God</span> <span class="hljs-variable">god</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">God</span>();  <br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">youThread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(you);  <br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">godThread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(god);  <br>        godThread.setDaemon(<span class="hljs-literal"><code class="language-hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 启动用户线程和守护线程</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThreadDaemon</span> &#123;  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>        <span class="hljs-type">You</span> <span class="hljs-variable">you</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">You</span>();  <br>        <span class="hljs-type">God</span> <span class="hljs-variable">god</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">God</span>();  <br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">youThread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(you);  <br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">godThread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(god);  <br>        godThread.setDaemon(<span class="hljs-literal">true</span>);  <br>        youThread.start();  <br>        godThread.start();  <br>     &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="10-线程同步"><a href="#10-线程同步" class="headerlink" title="10 线程同步"></a>10 线程同步</h2><p>多个线程操作同一资源。</p>
+<h3 id="10-1并发"><a href="#10-1并发" class="headerlink" title="10.1并发"></a>10.1并发</h3><p>同个对象 被多个线程 同时操作</p>
+<ul>
+<li>现实生活中，我们会遇到“同个资源，多个人都想使用”的问题，比如，食堂排队打饭，每个人都想吃饭，最天然的结局方法就是，排队。一个个来。</li>
+<li>处理多线程问题时，多个线程访问同一个对象，并且某些线程还想修改这个对象。这时候我们就需要线程同步。线程同步其实就是一种等待机制，多个需要同时访问此对象的线程进入这个对象的等待池形成队列，等待前面线程使用完毕，下一个线程再使用</li>
+</ul>
+<p><strong>保证线程同步的安全性：队列加锁</strong></p>
+<ul>
+<li>由于同一进程的多个线程共享同一块存储空间，在带来方便的同时，也带来了访问冲突问题，为了保证数据在方法中被访问时的正确性，在访问时加入<strong>锁机制synchronized</strong>，当一个线程获得对象的排它锁，独占资源，其他线程必须等待，使用后释放锁即可，存在以下问题：<ul>
+<li>一个线程持有锁会导致其他所有需要此锁的线程挂起；</li>
+<li>在多线程竞争下，加锁，释放锁会导致比较多的上下文切换和调度延时，引起性能问题；</li>
+<li>如果一个优先级高的线程等待一个优先级低的线程释放锁会导致优先级倒置，引起性能问题。</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-2不安全线程"><a href="#10-2不安全线程" class="headerlink" title="10.2不安全线程"></a>10.2不安全线程</h3><p>ArrayList是线程不安全的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre class=" language-hljs java"><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThreadSafe</span> &#123;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>        ArrayList&lt;String&gt; arrayList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();  <br>           <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;  <br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(()-&gt; &#123;  <br>                <span class="hljs-keyword">synchronized</span>(arrayList)&#123;  <br>                arrayList.add(Thread.currentThread().getName());  <br>                               &#125;  <br>                &#125;).start();  <br>           &#125;  <br>        <span class="hljs-keyword">try</span> &#123;  <br>            Thread.sleep(<span class="hljs-number">100</span>);  <br>        &#125; <span class="hljs-keyword"><code class="language-hljs java"><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThreadSafe</span> &#123;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>        ArrayList&lt;String&gt; arrayList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();  <br>           <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;  <br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(()-&gt; &#123;  <br>                <span class="hljs-keyword">synchronized</span>(arrayList)&#123;  <br>                arrayList.add(Thread.currentThread().getName());  <br>                               &#125;  <br>                &#125;).start();  <br>           &#125;  <br>        <span class="hljs-keyword">try</span> &#123;  <br>            Thread.sleep(<span class="hljs-number">100</span>);  <br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;  <br>            e.printStackTrace();  <br>        &#125;  <br>        System.out.println(arrayList.size());  <br>   &#125;  <br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="10-3-同步方法"><a href="#10-3-同步方法" class="headerlink" title="10.3 同步方法"></a>10.3 同步方法</h3><ul>
+<li><p>由于我们可以通过private关键字来保证数据对象只能被方法访问，所以我们只需要针对方法提出一套机制，这套机制就是<strong>synchronized</strong>关键字，它包括两种用法：synchronized方法和synchronized块。</p>
+<p><strong>同步方法：<code>public synchronized void method(int args)&#123;&#125;</code></strong></p>
+</li>
+<li><p>synchronized方法控制对”对象”的访问，每个对象对应一把锁，每个synchronized方法都必须获得调用该方法的对象的锁才能执行，否则线程会阻塞，方法一旦执行，就独占该锁，直到该方法返回才释放锁，后面被阻塞的线程才获得这个锁，继续执行</p>
+</li>
+</ul>
+<p><strong>缺陷：若将一个大的方法声明为synchronized将会影响效率</strong></p>
+<ul>
+<li>方法里面需要修改的内容才需要锁，锁太多会浪费资源。</li>
+</ul>
+<p> synchronized默认是锁this，同步方法锁不住的时候只能用同步块</p>
+<ul>
+<li><p>同步块:synchronized(Obj){}</p>
+</li>
+<li><p>Obj称之为同步监视器</p>
+<ul>
+<li>Obj可以是任何对象，但推荐使用共享资源作为同步监视器</li>
+<li>同步方法中无需指定同步监视器，因为同步方法的同步监视器就是this，就是这个对象本身，或者是class【反射】</li>
+</ul>
+</li>
+<li><p>同步监视器的执行过程</p>
+<ol>
+<li><p>第一个线程访问，锁定同步监视器，执行其中代码。</p>
+</li>
+<li><p>第二个线程访问，发现同步监视器被锁定，无法访问。</p>
+</li>
+<li><p>第一个线程访问完毕，解锁同步监视器。</p>
+</li>
+<li><p>第二个线程访问，发现同步监视器没有锁，然后锁定并访问</p>
+</li>
+</ol>
+</li>
+</ul>
+<p>锁要锁对，默认锁this，银行取钱，锁银行没有用，要锁银行卡。</p>
+<p>锁要锁增删改的对象，同步块放在run()方法中。</p>
+<p><strong>银行取钱问题</strong></p>
+<p>1.账户类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Account</span> &#123;  <br>    <span class="hljs-comment">/**余额*/</span>  <br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> money;  <br>       <span class="hljs-comment">/**卡名*/</span>  <br>    <span class="hljs-keyword">private</span> String name;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Account</span><span class="hljs-params">(<span class="hljs-type">int</span> money, String name)</span> &#123;<br>		<span class="hljs-built_in">this</span>.money=money;<br>		<span class="hljs-built_in">this</span>.name=name;<br>	&#125;<br><br>	<span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getMoney</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> money;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setMoney</span><span class="hljs-params">(<span class="hljs-type">int</span> money)</span> &#123;<br>        <span class="hljs-built_in"><code class="language-hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Account</span> &#123;  <br>    <span class="hljs-comment">/**余额*/</span>  <br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> money;  <br>       <span class="hljs-comment">/**卡名*/</span>  <br>    <span class="hljs-keyword">private</span> String name;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Account</span><span class="hljs-params">(<span class="hljs-type">int</span> money, String name)</span> &#123;<br>		<span class="hljs-built_in">this</span>.money=money;<br>		<span class="hljs-built_in">this</span>.name=name;<br>	&#125;<br><br>	<span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getMoney</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> money;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setMoney</span><span class="hljs-params">(<span class="hljs-type">int</span> money)</span> &#123;<br>        <span class="hljs-built_in">this</span>.money = money;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.模拟银行取钱</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 模拟银行取钱  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Drawing</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;  <br>     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Account account;  <br>     <span class="hljs-comment">/**现有的钱*/</span>  <br>     <span class="hljs-keyword">private</span>  <span class="hljs-type">int</span> nowMoney;  <br>     <span class="hljs-comment">/**取出的钱*/</span>  <br>     <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> drawingMoney;  <br>     <span class="hljs-keyword">public</span> <span class="hljs-title function_">Drawing</span><span class="hljs-params">( Account account,  <span class="hljs-type">int</span> drawingMoney,String name)</span> &#123;  <br>         <span class="hljs-built_in">super</span>(name);  <br>         <span class="hljs-built_in">this</span>.account = account;  <br>         <span class="hljs-built_in">this</span>.drawingMoney = drawingMoney;  <br>        &#125;  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>         <span class="hljs-keyword">synchronized</span> (account)&#123;  <br>         <span class="hljs-comment">//判断有没有钱  </span><br>         <span class="hljs-keyword">if</span>(account.getMoney()-drawingMoney&lt;<span class="hljs-number">0</span>)&#123;  <br>             out.println(<span class="hljs-string">&quot;你的账户没有那么多钱！&quot;</span>);  <br>             <span class="hljs-keyword">return</span>;  <br>         &#125;<span class="hljs-keyword">try</span> &#123;  <br>             sleep(<span class="hljs-number">100</span>);  <br>         &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;  <br>             e.printStackTrace();  <br>         &#125;  <br>         <span class="hljs-comment">//余额  </span><br>         account.setMoney( account.getMoney() - drawingMoney);  <br>         <span class="hljs-comment">//手中的钱  </span><br>         nowMoney=nowMoney+drawingMoney;  <br>         out.println(<span class="hljs-string">&quot;余额为：&quot;</span>+account.getMoney());  <br>         out.println(Thread.currentThread().getName()+<span class="hljs-string"><code class="language-hljs java"><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 模拟银行取钱  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Drawing</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;  <br>     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Account account;  <br>     <span class="hljs-comment">/**现有的钱*/</span>  <br>     <span class="hljs-keyword">private</span>  <span class="hljs-type">int</span> nowMoney;  <br>     <span class="hljs-comment">/**取出的钱*/</span>  <br>     <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> drawingMoney;  <br>     <span class="hljs-keyword">public</span> <span class="hljs-title function_">Drawing</span><span class="hljs-params">( Account account,  <span class="hljs-type">int</span> drawingMoney,String name)</span> &#123;  <br>         <span class="hljs-built_in">super</span>(name);  <br>         <span class="hljs-built_in">this</span>.account = account;  <br>         <span class="hljs-built_in">this</span>.drawingMoney = drawingMoney;  <br>        &#125;  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>         <span class="hljs-keyword">synchronized</span> (account)&#123;  <br>         <span class="hljs-comment">//判断有没有钱  </span><br>         <span class="hljs-keyword">if</span>(account.getMoney()-drawingMoney&lt;<span class="hljs-number">0</span>)&#123;  <br>             out.println(<span class="hljs-string">&quot;你的账户没有那么多钱！&quot;</span>);  <br>             <span class="hljs-keyword">return</span>;  <br>         &#125;<span class="hljs-keyword">try</span> &#123;  <br>             sleep(<span class="hljs-number">100</span>);  <br>         &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;  <br>             e.printStackTrace();  <br>         &#125;  <br>         <span class="hljs-comment">//余额  </span><br>         account.setMoney( account.getMoney() - drawingMoney);  <br>         <span class="hljs-comment">//手中的钱  </span><br>         nowMoney=nowMoney+drawingMoney;  <br>         out.println(<span class="hljs-string">&quot;余额为：&quot;</span>+account.getMoney());  <br>         out.println(Thread.currentThread().getName()+<span class="hljs-string">"手中的钱："</span>+nowMoney);  <br>        &#125;  <br>     &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>多人从银行取钱</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThread</span>&#123;  <br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>     <span class="hljs-type">Account</span> <span class="hljs-variable">account</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>(<span class="hljs-number">100</span>, <span class="hljs-string">&quot;工商&quot;</span>);  <br>     <span class="hljs-type">Drawing</span> <span class="hljs-variable">me</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Drawing</span>(account, <span class="hljs-number">40</span>, <span class="hljs-string">&quot;me&quot;</span>);  <br>     <span class="hljs-type">Drawing</span> <span class="hljs-variable">girlFriend</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Drawing</span>(account, <span class="hljs-number">89</span>, <span class="hljs-string"><code class="language-hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThread</span>&#123;  <br> <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>     <span class="hljs-type">Account</span> <span class="hljs-variable">account</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>(<span class="hljs-number">100</span>, <span class="hljs-string">&quot;工商&quot;</span>);  <br>     <span class="hljs-type">Drawing</span> <span class="hljs-variable">me</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Drawing</span>(account, <span class="hljs-number">40</span>, <span class="hljs-string">&quot;me&quot;</span>);  <br>     <span class="hljs-type">Drawing</span> <span class="hljs-variable">girlFriend</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Drawing</span>(account, <span class="hljs-number">89</span>, <span class="hljs-string">"girlFriend"</span>);  <br>     me.start();  <br>     girlFriend.start();  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="10-4-死锁"><a href="#10-4-死锁" class="headerlink" title="10.4 死锁"></a>10.4 死锁</h3><ul>
+<li>多个线程各自占有一些共享资源，并且互相等待其他线程占有的资源才能运行，而导致两个或者多个线程都在等待对方释放资源，都停止执行的情形，某一个同步块同时拥有“<strong>两个以上对象的锁</strong>”时，就可能会发生“死锁”的问题。</li>
+<li>产生死锁的四个必要条件:</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre class=" language-hljs makefile">1.互斥条件：一个资源每次只能被一个进程使用。<br><span class="hljs-section"><code class="language-hljs makefile">1.互斥条件：一个资源每次只能被一个进程使用。<br><span class="hljs-section">2.请求与保持条件:一个进程因请求资源而阻塞时，对已获得的资源保持不放。</span><br>3.不剥夺条件：进程已获得的资源，在未使用完之前，不能强行剥夺。<br>4.循环等待条件：若干进程之间形成一种头尾相接的循环等待资源关系。<br></code></pre></td></tr></table></figure>
+
+<p><strong>只要想办法破坏上述任意一个或多个条件就可以避免死锁发生。</strong></p>
+<p>实现一个死锁</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 口红  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Lipstick</span>&#123;  <br>&#125;  <br><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 镜子  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Mirroe</span>&#123;  <br>&#125;<br><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 写一个抢夺资源的方法  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThread</span>&#123;<br><br>	 <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>	       Makeup g1=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Makeup</span>(<span class="hljs-number">0</span>,<span class="hljs-string">&quot;小红&quot;</span>);<br>	       Makeup g2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Makeup</span>(<span class="hljs-number">1</span>,<span class="hljs-string">&quot;小丽&quot;</span>);<br>	       g1.start();<br>	       g2.start();<br>	   &#125;  <br>	<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Makeup</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;  <br>    <span class="hljs-keyword">static</span> <span class="hljs-type">Lipstick</span> <span class="hljs-variable">lipstick</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Lipstick</span>();  <br>    <span class="hljs-keyword">static</span> <span class="hljs-type">Mirroe</span> <span class="hljs-variable">mirroe</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Mirroe</span>();  <br>    <span class="hljs-type">int</span> choice;  <br>    String girlName;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Makeup</span><span class="hljs-params">(<span class="hljs-type">int</span> choice, String girlName)</span> &#123;  <br>        <span class="hljs-built_in">this</span>.choice = choice;  <br>        <span class="hljs-built_in">this</span>.girlName = girlName;  <br>    &#125;  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>         <span class="hljs-keyword">try</span> &#123;  <br>             makeup();  <br>         &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;  <br>             e.printStackTrace();  <br>         &#125;  <br>     &#125;  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeup</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException &#123;  <br>         <span class="hljs-keyword">if</span>(choice==<span class="hljs-number">0</span>)&#123;  <br>             <span class="hljs-keyword">synchronized</span> (lipstick)&#123;  <br>                 System.out.println(<span class="hljs-built_in">this</span>.girlName+<span class="hljs-string">&quot;拿到口红&quot;</span>);  <br>                 Thread.sleep(<span class="hljs-number">1000</span>);  <br>                 <span class="hljs-keyword">synchronized</span> (mirroe)&#123;  <br>                     System.out.println(<span class="hljs-built_in">this</span>.girlName+<span class="hljs-string">&quot;拿到镜子&quot;</span>);  <br>                 &#125;  <br>             &#125; <br>         &#125;<span class="hljs-keyword">else</span>&#123;  <br>             <span class="hljs-keyword">synchronized</span> (mirroe)&#123;  <br>                 System.out.println(<span class="hljs-built_in">this</span>.girlName+<span class="hljs-string">&quot;拿到镜子&quot;</span>);  <br>                 Thread.sleep(<span class="hljs-number">2000</span>);  <br>                 <span class="hljs-keyword">synchronized</span> (lipstick)&#123;  <br>                     System.out.println(<span class="hljs-built_in">this</span>.girlName+<span class="hljs-string"><code class="language-hljs java"><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 口红  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Lipstick</span>&#123;  <br>&#125;  <br><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 镜子  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Mirroe</span>&#123;  <br>&#125;<br><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 写一个抢夺资源的方法  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThread</span>&#123;<br><br>	 <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>	       Makeup g1=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Makeup</span>(<span class="hljs-number">0</span>,<span class="hljs-string">&quot;小红&quot;</span>);<br>	       Makeup g2=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Makeup</span>(<span class="hljs-number">1</span>,<span class="hljs-string">&quot;小丽&quot;</span>);<br>	       g1.start();<br>	       g2.start();<br>	   &#125;  <br>	<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Makeup</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;  <br>    <span class="hljs-keyword">static</span> <span class="hljs-type">Lipstick</span> <span class="hljs-variable">lipstick</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Lipstick</span>();  <br>    <span class="hljs-keyword">static</span> <span class="hljs-type">Mirroe</span> <span class="hljs-variable">mirroe</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Mirroe</span>();  <br>    <span class="hljs-type">int</span> choice;  <br>    String girlName;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Makeup</span><span class="hljs-params">(<span class="hljs-type">int</span> choice, String girlName)</span> &#123;  <br>        <span class="hljs-built_in">this</span>.choice = choice;  <br>        <span class="hljs-built_in">this</span>.girlName = girlName;  <br>    &#125;  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>         <span class="hljs-keyword">try</span> &#123;  <br>             makeup();  <br>         &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;  <br>             e.printStackTrace();  <br>         &#125;  <br>     &#125;  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeup</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException &#123;  <br>         <span class="hljs-keyword">if</span>(choice==<span class="hljs-number">0</span>)&#123;  <br>             <span class="hljs-keyword">synchronized</span> (lipstick)&#123;  <br>                 System.out.println(<span class="hljs-built_in">this</span>.girlName+<span class="hljs-string">&quot;拿到口红&quot;</span>);  <br>                 Thread.sleep(<span class="hljs-number">1000</span>);  <br>                 <span class="hljs-keyword">synchronized</span> (mirroe)&#123;  <br>                     System.out.println(<span class="hljs-built_in">this</span>.girlName+<span class="hljs-string">&quot;拿到镜子&quot;</span>);  <br>                 &#125;  <br>             &#125; <br>         &#125;<span class="hljs-keyword">else</span>&#123;  <br>             <span class="hljs-keyword">synchronized</span> (mirroe)&#123;  <br>                 System.out.println(<span class="hljs-built_in">this</span>.girlName+<span class="hljs-string">&quot;拿到镜子&quot;</span>);  <br>                 Thread.sleep(<span class="hljs-number">2000</span>);  <br>                 <span class="hljs-keyword">synchronized</span> (lipstick)&#123;  <br>                     System.out.println(<span class="hljs-built_in">this</span>.girlName+<span class="hljs-string">"拿到口红"</span>);  <br>                 &#125;  <br>             &#125; <br>         &#125; <br>     &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="11-Lock锁"><a href="#11-Lock锁" class="headerlink" title="11 Lock锁"></a>11 Lock锁</h2><ul>
+<li>从JDK5.0开始，Java提供了更强大的线程同步机制——通过显式定义同步锁对象来实现同步。同步锁使用Lock对象充当</li>
+<li><code>java.util.concurrent.locks.Lock</code>接口是控制多个线程对共享资源进行访问的工具。锁提供了对共享资源的独占访问，每次只能有一个线程对Lock对象加锁，线程开始访问共享资源之前应先获得Lock对象</li>
+<li>ReentrantLock类实现了Lock，它拥有与synchronized相同得并发性和内存语义，在实现线程安全得控制中，比较常用得是ReentrantLock，可以显式加锁、释放锁。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">//实现</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">ReentrantLock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReentrantLock</span>();  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">m</span><span class="hljs-params">()</span>&#123;<br>        lock.lock();<br>        <span class="hljs-keyword">try</span>&#123;<br>            <span class="hljs-comment">//保证线程安全的代码；</span><br>        &#125;<br>        <span class="hljs-keyword">finally</span>&#123;<br>            lock.unlock();<br>            <span class="hljs-comment"><code class="language-hljs java"><span class="hljs-comment">//实现</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br>     <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">ReentrantLock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReentrantLock</span>();  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">m</span><span class="hljs-params">()</span>&#123;<br>        lock.lock();<br>        <span class="hljs-keyword">try</span>&#123;<br>            <span class="hljs-comment">//保证线程安全的代码；</span><br>        &#125;<br>        <span class="hljs-keyword">finally</span>&#123;<br>            lock.unlock();<br>            <span class="hljs-comment">//如果同步代码有异常，要将unlock()写入finally语句块</span><br>        		&#125;<br>    	&#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>多人买票例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 多人买票，用lock的方式实现  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestLock</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span>&#123;  <br>    <span class="hljs-type">int</span> ticketNums=<span class="hljs-number">100</span>;  <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">ReentrantLock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReentrantLock</span>();  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>         <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)&#123; 	<br>             <span class="hljs-keyword">try</span> &#123;  <br>            	 lock.lock(); <br>                 <span class="hljs-keyword">if</span>(ticketNums&gt;<span class="hljs-number">0</span>)&#123;  <br>                     <span class="hljs-keyword">try</span> &#123;  <br>                    	    Thread.sleep(<span class="hljs-number">1000</span>);<br>                      &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;  <br>                         e.printStackTrace();  <br>                      &#125;  <br>                 System.out.println(Thread.currentThread().getName()+<span class="hljs-string">&quot;买到了票&quot;</span>+ticketNums--);  <br>                  &#125;<span class="hljs-keyword">else</span> &#123;  <br>                     <span class="hljs-keyword">break</span>;  <br>                  &#125;  <br>              &#125;<span class="hljs-keyword">finally</span> &#123;  <br>                  lock.unlock();  <br>              <br>              &#125;  <br>            <br>         &#125; <br>     &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyLock</span> &#123;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>        <span class="hljs-type">TestLock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestLock</span>(); <br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(lock,<span class="hljs-string">&quot;彭于晏&quot;</span>).start();  <br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(lock,<span class="hljs-string">&quot;陈冠希&quot;</span>).start();  <br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(lock,<span class="hljs-string"><code class="language-hljs java"><span class="hljs-comment">/**  </span><br><span class="hljs-comment"> * 多人买票，用lock的方式实现  </span><br><span class="hljs-comment"> */</span>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestLock</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span>&#123;  <br>    <span class="hljs-type">int</span> ticketNums=<span class="hljs-number">100</span>;  <br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">ReentrantLock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReentrantLock</span>();  <br>     <span class="hljs-meta">@Override</span>  <br>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>         <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)&#123; 	<br>             <span class="hljs-keyword">try</span> &#123;  <br>            	 lock.lock(); <br>                 <span class="hljs-keyword">if</span>(ticketNums&gt;<span class="hljs-number">0</span>)&#123;  <br>                     <span class="hljs-keyword">try</span> &#123;  <br>                    	    Thread.sleep(<span class="hljs-number">1000</span>);<br>                      &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;  <br>                         e.printStackTrace();  <br>                      &#125;  <br>                 System.out.println(Thread.currentThread().getName()+<span class="hljs-string">&quot;买到了票&quot;</span>+ticketNums--);  <br>                  &#125;<span class="hljs-keyword">else</span> &#123;  <br>                     <span class="hljs-keyword">break</span>;  <br>                  &#125;  <br>              &#125;<span class="hljs-keyword">finally</span> &#123;  <br>                  lock.unlock();  <br>              <br>              &#125;  <br>            <br>         &#125; <br>     &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyLock</span> &#123;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;  <br>        <span class="hljs-type">TestLock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TestLock</span>(); <br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(lock,<span class="hljs-string">&quot;彭于晏&quot;</span>).start();  <br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(lock,<span class="hljs-string">&quot;陈冠希&quot;</span>).start();  <br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(lock,<span class="hljs-string">"Evan"</span>).start();  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="11-1-Lock和synchronized对比"><a href="#11-1-Lock和synchronized对比" class="headerlink" title="11.1 Lock和synchronized对比"></a>11.1 Lock和synchronized对比</h3><ul>
+<li>Lock是显式锁（手动开启和关闭锁，别忘记关闭锁）synchronized是隐式锁，出了作用域自动释放</li>
+<li>Lock只有代码块锁，synchronized有代码块锁和方法锁</li>
+<li>使用Lock锁，JVM将花费较少的时间来调度线程，性能更好。并且具有更好的扩展性（提供更多的子类）</li>
+<li>优先使用顺序：<ul>
+<li>Lock &gt; 同步代码块（已经进入了方法体，分配了相应资源） &gt;同步方法（在方法体之外）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">// 定义可重入锁</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">ReentrantLock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReentrantLock</span>();<br><span class="hljs-comment">// 加锁</span><br>lock.lock();<br> <span class="hljs-comment"><code class="language-hljs java"><span class="hljs-comment">// 定义可重入锁</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">ReentrantLock</span> <span class="hljs-variable">lock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReentrantLock</span>();<br><span class="hljs-comment">// 加锁</span><br>lock.lock();<br> <span class="hljs-comment">// 解锁         </span><br>lock.unlock();    <br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="12-线程协作"><a href="#12-线程协作" class="headerlink" title="12 线程协作"></a>12 线程协作</h2><h3 id="12-1生产者消费者模式"><a href="#12-1生产者消费者模式" class="headerlink" title="12.1生产者消费者模式"></a>12.1生产者消费者模式</h3><ul>
+<li>应用场景：生产者和消费者问题<ul>
+<li>假设仓库中只能存放一件产品,生产者将生产出来的产品放入仓库,消费者将仓库中产品取走消费.</li>
+<li>如果仓库中没有产品﹐则生产者将产品放入仓库，否则停止生产并等待，直到仓库中的产品被消费者取走为止.</li>
+<li>如果仓库中放有产品﹐则消费者可以将产品取走消费，否则停止消费并等待，直到仓库中再次放入产品为止。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/pic5.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p> <strong>这是一个线程同步问题，生产者和消费者共享同一个资源，并且生产者和消费者之间相互依赖,互为条件．</strong></p>
+</li>
+<li><p>对于生产者﹐没有生产产品之前，要通知消费者等待﹒而生产了产品之后﹐又需要马上通知消费者消费</p>
+</li>
+<li><p>对于消费者﹐在消费之后,要通知生产者已经结束消费﹐需要生产新的产品以供消费.</p>
+</li>
+<li><p>在生产者消费者问题中,仅有synchronized是不够的</p>
+<ul>
+<li><p>synchronized可阻止并发更新同一个共享资源，实现了同步</p>
+</li>
+<li><p>synchronized不能用来实现不同线程之间的消息传递(通信)</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Java提供了几个方法解决线程之间的通信问题</p>
+<p><img src="/img/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/pic6.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<p><strong>sleep 会抱着锁睡觉，wait 会释放锁</strong></p>
+<p><strong>解决办法一</strong></p>
+<p>并发协作模型“生产者l消费者模式”—-&gt;管程法</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">生产者:负责生产数据的模块(可能是方法﹐对象﹐线程,进程);<br>消费者:负责处理数据的模块(可能是方法﹐对象﹐线程﹐进程);<br>缓冲区:消费者不能直接使用生产者的数据﹐他们之间有个“缓冲区”<br></code></pre></td></tr></table></figure>
+
+<p><strong>生产者将生产好的数据放入缓冲区,消费者从缓冲区拿出数据</strong></p>
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">//测试：生产者消费者模型--&gt;利用缓冲区解决：管程法</span><br><span class="hljs-comment">//生产者，消费者，产品，缓冲区</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestPC</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">SynContainer</span> <span class="hljs-variable">container</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SynContainer</span>();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Productor</span>(container).start();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Consumer</span>(container).start();<br>    &#125;<br>&#125;<br><span class="hljs-comment">//生产者</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Productor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;<br>    SynContainer container;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Productor</span><span class="hljs-params">(SynContainer container)</span>&#123;<br>        <span class="hljs-built_in">this</span>.container = container;<br>    &#125;<br>    <span class="hljs-comment">//生产</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) &#123;<br>            container.push(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Chicken</span>(i));<br>            System.out.println(<span class="hljs-string">&quot;生产了&quot;</span>+i+<span class="hljs-string">&quot;只鸡&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//消费者</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Consumer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;<br>    SynContainer container;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Consumer</span><span class="hljs-params">(SynContainer container)</span>&#123;<br>        <span class="hljs-built_in">this</span>.container = container;<br>    &#125;<br>    <span class="hljs-comment">//消费</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;消费了---&gt;&quot;</span>+container.pop().id+<span class="hljs-string">&quot;只鸡&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//产品</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Chicken</span>&#123;<br>    <span class="hljs-type">int</span> id;<span class="hljs-comment">// 产品编号</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Chicken</span><span class="hljs-params">(<span class="hljs-type">int</span> id)</span>&#123;<br>        <span class="hljs-built_in">this</span>.id = id;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//缓冲区</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SynContainer</span>&#123;<br>    <span class="hljs-comment">//需要一个容器大小</span><br>    Chicken[] chickens = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Chicken</span>[<span class="hljs-number">10</span>];<br>    <span class="hljs-comment">//容器计算器</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">//生产者放入产品</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">push</span><span class="hljs-params">(Chicken chicken)</span>&#123;<br>        <span class="hljs-comment">//如果容器满了，就需要等待消费产品</span><br>        <span class="hljs-keyword">if</span>(count==chickens.length)&#123;<br>            <span class="hljs-comment">//生产者等待</span><br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-built_in">this</span>.wait();<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//如果没有满，我们就需要丢入产品</span><br>        chickens[count] = chicken;<br>        count++;<br>        <span class="hljs-comment">//可以通知消费者消费了</span><br>        <span class="hljs-built_in">this</span>.notifyAll();<br>    &#125;<br>    <span class="hljs-comment">//消费者消费产品</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> Chicken <span class="hljs-title function_">pop</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-comment">//判断能否消费</span><br>        <span class="hljs-keyword">if</span> (count == <span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-comment">//等待生产者生产，消费者等待</span><br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-built_in">this</span>.wait();<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//如果可以消费</span><br>        count--;<br>        <span class="hljs-type">Chicken</span> <span class="hljs-variable">chicken</span> <span class="hljs-operator">=</span> chickens[count];<br>        <span class="hljs-comment">//吃完了，通知生产者生产</span><br>        <span class="hljs-built_in">this</span>.notifyAll();<br>        <span class="hljs-keyword"><code class="language-hljs java"><span class="hljs-comment">//测试：生产者消费者模型--&gt;利用缓冲区解决：管程法</span><br><span class="hljs-comment">//生产者，消费者，产品，缓冲区</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestPC</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">SynContainer</span> <span class="hljs-variable">container</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SynContainer</span>();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Productor</span>(container).start();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Consumer</span>(container).start();<br>    &#125;<br>&#125;<br><span class="hljs-comment">//生产者</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Productor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;<br>    SynContainer container;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Productor</span><span class="hljs-params">(SynContainer container)</span>&#123;<br>        <span class="hljs-built_in">this</span>.container = container;<br>    &#125;<br>    <span class="hljs-comment">//生产</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) &#123;<br>            container.push(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Chicken</span>(i));<br>            System.out.println(<span class="hljs-string">&quot;生产了&quot;</span>+i+<span class="hljs-string">&quot;只鸡&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//消费者</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Consumer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;<br>    SynContainer container;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Consumer</span><span class="hljs-params">(SynContainer container)</span>&#123;<br>        <span class="hljs-built_in">this</span>.container = container;<br>    &#125;<br>    <span class="hljs-comment">//消费</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) &#123;<br>            System.out.println(<span class="hljs-string">&quot;消费了---&gt;&quot;</span>+container.pop().id+<span class="hljs-string">&quot;只鸡&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//产品</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Chicken</span>&#123;<br>    <span class="hljs-type">int</span> id;<span class="hljs-comment">// 产品编号</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Chicken</span><span class="hljs-params">(<span class="hljs-type">int</span> id)</span>&#123;<br>        <span class="hljs-built_in">this</span>.id = id;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//缓冲区</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SynContainer</span>&#123;<br>    <span class="hljs-comment">//需要一个容器大小</span><br>    Chicken[] chickens = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Chicken</span>[<span class="hljs-number">10</span>];<br>    <span class="hljs-comment">//容器计算器</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">//生产者放入产品</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">push</span><span class="hljs-params">(Chicken chicken)</span>&#123;<br>        <span class="hljs-comment">//如果容器满了，就需要等待消费产品</span><br>        <span class="hljs-keyword">if</span>(count==chickens.length)&#123;<br>            <span class="hljs-comment">//生产者等待</span><br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-built_in">this</span>.wait();<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//如果没有满，我们就需要丢入产品</span><br>        chickens[count] = chicken;<br>        count++;<br>        <span class="hljs-comment">//可以通知消费者消费了</span><br>        <span class="hljs-built_in">this</span>.notifyAll();<br>    &#125;<br>    <span class="hljs-comment">//消费者消费产品</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> Chicken <span class="hljs-title function_">pop</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-comment">//判断能否消费</span><br>        <span class="hljs-keyword">if</span> (count == <span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-comment">//等待生产者生产，消费者等待</span><br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-built_in">this</span>.wait();<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//如果可以消费</span><br>        count--;<br>        <span class="hljs-type">Chicken</span> <span class="hljs-variable">chicken</span> <span class="hljs-operator">=</span> chickens[count];<br>        <span class="hljs-comment">//吃完了，通知生产者生产</span><br>        <span class="hljs-built_in">this</span>.notifyAll();<br>        <span class="hljs-keyword">return</span> chicken;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>解决办法二</strong></p>
+<p>并发协作模型“生产者/消费者模式”—-&gt;信号灯法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">//测试消费者和生产者问题2：信号灯法</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestPC2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">TV</span> <span class="hljs-variable">tv</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TV</span>();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Player</span>(tv).start();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Watcher</span>(tv).start();<br>    &#125;<br>&#125;<br><span class="hljs-comment">//生产者--&gt;演员</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Player</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;<br>    TV tv;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Player</span><span class="hljs-params">(TV tv)</span>&#123;<br>        <span class="hljs-built_in">this</span>.tv = tv;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++) &#123;<br>            <span class="hljs-keyword">if</span> (i%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;<br>                <span class="hljs-built_in">this</span>.tv.play(<span class="hljs-string">&quot;快乐大本营播放中&quot;</span>);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-built_in">this</span>.tv.play(<span class="hljs-string">&quot;抖音，记录有钱人的美好生活&quot;</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//消费者--&gt;观众</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Watcher</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;<br>    TV tv;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Watcher</span><span class="hljs-params">(TV tv)</span>&#123;<br>        <span class="hljs-built_in">this</span>.tv = tv;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++) &#123;<br>            tv.watch();<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//产品--&gt;节目</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TV</span>&#123;<br>    <span class="hljs-comment">// 演员表演，观众等待 T</span><br>    <span class="hljs-comment">// 观众观看，演员等待 F</span><br>    String voice; <span class="hljs-comment">// 表演的节目</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-comment">// 表演</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">play</span><span class="hljs-params">(String voice)</span>&#123;<br>        <span class="hljs-keyword">if</span> (!flag)&#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-built_in">this</span>.wait();<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;演员表演了：&quot;</span>+voice);<br>        <span class="hljs-comment">// 通知观众观看</span><br>        <span class="hljs-built_in">this</span>.notifyAll();<span class="hljs-comment">// 通知唤醒</span><br>        <span class="hljs-built_in">this</span>.voice = voice;<br>        <span class="hljs-built_in">this</span>.flag = !<span class="hljs-built_in">this</span>.flag;<span class="hljs-comment">//flag如果是真就取假，相同是假就取真</span><br>    &#125;<br>    <span class="hljs-comment">// 观看</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">watch</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">if</span> (flag)&#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-built_in">this</span>.wait();<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;观众观看了：&quot;</span>+voice);<br>        <span class="hljs-comment">// 通知演员表演</span><br>        <span class="hljs-built_in">this</span>.notifyAll();<br>        <span class="hljs-built_in">this</span>.flag = !<span class="hljs-built_in"><code class="language-hljs java"><span class="hljs-comment">//测试消费者和生产者问题2：信号灯法</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestPC2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">TV</span> <span class="hljs-variable">tv</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TV</span>();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Player</span>(tv).start();<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Watcher</span>(tv).start();<br>    &#125;<br>&#125;<br><span class="hljs-comment">//生产者--&gt;演员</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Player</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;<br>    TV tv;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Player</span><span class="hljs-params">(TV tv)</span>&#123;<br>        <span class="hljs-built_in">this</span>.tv = tv;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++) &#123;<br>            <span class="hljs-keyword">if</span> (i%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;<br>                <span class="hljs-built_in">this</span>.tv.play(<span class="hljs-string">&quot;快乐大本营播放中&quot;</span>);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-built_in">this</span>.tv.play(<span class="hljs-string">&quot;抖音，记录有钱人的美好生活&quot;</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//消费者--&gt;观众</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Watcher</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span>&#123;<br>    TV tv;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Watcher</span><span class="hljs-params">(TV tv)</span>&#123;<br>        <span class="hljs-built_in">this</span>.tv = tv;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++) &#123;<br>            tv.watch();<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//产品--&gt;节目</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TV</span>&#123;<br>    <span class="hljs-comment">// 演员表演，观众等待 T</span><br>    <span class="hljs-comment">// 观众观看，演员等待 F</span><br>    String voice; <span class="hljs-comment">// 表演的节目</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-comment">// 表演</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">play</span><span class="hljs-params">(String voice)</span>&#123;<br>        <span class="hljs-keyword">if</span> (!flag)&#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-built_in">this</span>.wait();<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;演员表演了：&quot;</span>+voice);<br>        <span class="hljs-comment">// 通知观众观看</span><br>        <span class="hljs-built_in">this</span>.notifyAll();<span class="hljs-comment">// 通知唤醒</span><br>        <span class="hljs-built_in">this</span>.voice = voice;<br>        <span class="hljs-built_in">this</span>.flag = !<span class="hljs-built_in">this</span>.flag;<span class="hljs-comment">//flag如果是真就取假，相同是假就取真</span><br>    &#125;<br>    <span class="hljs-comment">// 观看</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">watch</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">if</span> (flag)&#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-built_in">this</span>.wait();<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;观众观看了：&quot;</span>+voice);<br>        <span class="hljs-comment">// 通知演员表演</span><br>        <span class="hljs-built_in">this</span>.notifyAll();<br>        <span class="hljs-built_in">this</span>.flag = !<span class="hljs-built_in">this</span>.flag;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="13-线程池"><a href="#13-线程池" class="headerlink" title="13 线程池"></a>13 线程池</h2><ul>
+<li>背景：经常创建和销毁、使用量特别大的资源，比如并发情况下的线程，对性能影响很大。</li>
+<li>思路:  提前创建好多个线程，放入线程池中，使用时直接获取，使用完放回池中。可以避免频繁创建销毁、实现重复利用。类似生活中的公共交通工具。</li>
+<li>好处:<ul>
+<li>提高响应速度（减少了创建新线程的时间）</li>
+<li>降低了资源消耗（重复利用线程池中线程，不需要每次都创建）</li>
+<li>便于线程管理（…）<ul>
+<li><code>corePoolSize</code>：核心池的大小</li>
+<li><code>maximumPoolSize</code>:最大线程数</li>
+<li><code>keepAliveTime</code>：线程没有任务时最多保持多长时间后会终止</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="13-1使用线程池"><a href="#13-1使用线程池" class="headerlink" title="13.1使用线程池"></a>13.1使用线程池</h3><ul>
+<li><p>JDK 5.0起提供了线程池相关API：<strong>ExecutorService</strong> 和<strong>Executors</strong></p>
+</li>
+<li><p><strong>ExecutorService</strong>：真正的线程池接口。常见子类ThreadPoolExecutor</p>
+<ul>
+<li><code>void execute(Runnable command)</code>:执行任务/命令，没有返回值，一般哟过来执行Runnable</li>
+<li><code>&lt;T&gt; Future&lt;T&gt;submit(Callable&lt;T&gt;task)</code>: 执行任务，有返回值，一般用来执行Callable</li>
+<li><code>void shutdown() </code>:关闭连接池</li>
+</ul>
+</li>
+<li><p><strong>Executors</strong>：工具类、线程池的工厂类，用于创建并返回不同类型的线程池</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">// 1. 创建线程池, 参数为线程池大小 </span><br><span class="hljs-type">ExecutorService</span> <span class="hljs-variable">service</span> <span class="hljs-operator">=</span> Executors.newFixedThreadPool(<span class="hljs-number">10</span>);<br><span class="hljs-comment">// 2. 添加线程</span><br>service.submit(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyThread</span>()); <br>service.submit(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyThread</span>());<br>service.submit(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyThread</span>());<br>service.submit(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyThread</span>());<br><span class="hljs-comment"><code class="language-hljs java"><span class="hljs-comment">// 1. 创建线程池, 参数为线程池大小 </span><br><span class="hljs-type">ExecutorService</span> <span class="hljs-variable">service</span> <span class="hljs-operator">=</span> Executors.newFixedThreadPool(<span class="hljs-number">10</span>);<br><span class="hljs-comment">// 2. 添加线程</span><br>service.submit(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyThread</span>()); <br>service.submit(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyThread</span>());<br>service.submit(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyThread</span>());<br>service.submit(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyThread</span>());<br><span class="hljs-comment">// 3. 关闭线程池 </span><br>service.shutdown();<br></code></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<p>本文完 </p>
+<p>本文源自：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1V4411p7EF?spm_id_from=333.999.0.0">https://www.bilibili.com/video/BV1V4411p7EF?spm_id_from=333.999.0.0</a></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" class="category-chain-item">Java基础</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java/">#Java</a>
+      
+        <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">#多线程</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Java多线程</div>
+      <div>https://evanyangtobegreatest.github.io/2022/03/16/Java多线程/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Evan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/21/Mybatis%E7%AC%94%E8%AE%B0-1/" title="Mybatis笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Mybatis笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/16/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" title="动态代理">
+                        <span class="hidden-mobile">动态代理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      粤ICP备2022060807号-1
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011402000758"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>粤公网安备 44011402000758号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

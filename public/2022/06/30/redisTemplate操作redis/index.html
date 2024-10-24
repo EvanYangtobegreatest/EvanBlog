@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Evan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="redisTemplate操作redis1.String操作 123456789&#x2F;&#x2F;String传入redis redisTemplate.opsForValue().set(key, value);&#x2F;&#x2F;从redis获取 Object value &#x3D; redisTemplate.opsForValue().get(key);&#x2F;&#x2F;设置过期时间long time &#x3D;&#x2F;&#x2F;String传入redis re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redisTemplate操作redis">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/06/30/redisTemplate%E6%93%8D%E4%BD%9Credis/index.html">
+<meta property="og:site_name" content="EvanYoung">
+<meta property="og:description" content="redisTemplate操作redis1.String操作 123456789&#x2F;&#x2F;String传入redis redisTemplate.opsForValue().set(key, value);&#x2F;&#x2F;从redis获取 Object value &#x3D; redisTemplate.opsForValue().get(key);&#x2F;&#x2F;设置过期时间long time &#x3D;&#x2F;&#x2F;String传入redis re">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-30T08:47:59.000Z">
+<meta property="article:modified_time" content="2022-06-30T09:15:18.179Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>redisTemplate操作redis - EvanYoung</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>EvanYoung</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="redisTemplate操作redis"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-30 16:47" pubdate>
+          2022年6月30日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          26 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">redisTemplate操作redis</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="redisTemplate操作redis"><a href="#redisTemplate操作redis" class="headerlink" title="redisTemplate操作redis"></a>redisTemplate操作redis</h1><p><strong>1.String操作</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">//String传入redis </span><br>redisTemplate.opsForValue().set(key, value);<br><br><span class="hljs-comment">//从redis获取 </span><br><span class="hljs-type">Object</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> redisTemplate.opsForValue().get(key);<br><br><span class="hljs-comment">//设置过期时间</span><br><span class="hljs-type">long</span> <span class="hljs-variable">time</span> <span class="hljs-operator">=</span><span class="hljs-number"><code class="language-hljs java"><span class="hljs-comment">//String传入redis </span><br>redisTemplate.opsForValue().set(key, value);<br><br><span class="hljs-comment">//从redis获取 </span><br><span class="hljs-type">Object</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> redisTemplate.opsForValue().get(key);<br><br><span class="hljs-comment">//设置过期时间</span><br><span class="hljs-type">long</span> <span class="hljs-variable">time</span> <span class="hljs-operator">=</span><span class="hljs-number">60</span>;<br>redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);<br></code></pre></td></tr></table></figure>
+
+<p><strong>2.key操作</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">//判断key是否存在</span><br><span class="hljs-type">Boolean</span> <span class="hljs-variable">exist</span> <span class="hljs-operator">=</span>redisTemplate.hasKey(key);<br><br><span class="hljs-comment">//设置key过期时间</span><br><span class="hljs-type">long</span> <span class="hljs-variable">time</span> <span class="hljs-operator">=</span> <span class="hljs-number">60</span>;<br>redisTemplate.expire(key, time, TimeUnit.SECONDS);<br><br><span class="hljs-comment">//获取key过期时间</span><br><span class="hljs-type">Long</span> <span class="hljs-variable">expire</span> <span class="hljs-operator">=</span> redisTemplate.getExpire(key, TimeUnit.SECONDS);<br><br><span class="hljs-comment"><code class="language-hljs java"><span class="hljs-comment">//判断key是否存在</span><br><span class="hljs-type">Boolean</span> <span class="hljs-variable">exist</span> <span class="hljs-operator">=</span>redisTemplate.hasKey(key);<br><br><span class="hljs-comment">//设置key过期时间</span><br><span class="hljs-type">long</span> <span class="hljs-variable">time</span> <span class="hljs-operator">=</span> <span class="hljs-number">60</span>;<br>redisTemplate.expire(key, time, TimeUnit.SECONDS);<br><br><span class="hljs-comment">//获取key过期时间</span><br><span class="hljs-type">Long</span> <span class="hljs-variable">expire</span> <span class="hljs-operator">=</span> redisTemplate.getExpire(key, TimeUnit.SECONDS);<br><br><span class="hljs-comment">// 删除key</span><br>redisTemplate.delete(key);<br></code></pre></td></tr></table></figure>
+
+<p><strong>3.散列操作</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">// 放入一个 hash ( key value ) item是hash的key</span><br>redisTemplate.opsForHash().put(key, item, value);<br><br><span class="hljs-comment">// 向hash中存放一个map</span><br>redisTemplate.opsForHash().putAll(key, map);<br><br><span class="hljs-comment">// 获取一个hash 的 所有key-value</span><br>Map&lt;Object, Object&gt; entries = redisTemplate.opsForHash().entries(key);<br><br> <span class="hljs-comment">// 获取一个hash 的 指定key 的value</span><br><span class="hljs-type">Object</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> redisTemplate.opsForHash().get(key, item);<br><br><span class="hljs-comment">// 删除指定 hash key 的value</span><br>redisTemplate.opsForHash().delete(key, item);<br><br> <span class="hljs-comment">// 是否存在 指定 hash 的key</span><br><span class="hljs-type">Boolean</span> <span class="hljs-variable">exist</span> <span class="hljs-operator"><code class="language-hljs java"><span class="hljs-comment">// 放入一个 hash ( key value ) item是hash的key</span><br>redisTemplate.opsForHash().put(key, item, value);<br><br><span class="hljs-comment">// 向hash中存放一个map</span><br>redisTemplate.opsForHash().putAll(key, map);<br><br><span class="hljs-comment">// 获取一个hash 的 所有key-value</span><br>Map&lt;Object, Object&gt; entries = redisTemplate.opsForHash().entries(key);<br><br> <span class="hljs-comment">// 获取一个hash 的 指定key 的value</span><br><span class="hljs-type">Object</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> redisTemplate.opsForHash().get(key, item);<br><br><span class="hljs-comment">// 删除指定 hash key 的value</span><br>redisTemplate.opsForHash().delete(key, item);<br><br> <span class="hljs-comment">// 是否存在 指定 hash 的key</span><br><span class="hljs-type">Boolean</span> <span class="hljs-variable">exist</span> <span class="hljs-operator">=</span> redisTemplate.opsForHash().hasKey(key, item);<br></code></pre></td></tr></table></figure>
+
+<p><strong>4.列表操作</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">// 列表右推入</span><br>redisTemplate.opsForList().rightPush(key, value);<br><br><span class="hljs-comment">// 列表左推入</span><br>redisTemplate.opsForList().leftPush(key, value);<br><br><span class="hljs-comment">// 列表左弹出</span><br><span class="hljs-type">Object</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> redisTemplate.opsForList().leftPop(key);<br><br><span class="hljs-comment">// 列表右弹出</span><br><span class="hljs-type">Object</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> redisTemplate.opsForList().rightPop(key);<br><br><span class="hljs-comment">// 将list右推入列表</span><br>redisTemplate.opsForList().rightPushAll(key, list);<br><br><span class="hljs-comment">// 修改列表指定索引的值</span><br>redisTemplate.opsForList().set(key, index, value);<br> <br><span class="hljs-comment">// 获取列表指定索引的值</span><br><span class="hljs-type">Object</span> <span class="hljs-variable">value</span> <span class="hljs-operator"><code class="language-hljs java"><span class="hljs-comment">// 列表右推入</span><br>redisTemplate.opsForList().rightPush(key, value);<br><br><span class="hljs-comment">// 列表左推入</span><br>redisTemplate.opsForList().leftPush(key, value);<br><br><span class="hljs-comment">// 列表左弹出</span><br><span class="hljs-type">Object</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> redisTemplate.opsForList().leftPop(key);<br><br><span class="hljs-comment">// 列表右弹出</span><br><span class="hljs-type">Object</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> redisTemplate.opsForList().rightPop(key);<br><br><span class="hljs-comment">// 将list右推入列表</span><br>redisTemplate.opsForList().rightPushAll(key, list);<br><br><span class="hljs-comment">// 修改列表指定索引的值</span><br>redisTemplate.opsForList().set(key, index, value);<br> <br><span class="hljs-comment">// 获取列表指定索引的值</span><br><span class="hljs-type">Object</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> redisTemplate.opsForList().index(key, index);<br></code></pre></td></tr></table></figure>
+
+<p><strong>5.set 操作</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">// set 中存储值</span><br>redisTemplate.opsForSet().add(key, value1, value2);<br><br><span class="hljs-comment">// 从 set 中取值</span><br>Set&lt;Object&gt; members = redisTemplate.opsForSet().members(key);<br><br><span class="hljs-comment">// 判定 set 中是否存在 key-value</span><br> <span class="hljs-type">Boolean</span> <span class="hljs-variable">member</span> <span class="hljs-operator">=</span> redisTemplate.opsForSet().isMember(key, value);<br><br><span class="hljs-comment">//查询set长度</span><br>redisTemplate.opsForSet().size(key);<br><br><span class="hljs-comment">//从set中移除某些个元素</span><br>redisTemplate.opsForSet().remove(key,values);<br><br><span class="hljs-comment"><code class="language-hljs java"><span class="hljs-comment">// set 中存储值</span><br>redisTemplate.opsForSet().add(key, value1, value2);<br><br><span class="hljs-comment">// 从 set 中取值</span><br>Set&lt;Object&gt; members = redisTemplate.opsForSet().members(key);<br><br><span class="hljs-comment">// 判定 set 中是否存在 key-value</span><br> <span class="hljs-type">Boolean</span> <span class="hljs-variable">member</span> <span class="hljs-operator">=</span> redisTemplate.opsForSet().isMember(key, value);<br><br><span class="hljs-comment">//查询set长度</span><br>redisTemplate.opsForSet().size(key);<br><br><span class="hljs-comment">//从set中移除某些个元素</span><br>redisTemplate.opsForSet().remove(key,values);<br><br><span class="hljs-comment">//移除整个set</span><br>redisTemplate.delete(key);<br></code></pre></td></tr></table></figure>
+
+<p><strong>6.zset操作</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">//往Zset中添加元素</span><br>redisTemplate.opsForZSet().add(key, value, score);<br><br><span class="hljs-comment">//根据索引获取Zset的元素</span><br>redisTemplate.opsForZSet().range(key,begin,end);<br><br><span class="hljs-comment">//获取Zset的所有元素</span><br>getZset(key,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>);<br><br><span class="hljs-comment">// 往Zset中添加多个元素</span><br><span class="hljs-comment">// DefaultTypedTuple&lt;String&gt; p1 = new DefaultTypedTuple&lt;&gt;(&quot;value1&quot;, 1.0);</span><br>HashSet&lt;DefaultTypedTuple&lt;String&gt;&gt; defaultTypedTuples = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;(list);<br>redisTemplate.opsForZSet().add(key,defaultTypedTuples);<br><br><span class="hljs-comment">//获取Zset中指定元素的分数</span><br>redisTemplate.opsForZSet().score(key,value);<br>    <br><span class="hljs-comment">//获取Zset集合的大小</span><br>redisTemplate.opsForZSet().size(key);<br>    <br><span class="hljs-comment">//获取Zset指定分数内集合的大小</span><br>redisTemplate.opsForZSet().count(key,begin,end);<br>    <br><span class="hljs-comment">//获取Zset指定分数内的集合</span><br>redisTemplate.opsForZSet().rangeByScore(key,begin,end);<br>    <br><span class="hljs-comment">//根据 Index 获取Zset集合 (包括分数)</span><br>redisTemplate.opsForZSet().rangeWithScores(key,begin, end);<br>    <br><span class="hljs-comment">//获取Zset集合</span><br>getZsetWithScore(key,<span class="hljs-number">0L</span>, -<span class="hljs-number">1L</span>);<br><br><span class="hljs-comment">//获取指定成员的排名   从大到小排   a,b,c,d     a排0</span><br>redisTemplate.opsForZSet().rank(key,value);<br><br><span class="hljs-comment">//获取指定成员的排名   从大到小排   a,b,c,d     a排3</span><br>redisTemplate.opsForZSet().reverseRank(key,value);<br> <br><span class="hljs-comment">//从集合中删除指定元素</span><br>redisTemplate.opsForZSet().remove(key,value);<br>    <br><span class="hljs-comment">//从集合中删除指定范围索引元素</span><br>redisTemplate.opsForZSet().removeRange(key,begin,end);<br>  <br><span class="hljs-comment">//从集合中删除指定范围分数元素</span><br>redisTemplate.opsForZSet().removeRangeByScore(key,begin,end);<br>   <br><span class="hljs-comment"><code class="language-hljs java"><span class="hljs-comment">//往Zset中添加元素</span><br>redisTemplate.opsForZSet().add(key, value, score);<br><br><span class="hljs-comment">//根据索引获取Zset的元素</span><br>redisTemplate.opsForZSet().range(key,begin,end);<br><br><span class="hljs-comment">//获取Zset的所有元素</span><br>getZset(key,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>);<br><br><span class="hljs-comment">// 往Zset中添加多个元素</span><br><span class="hljs-comment">// DefaultTypedTuple&lt;String&gt; p1 = new DefaultTypedTuple&lt;&gt;(&quot;value1&quot;, 1.0);</span><br>HashSet&lt;DefaultTypedTuple&lt;String&gt;&gt; defaultTypedTuples = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;(list);<br>redisTemplate.opsForZSet().add(key,defaultTypedTuples);<br><br><span class="hljs-comment">//获取Zset中指定元素的分数</span><br>redisTemplate.opsForZSet().score(key,value);<br>    <br><span class="hljs-comment">//获取Zset集合的大小</span><br>redisTemplate.opsForZSet().size(key);<br>    <br><span class="hljs-comment">//获取Zset指定分数内集合的大小</span><br>redisTemplate.opsForZSet().count(key,begin,end);<br>    <br><span class="hljs-comment">//获取Zset指定分数内的集合</span><br>redisTemplate.opsForZSet().rangeByScore(key,begin,end);<br>    <br><span class="hljs-comment">//根据 Index 获取Zset集合 (包括分数)</span><br>redisTemplate.opsForZSet().rangeWithScores(key,begin, end);<br>    <br><span class="hljs-comment">//获取Zset集合</span><br>getZsetWithScore(key,<span class="hljs-number">0L</span>, -<span class="hljs-number">1L</span>);<br><br><span class="hljs-comment">//获取指定成员的排名   从大到小排   a,b,c,d     a排0</span><br>redisTemplate.opsForZSet().rank(key,value);<br><br><span class="hljs-comment">//获取指定成员的排名   从大到小排   a,b,c,d     a排3</span><br>redisTemplate.opsForZSet().reverseRank(key,value);<br> <br><span class="hljs-comment">//从集合中删除指定元素</span><br>redisTemplate.opsForZSet().remove(key,value);<br>    <br><span class="hljs-comment">//从集合中删除指定范围索引元素</span><br>redisTemplate.opsForZSet().removeRange(key,begin,end);<br>  <br><span class="hljs-comment">//从集合中删除指定范围分数元素</span><br>redisTemplate.opsForZSet().removeRangeByScore(key,begin,end);<br>   <br><span class="hljs-comment">//修改指定元素的分数</span><br>redisTemplate.opsForZSet().incrementScore(key,value,score);<br> <br></code></pre></td></tr></table></figure>
+
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>redisTemplate操作redis</div>
+      <div>https://evanyangtobegreatest.github.io/2022/06/30/redisTemplate操作redis/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Evan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月30日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/05/javascript%E4%B8%AD%E5%AF%B9%E4%B8%AD%E6%96%87%E5%AD%97%E6%AE%B5%E6%8E%92%E5%BA%8F/" title="javascript中对中文字段排序">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">javascript中对中文字段排序</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/30/springboot%E9%9B%86%E6%88%90redis/" title="springboot集成redis">
+                        <span class="hidden-mobile">springboot集成redis</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      粤ICP备2022060807号-1
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011402000758"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>粤公网安备 44011402000758号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

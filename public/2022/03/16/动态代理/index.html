@@ -1,0 +1,827 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Evan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="动态代理（理解）： 基于反射机制。1.什么是动态代理 ？123使用jdk的反射机制，创建对象的能力， 创建的是代理类的对象。 而不用你创建类文件。不用写java文件。动态：在程序执行时，调用jdk提供的方法才能创建代理类的对象。   jdk动态代理，必须有接口，目标类必须实现接口， 没有接口时，需要使用cglib动态代理 2.知道动态代理能做什么 ？123456可以在不改变原来目标方法功能的前提">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态代理">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/03/16/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/index.html">
+<meta property="og:site_name" content="EvanYoung">
+<meta property="og:description" content="动态代理（理解）： 基于反射机制。1.什么是动态代理 ？123使用jdk的反射机制，创建对象的能力， 创建的是代理类的对象。 而不用你创建类文件。不用写java文件。动态：在程序执行时，调用jdk提供的方法才能创建代理类的对象。   jdk动态代理，必须有接口，目标类必须实现接口， 没有接口时，需要使用cglib动态代理 2.知道动态代理能做什么 ？123456可以在不改变原来目标方法功能的前提">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://evanyangtobegreatest.github.io/img/bg4.jpg">
+<meta property="article:published_time" content="2022-03-16T01:19:23.000Z">
+<meta property="article:modified_time" content="2022-05-30T08:52:58.173Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="动态代理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://evanyangtobegreatest.github.io/img/bg4.jpg">
+  
+  
+  
+  <title>动态代理 - EvanYoung</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>EvanYoung</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="动态代理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-16 09:19" pubdate>
+          2022年3月16日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          28 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">动态代理</h1>
+            
+            <div class="markdown-body">
+              
+              <hr>
+<h2 id="动态代理（理解）：-基于反射机制。"><a href="#动态代理（理解）：-基于反射机制。" class="headerlink" title="动态代理（理解）： 基于反射机制。"></a>动态代理（理解）： 基于反射机制。</h2><h3 id="1-什么是动态代理-？"><a href="#1-什么是动态代理-？" class="headerlink" title="1.什么是动态代理 ？"></a>1.什么是动态代理 ？</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">使用jdk的反射机制，创建对象的能力， 创建的是代理类的对象。 而不用你创建类文件。不用写java文件。<br>动态：在程序执行时，调用jdk提供的方法才能创建代理类的对象。<br>   jdk动态代理，必须有接口，目标类必须实现接口， 没有接口时，需要使用cglib动态代理<br></code></pre></td></tr></table></figure>
+<h3 id="2-知道动态代理能做什么-？"><a href="#2-知道动态代理能做什么-？" class="headerlink" title="2.知道动态代理能做什么 ？"></a>2.知道动态代理能做什么 ？</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">可以在不改变原来目标方法功能的前提下， 可以在代理中增强自己的功能代码。<br>在程序开发中的意思：<br>   比如：你所在的项目中，有一个功能是其他人（公司的其它部门，其它小组的人）写好的，你可以使用。<br>	GoNong.class ,  GoNong gn = new GoNong(), gn.print();<br>你发现这个功能，现在还缺点， 不能完全满足我项目的需要。 我需要在gn.print()执行后，需要自己在增加代码。<br>用代理实现 gn.print（）调用时， 增加自己代码， 而不用去改原来的 GoNong文件。<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/java%E6%A1%86%E6%9E%B6/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86.PNG" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h4 id="1-代理"><a href="#1-代理" class="headerlink" title="1.代理"></a>1.代理</h4><p>  代购， 中介，换ip，商家等等</p>
+<p>  比如有一家美国的大学， 可以对全世界招生。 留学中介（代理）</p>
+<p>  留学中介（代理）： 帮助这家美国的学校招生，  中介是学校的代理， 中介是代替学校完成招生功能。<br>     代理特点：</p>
+<pre><code class="hljs">      1. 中介和代理他们要做的事情是一致的：  招生。
+      2. 中介是学校代理， 学校是目标。
+      3. 家长---中介（学校介绍，办入学手续）----美国学校
+      4. 中介是代理，不能白干活，需要收取费用。
+      5. 代理不让你访问到目标。
+</code></pre>
+<ul>
+<li>为什么要找中介 ？ </li>
+</ul>
+<ol>
+<li>中介是专业的， 方便</li>
+<li>家长现在不能自己去找学校。 家长没有能力访问学校。 或者美国学校不接收个人来访。</li>
+</ol>
+<p>&nbsp;<br>买东西都是商家卖， 商家是某个商品的代理， 你个人买东西， 肯定不会让你接触到厂家的。</p>
+<h4 id="2-在开发中也会有这样的情况，你有a类，-本来是调用c类的方法，-完成某个功能。-但是c不让a调用。"><a href="#2-在开发中也会有这样的情况，你有a类，-本来是调用c类的方法，-完成某个功能。-但是c不让a调用。" class="headerlink" title="2.在开发中也会有这样的情况，你有a类， 本来是调用c类的方法， 完成某个功能。 但是c不让a调用。"></a>2.在开发中也会有这样的情况，你有a类， 本来是调用c类的方法， 完成某个功能。 但是c不让a调用。</h4><p>a —–不能调用 c的方法。<br>在a 和 c 直接 创建一个 b 代理，    c让b访问。<br>a –访问b—访问c</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">实际的例子：登录，注册有验证码， 验证码是手机短信。<br><br>中国移动，联通能发短信。 <br><br>中国移动，联通能有子公司，或者关联公司，他们面向社会提供短信的发送功能<br><br>张三项目发送短信----子公司，或者关联公司-----中国移动， 联通<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-使用代理模式的作用"><a href="#3-使用代理模式的作用" class="headerlink" title="3.使用代理模式的作用"></a>3.使用代理模式的作用</h4> <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs"><code class="language-hljs">1.功能增强： 在你原有的功能上，增加了额外的功能。 新增加的功能，叫做功能增强。<br>2.控制访问： 代理类不让你访问目标，例如商家不让用户访问厂家。<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="4-实现代理的方式"><a href="#4-实现代理的方式" class="headerlink" title="4.实现代理的方式"></a>4.实现代理的方式</h4><h5 id="1-静态代理-："><a href="#1-静态代理-：" class="headerlink" title="1.静态代理 ："></a>1.静态代理 ：</h5><ul>
+<li><p>1） 代理类是自己手工实现的，自己创建一个java类，表示代理类。</p>
+</li>
+<li><p>2）同时你所要代理的目标类是确定的。</p>
+<p>  特点： 1）实现简单  2）容易理解。<br>  缺点：<br>   当你的项目中，目标类和代理类很多时候，有以下的缺点：</p>
+<pre><code class="hljs">  1）当目标类增加了， 代理类可能也需要成倍的增加。 代理类数量过多。
+  2）当你的接口中功能增加了， 或者修改了，会影响众多的实现类，厂家类，代理都需要修改。影响比较多。
+</code></pre>
+</li>
+</ul>
+<p>模拟一个用户购买u盘的行为。</p>
+<p>用户是客户端类<br>    商家：代理，代理某个品牌的u盘。<br>    厂家：目标类。</p>
+<p>三者的关系： 用户（客户端）—商家（代理）—厂家（目标）</p>
+<p>商家和厂家都是卖u盘的，他们完成的功能是一致的，都是卖u盘。</p>
+<pre><code class="hljs">  实现步骤：
+     1. 创建一个接口，定义卖u盘的方法， 表示你的厂家和商家做的事情。
+     2. 创建厂家类，实现1步骤的接口
+     3. 创建商家，就是代理，也需要实现1步骤中的接口。
+     4. 创建客户端类，调用商家的方法买一个u盘。
+
+  代理类完成的功能： 
+      1. 目标类中方法的调用
+      2. 功能增强
+</code></pre>
+<h4 id="2-动态代理"><a href="#2-动态代理" class="headerlink" title="2.动态代理"></a>2.动态代理</h4><p>​    在静态代理中目标类很多时候，可以使用动态代理，避免静态代理的缺点。<br>​     动态代理中目标类即使很多， 1）代理类数量可以很少， 2）当你修改了接口中的方法时，不会影响代理类。</p>
+<pre><code class="hljs">动态代理： 在程序执行过程中，使用jdk的反射机制，创建代理类对象， 并动态的指定要代理目标类。
+            换句话说： 动态代理是一种创建java对象的能力，让你不用创建TaoBao类，就能创建代理类对象。
+
+                 在java中，要想创建对象：
+                  1.创建类文件， java文件编译为class
+                  2.使用构造方法，创建类的对象。
+
+
+动态代理的实现： 
+    1. jdk动态代理（理解）： 使用java反射包中的类和接口实现动态代理的功能。
+        反射包 java.lang.reflect , 里面有三个类 ： InvocationHandler , Method, Proxy.
+    2. cglib动态代理（了解）: 
+    cglib是第三方的工具库， 创建代理对象。 
+    cglib的原理是继承， cglib通过继承目标类，创建它的子类，在子类中重写父类中同名的方法， 实现功能的修改。
+    因为cglib是继承，重写方法，所以要求目标类不能是final的， 方法也不能是final的。
+    cglib的要求目标类比较宽松， 只要能继承就可以了。
+    cglib在很多的框架中使用，  比如 mybatis ，spring框架中都有使用。
+</code></pre>
+<p>​                        </p>
+<ul>
+<li><p>jdk动态代理：</p>
+<ol>
+<li><p>反射， Method类，表示方法。类中的方法。 通过Method可以执行某个方法。</p>
+</li>
+<li><p>jdk动态代理的实现<br>反射包 java.lang.reflect , 里面有三个类 ：</p>
+<p><code>InvocationHandler</code></p>
+<p><code>Method</code></p>
+<p><code> Proxy</code></p>
+<p>1).InvocationHandler 接口（调用处理器）：就一个方法invoke（）<br>invoke（）:表示代理对象要执行的功能代码。你的代理类要完成的功能就写在invoke()方法中。</p>
+<p>代理类完成的功能：</p>
+<ol>
+<li><p>调用目标方法，执行目标方法的功能</p>
+</li>
+<li><p>功能增强，在目标方法调用时，增加功能。</p>
+<p> 方法原型：</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">参数： Object proxy:jdk创建的代理对象，无需赋值。<br>	      Method method:目标类中的方法，jdk提供method对象的<br>            Object[] args：目标类中方法的参数， jdk提供的。<br>            public Object invoke(Object proxy, Method method, Object[] args)<br></code></pre></td></tr></table></figure>
+
+<p> InvocationHandler 接口：表示你的代理要干什么。</p>
+<p>​    怎么用： 1.创建类实现接口InvocationHandler<br>​                    2.重写invoke（）方法， 把原来静态代理中代理类要完成的功能，写在这。          </p>
+<p>​                   2）Method类：表示方法的， 确切的说就是目标类中的方法。<br>​                 作用：通过Method可以执行某个目标类的方法，Method.invoke();<br>​                    method.invoke(目标对象，方法的参数)<br>​                      Object ret = method.invoke(service2, “李四”);<br>​<br>​            说明： method.invoke（）就是用来执行目标方法的，等同于静态代理中的<br>​                     //向厂家发送订单，告诉厂家，我买了u盘，厂家发货<br>​                  float price = factory.sell(amount); //厂家的价格。</p>
+<pre><code class="hljs">     3）Proxy类：核心的对象，创建代理对象。之前创建对象都是 new 类的构造方法()
+           现在我们是使用Proxy类的方法，代替new的使用。 
+
+        方法： 静态方法 newProxyInstance() 
+        作用是： 创建代理对象， 等同于静态代理中的TaoBao taoBao = new TaoBao();
+
+
+     参数：
+         1. ClassLoader loader 类加载器，负责向内存中加载对象的。 使用反射获取对象的ClassLoader
+              类a , a.getCalss().getClassLoader(),  目标对象的类加载器
+        2. Class&lt;?&gt;[] interfaces： 接口， 目标对象实现的接口，也是反射获取的。
+      3. InvocationHandler h : 我们自己写的，代理类要完成的功能。 
+
+        返回值：就是代理对象
+
+        public static Object newProxyInstance(ClassLoader loader,
+                                      Class&lt;?&gt;[] interfaces,
+                                      InvocationHandler h)
+</code></pre>
+<p>​<br>  3. 实现动态代理的步骤：<br>    1. 创建接口，定义目标类要完成的功能<br>     2. 创建目标类实现接口<br>     3. 创建InvocationHandler接口的实现类，在invoke方法中完成代理类的功能<br>         1.调用目标方法<br>          2.增强功能</p>
+<pre><code class="hljs"> 4.使用Proxy类的静态方法，创建代理对象。 并把返回值转为接口类型。
+</code></pre>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/JAVA%E6%A1%86%E6%9E%B6/" class="category-chain-item">JAVA框架</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">#动态代理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>动态代理</div>
+      <div>https://evanyangtobegreatest.github.io/2022/03/16/动态代理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Evan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月16日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/16/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java多线程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java多线程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/15/JAVA%E9%9B%86%E5%90%88-0/" title="JAVA集合">
+                        <span class="hidden-mobile">JAVA集合</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      粤ICP备2022060807号-1
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011402000758"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>粤公网安备 44011402000758号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

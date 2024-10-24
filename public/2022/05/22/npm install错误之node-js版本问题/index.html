@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Evan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="npm install时报错12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182npm ERR! code 1npm ERR! path C:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm install错误之node版本问题">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/05/22/npm%20install%E9%94%99%E8%AF%AF%E4%B9%8Bnode-js%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="EvanYoung">
+<meta property="og:description" content="npm install时报错12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182npm ERR! code 1npm ERR! path C:">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-22T01:11:27.000Z">
+<meta property="article:modified_time" content="2022-06-30T03:23:11.367Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>npm install错误之node版本问题 - EvanYoung</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>EvanYoung</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="npm install错误之node版本问题"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-22 09:11" pubdate>
+          2022年5月22日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          56 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">npm install错误之node版本问题</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="npm-install时报错"><a href="#npm-install时报错" class="headerlink" title="npm install时报错"></a>npm install时报错</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre class=" language-hljs cmd">npm ERR! code <span class="hljs-number">1</span><br>npm ERR! <span class="hljs-built_in">path</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\node-sass<br>npm ERR! command failed<br>npm ERR! command C:\Windows\system32\<span class="hljs-built_in">cmd</span>.exe /d /s /c node scripts/build.js<br>npm ERR! Building: D:\work\nodejs\node.exe C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\node-gyp\bin\node-gyp.js rebuild --verbose --libsass_ext= --libsass_cflags= --libsass_ldflags= --libsa<br>ss_library=<br>npm ERR! gyp info it worked <span class="hljs-keyword">if</span> it ends with ok<br>npm ERR! gyp verb cli [<br>npm ERR! gyp verb cli   &#x27;D:\\work\\nodejs\\node.exe&#x27;,<br>npm ERR! gyp verb cli   &#x27;C:\\Users\\Evan\\Downloads\\vhr-master\\vhr-master\\vuehr\\node_modules\\node-gyp\\bin\\node-gyp.js&#x27;,<br>npm ERR! gyp verb cli   &#x27;rebuild&#x27;,<br>npm ERR! gyp verb cli   &#x27;--verbose&#x27;,<br>npm ERR! gyp verb cli   &#x27;--libsass_ext=&#x27;,<br>npm ERR! gyp verb cli   &#x27;--libsass_cflags=&#x27;,<br>npm ERR! gyp verb cli   &#x27;--libsass_ldflags=&#x27;,<br>npm ERR! gyp verb cli   &#x27;--libsass_library=&#x27;<br>npm ERR! gyp verb cli ]<br>npm ERR! gyp info using node-gyp@<span class="hljs-number">3</span>.<span class="hljs-number">8</span>.<span class="hljs-number">0</span><br>npm ERR! gyp info using node@<span class="hljs-number">16</span>.<span class="hljs-number">15</span>.<span class="hljs-number">0</span> | win32 | x64<br>npm ERR! gyp verb command rebuild []<br>npm ERR! gyp verb command clean []<br>npm ERR! gyp verb clean removing &quot;build&quot; directory<br>npm ERR! gyp verb command configure []<br>npm ERR! gyp verb check python checking <span class="hljs-keyword">for</span> Python executable &quot;python2&quot; <span class="hljs-keyword">in</span> the <span class="hljs-built_in">PATH</span><br>npm ERR! gyp verb `which` failed Error: <span class="hljs-keyword">not</span> found: python2<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> getNotFoundError (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">13</span>:<span class="hljs-number">12</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> F (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">68</span>:<span class="hljs-number">19</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> E (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">80</span>:<span class="hljs-number">29</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">89</span>:<span class="hljs-number">16</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\index.js:<span class="hljs-number">42</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\windows.js:<span class="hljs-number">36</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> FSReqCallback.oncomplete (node:<span class="hljs-built_in">fs</span>:<span class="hljs-number">198</span>:<span class="hljs-number">21</span>)<br>npm ERR! gyp verb `which` failed  python2 Error: <span class="hljs-keyword">not</span> found: python2<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> getNotFoundError (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">13</span>:<span class="hljs-number">12</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> F (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">68</span>:<span class="hljs-number">19</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> E (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">80</span>:<span class="hljs-number">29</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">89</span>:<span class="hljs-number">16</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\index.js:<span class="hljs-number">42</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\windows.js:<span class="hljs-number">36</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> FSReqCallback.oncomplete (node:<span class="hljs-built_in">fs</span>:<span class="hljs-number">198</span>:<span class="hljs-number">21</span>) &#123;<br>npm ERR! gyp verb `which` failed   code: &#x27;ENOENT&#x27;<br>npm ERR! gyp verb `which` failed &#125;<br>npm ERR! gyp verb check python checking <span class="hljs-keyword">for</span> Python executable &quot;python&quot; <span class="hljs-keyword">in</span> the <span class="hljs-built_in">PATH</span><br>npm ERR! gyp verb `which` failed Error: <span class="hljs-keyword">not</span> found: python<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> getNotFoundError (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">13</span>:<span class="hljs-number">12</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> F (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">68</span>:<span class="hljs-number">19</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> E (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">80</span>:<span class="hljs-number">29</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">89</span>:<span class="hljs-number">16</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\index.js:<span class="hljs-number">42</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\windows.js:<span class="hljs-number">36</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> FSReqCallback.oncomplete (node:<span class="hljs-built_in">fs</span>:<span class="hljs-number">198</span>:<span class="hljs-number">21</span>)<br>npm ERR! gyp verb `which` failed  python Error: <span class="hljs-keyword">not</span> found: python<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> getNotFoundError (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">13</span>:<span class="hljs-number">12</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> F (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">68</span>:<span class="hljs-number">19</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> E (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">80</span>:<span class="hljs-number">29</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">89</span>:<span class="hljs-number">16</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\index.js:<span class="hljs-number">42</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\windows.js:<span class="hljs-number">36</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> FSReqCallback.oncomplete (node:<span class="hljs-built_in">fs</span>:<span class="hljs-number">198</span>:<span class="hljs-number">21</span>) &#123;<br>npm ERR! gyp verb `which` failed   code: &#x27;ENOENT&#x27;<br>npm ERR! gyp verb `which` failed &#125;<br>npm ERR! gyp verb could <span class="hljs-keyword">not</span> <span class="hljs-built_in">find</span> &quot;python&quot;. checking python launcher<br>npm ERR! gyp verb could <span class="hljs-keyword">not</span> <span class="hljs-built_in">find</span> &quot;python&quot;. guessing location<br>npm ERR! gyp verb ensuring that file exists: C:\Python27\python.exe<br>npm ERR! gyp ERR! configure error<br>npm ERR! gyp ERR! stack Error: Can&#x27;t <span class="hljs-built_in">find</span> Python executable &quot;python&quot;, you can <span class="hljs-built_in">set</span> the PYTHON env variable.<br>npm ERR! gyp ERR! stack     <span class="hljs-built_in">at</span> PythonFinder.failNoPython (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\node-gyp\lib\configure.js:<span class="hljs-number">484</span>:<span class="hljs-number">19</span>)<br>npm ERR! gyp ERR! stack     <span class="hljs-built_in">at</span> PythonFinder.&lt;anonymous&gt; (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\node-gyp\lib\configure.js:<span class="hljs-number">509</span>:<span class="hljs-number">16</span>)<br>npm ERR! gyp ERR! stack     <span class="hljs-built_in">at</span> callback (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\graceful-<span class="hljs-built_in">fs</span>\polyfills.js:<span class="hljs-number">295</span>:<span class="hljs-number">20</span>)<br>npm ERR! gyp ERR! stack     <span class="hljs-built_in">at</span> FSReqCallback.oncomplete (node:<span class="hljs-built_in">fs</span>:<span class="hljs-number">198</span>:<span class="hljs-number">21</span>)<br>npm ERR! gyp ERR! System Windows_NT <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">16299</span><br>npm ERR! gyp ERR! command &quot;D:\\work\\nodejs\\node.exe&quot; &quot;C:\\Users\\Evan\\Downloads\\vhr-master\\vhr-master\\vuehr\\node_modules\\node-gyp\\bin\\node-gyp.js&quot; &quot;rebuild&quot; &quot;--verbose&quot; &quot;--libsass_ext=&quot; &quot;--libsass_cfl<br>ags=&quot; &quot;--libsass_ldflags=&quot; &quot;--libsass_library=&quot;<br>npm ERR! gyp ERR! cwd C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\node-sass<br>npm ERR! gyp ERR! node -v v16.<span class="hljs-number">15</span>.<span class="hljs-number">0</span><br>npm ERR! gyp ERR! node-gyp -v v3.<span class="hljs-number">8</span>.<span class="hljs-number">0</span><br>npm ERR! gyp ERR! <span class="hljs-keyword">not</span> ok<br>npm ERR! Build failed with error code: <span class="hljs-number">1</span><br><br>npm ERR! A complete log of this run can be found <span class="hljs-keyword">in</span>:<br>npm ERR!     C:\Users\Evan\AppData\Local\npm-cache\_logs\<span class="hljs-number">2022</span>-<span class="hljs-number">06</span>-<span class="hljs-number">30</span>T02_19_44_135Z-debug-<span class="hljs-number"><code class="language-hljs cmd">npm ERR! code <span class="hljs-number">1</span><br>npm ERR! <span class="hljs-built_in">path</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\node-sass<br>npm ERR! command failed<br>npm ERR! command C:\Windows\system32\<span class="hljs-built_in">cmd</span>.exe /d /s /c node scripts/build.js<br>npm ERR! Building: D:\work\nodejs\node.exe C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\node-gyp\bin\node-gyp.js rebuild --verbose --libsass_ext= --libsass_cflags= --libsass_ldflags= --libsa<br>ss_library=<br>npm ERR! gyp info it worked <span class="hljs-keyword">if</span> it ends with ok<br>npm ERR! gyp verb cli [<br>npm ERR! gyp verb cli   &#x27;D:\\work\\nodejs\\node.exe&#x27;,<br>npm ERR! gyp verb cli   &#x27;C:\\Users\\Evan\\Downloads\\vhr-master\\vhr-master\\vuehr\\node_modules\\node-gyp\\bin\\node-gyp.js&#x27;,<br>npm ERR! gyp verb cli   &#x27;rebuild&#x27;,<br>npm ERR! gyp verb cli   &#x27;--verbose&#x27;,<br>npm ERR! gyp verb cli   &#x27;--libsass_ext=&#x27;,<br>npm ERR! gyp verb cli   &#x27;--libsass_cflags=&#x27;,<br>npm ERR! gyp verb cli   &#x27;--libsass_ldflags=&#x27;,<br>npm ERR! gyp verb cli   &#x27;--libsass_library=&#x27;<br>npm ERR! gyp verb cli ]<br>npm ERR! gyp info using node-gyp@<span class="hljs-number">3</span>.<span class="hljs-number">8</span>.<span class="hljs-number">0</span><br>npm ERR! gyp info using node@<span class="hljs-number">16</span>.<span class="hljs-number">15</span>.<span class="hljs-number">0</span> | win32 | x64<br>npm ERR! gyp verb command rebuild []<br>npm ERR! gyp verb command clean []<br>npm ERR! gyp verb clean removing &quot;build&quot; directory<br>npm ERR! gyp verb command configure []<br>npm ERR! gyp verb check python checking <span class="hljs-keyword">for</span> Python executable &quot;python2&quot; <span class="hljs-keyword">in</span> the <span class="hljs-built_in">PATH</span><br>npm ERR! gyp verb `which` failed Error: <span class="hljs-keyword">not</span> found: python2<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> getNotFoundError (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">13</span>:<span class="hljs-number">12</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> F (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">68</span>:<span class="hljs-number">19</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> E (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">80</span>:<span class="hljs-number">29</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">89</span>:<span class="hljs-number">16</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\index.js:<span class="hljs-number">42</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\windows.js:<span class="hljs-number">36</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> FSReqCallback.oncomplete (node:<span class="hljs-built_in">fs</span>:<span class="hljs-number">198</span>:<span class="hljs-number">21</span>)<br>npm ERR! gyp verb `which` failed  python2 Error: <span class="hljs-keyword">not</span> found: python2<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> getNotFoundError (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">13</span>:<span class="hljs-number">12</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> F (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">68</span>:<span class="hljs-number">19</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> E (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">80</span>:<span class="hljs-number">29</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">89</span>:<span class="hljs-number">16</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\index.js:<span class="hljs-number">42</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\windows.js:<span class="hljs-number">36</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> FSReqCallback.oncomplete (node:<span class="hljs-built_in">fs</span>:<span class="hljs-number">198</span>:<span class="hljs-number">21</span>) &#123;<br>npm ERR! gyp verb `which` failed   code: &#x27;ENOENT&#x27;<br>npm ERR! gyp verb `which` failed &#125;<br>npm ERR! gyp verb check python checking <span class="hljs-keyword">for</span> Python executable &quot;python&quot; <span class="hljs-keyword">in</span> the <span class="hljs-built_in">PATH</span><br>npm ERR! gyp verb `which` failed Error: <span class="hljs-keyword">not</span> found: python<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> getNotFoundError (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">13</span>:<span class="hljs-number">12</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> F (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">68</span>:<span class="hljs-number">19</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> E (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">80</span>:<span class="hljs-number">29</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">89</span>:<span class="hljs-number">16</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\index.js:<span class="hljs-number">42</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\windows.js:<span class="hljs-number">36</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> FSReqCallback.oncomplete (node:<span class="hljs-built_in">fs</span>:<span class="hljs-number">198</span>:<span class="hljs-number">21</span>)<br>npm ERR! gyp verb `which` failed  python Error: <span class="hljs-keyword">not</span> found: python<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> getNotFoundError (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">13</span>:<span class="hljs-number">12</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> F (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">68</span>:<span class="hljs-number">19</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> E (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">80</span>:<span class="hljs-number">29</span>)<br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\which\which.js:<span class="hljs-number">89</span>:<span class="hljs-number">16</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\index.js:<span class="hljs-number">42</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\isexe\windows.js:<span class="hljs-number">36</span>:<span class="hljs-number">5</span><br>npm ERR! gyp verb `which` failed     <span class="hljs-built_in">at</span> FSReqCallback.oncomplete (node:<span class="hljs-built_in">fs</span>:<span class="hljs-number">198</span>:<span class="hljs-number">21</span>) &#123;<br>npm ERR! gyp verb `which` failed   code: &#x27;ENOENT&#x27;<br>npm ERR! gyp verb `which` failed &#125;<br>npm ERR! gyp verb could <span class="hljs-keyword">not</span> <span class="hljs-built_in">find</span> &quot;python&quot;. checking python launcher<br>npm ERR! gyp verb could <span class="hljs-keyword">not</span> <span class="hljs-built_in">find</span> &quot;python&quot;. guessing location<br>npm ERR! gyp verb ensuring that file exists: C:\Python27\python.exe<br>npm ERR! gyp ERR! configure error<br>npm ERR! gyp ERR! stack Error: Can&#x27;t <span class="hljs-built_in">find</span> Python executable &quot;python&quot;, you can <span class="hljs-built_in">set</span> the PYTHON env variable.<br>npm ERR! gyp ERR! stack     <span class="hljs-built_in">at</span> PythonFinder.failNoPython (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\node-gyp\lib\configure.js:<span class="hljs-number">484</span>:<span class="hljs-number">19</span>)<br>npm ERR! gyp ERR! stack     <span class="hljs-built_in">at</span> PythonFinder.&lt;anonymous&gt; (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\node-gyp\lib\configure.js:<span class="hljs-number">509</span>:<span class="hljs-number">16</span>)<br>npm ERR! gyp ERR! stack     <span class="hljs-built_in">at</span> callback (C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\graceful-<span class="hljs-built_in">fs</span>\polyfills.js:<span class="hljs-number">295</span>:<span class="hljs-number">20</span>)<br>npm ERR! gyp ERR! stack     <span class="hljs-built_in">at</span> FSReqCallback.oncomplete (node:<span class="hljs-built_in">fs</span>:<span class="hljs-number">198</span>:<span class="hljs-number">21</span>)<br>npm ERR! gyp ERR! System Windows_NT <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">16299</span><br>npm ERR! gyp ERR! command &quot;D:\\work\\nodejs\\node.exe&quot; &quot;C:\\Users\\Evan\\Downloads\\vhr-master\\vhr-master\\vuehr\\node_modules\\node-gyp\\bin\\node-gyp.js&quot; &quot;rebuild&quot; &quot;--verbose&quot; &quot;--libsass_ext=&quot; &quot;--libsass_cfl<br>ags=&quot; &quot;--libsass_ldflags=&quot; &quot;--libsass_library=&quot;<br>npm ERR! gyp ERR! cwd C:\Users\Evan\Downloads\vhr-master\vhr-master\vuehr\node_modules\node-sass<br>npm ERR! gyp ERR! node -v v16.<span class="hljs-number">15</span>.<span class="hljs-number">0</span><br>npm ERR! gyp ERR! node-gyp -v v3.<span class="hljs-number">8</span>.<span class="hljs-number">0</span><br>npm ERR! gyp ERR! <span class="hljs-keyword">not</span> ok<br>npm ERR! Build failed with error code: <span class="hljs-number">1</span><br><br>npm ERR! A complete log of this run can be found <span class="hljs-keyword">in</span>:<br>npm ERR!     C:\Users\Evan\AppData\Local\npm-cache\_logs\<span class="hljs-number">2022</span>-<span class="hljs-number">06</span>-<span class="hljs-number">30</span>T02_19_44_135Z-debug-<span class="hljs-number">0</span>.log<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="出错原因"><a href="#出错原因" class="headerlink" title="出错原因"></a>出错原因</h3><p>node版本过高导致，可以通过node -v查看版本</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>重新安装node.js</p>
+<p><strong>1.找到node.js，卸载</strong></p>
+<p><strong>2.到官网重新下载版本更低的node.js</strong></p>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/releases/">官网地址</a></p>
+<h3 id="新的错误"><a href="#新的错误" class="headerlink" title="新的错误"></a>新的错误</h3><p>这时候重新运行npm install，又出现新的报错</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs cmd"><code class="language-hljs cmd">npm ERR! cb() never called! <br>npm ERR! This is an error with npm itself. <br></code></pre></td></tr></table></figure>
+
+<h3 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h3><p><strong>1.删除项目文件的node_modules</strong><br><strong>2.删除package-lock.json文件</strong><br> <strong>3.清除npm缓存，执行npm cache clean –force</strong><br> <strong>4.再运行npm install</strong></p>
+<h2 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h2>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>npm install错误之node版本问题</div>
+      <div>https://evanyangtobegreatest.github.io/2022/05/22/npm install错误之node-js版本问题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Evan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月22日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/13/qs%E5%BA%8F%E5%88%97%E5%8C%96/" title="qs序列化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">qs序列化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/18/%E9%A1%B5%E9%9D%A2%E6%89%93%E5%8D%B0%E8%A1%A8%E6%A0%BC%E6%8D%A2%E9%A1%B5%E9%97%AE%E9%A2%98/" title="页面打印表格换页问题">
+                        <span class="hidden-mobile">页面打印表格换页问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      粤ICP备2022060807号-1
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011402000758"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>粤公网安备 44011402000758号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,799 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/logo.PNG">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Evan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Web1.网络通讯部分1.1TCP与UDP区别？（了解） TCP(Transmission Control Protocol 传输控制协议)是一种面向连接(连接导向)的、可靠的、基于IP的传输层协议。  UDP是User Datagram Protocol的简称，中文名是用户数据报协议，是OSI参考模型中的传输层协议，它是一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务。  TCP和U">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web">
+<meta property="og:url" content="https://evanyangtobegreatest.github.io/2022/03/15/Web/index.html">
+<meta property="og:site_name" content="EvanYoung">
+<meta property="og:description" content="Web1.网络通讯部分1.1TCP与UDP区别？（了解） TCP(Transmission Control Protocol 传输控制协议)是一种面向连接(连接导向)的、可靠的、基于IP的传输层协议。  UDP是User Datagram Protocol的简称，中文名是用户数据报协议，是OSI参考模型中的传输层协议，它是一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务。  TCP和U">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://evanyangtobegreatest.github.io/img/bg5.jpg">
+<meta property="article:published_time" content="2022-03-15T02:22:20.000Z">
+<meta property="article:modified_time" content="2022-05-30T09:03:39.435Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Web">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://evanyangtobegreatest.github.io/img/bg5.jpg">
+  
+  
+  
+  <title>Web - EvanYoung</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"evanyangtobegreatest.github.io","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>EvanYoung</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg10.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Web"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-15 10:22" pubdate>
+          2022年3月15日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Web</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="1-网络通讯部分"><a href="#1-网络通讯部分" class="headerlink" title="1.网络通讯部分"></a>1.网络通讯部分</h2><h3 id="1-1TCP与UDP区别？（了解）"><a href="#1-1TCP与UDP区别？（了解）" class="headerlink" title="1.1TCP与UDP区别？（了解）"></a>1.1TCP与UDP区别？（了解）</h3><p><img src="/img/web/%E5%9B%BE%E7%89%8728.png" srcset="/img/loading.gif" lazyload></p>
+<pre><code class="hljs">TCP(Transmission Control Protocol 传输控制协议)是一种面向连接(连接导向)的、可靠的、基于IP的传输层协议。
+
+UDP是User Datagram Protocol的简称，中文名是用户数据报协议，是OSI参考模型中的传输层协议，它是一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务。
+
+TCP和UDP都是来自于传输层的协议。传输层位于应用层和网络层之间，负责位于不同主机进程之间的通信。
+</code></pre>
+<p>TCP与UDP的区别</p>
+<p><img src="/img/web/%E5%9B%BE%E7%89%8729.png" srcset="/img/loading.gif" lazyload></p>
+<pre><code class="hljs">1.TCP基于连接UDP无连接
+2.TCP要求系统资源较多,UDP较少 
+3.TCP保证数据正确性，UDP可能丢包 
+4.TCP保证数据顺序，UDP不保证 
+</code></pre>
+<p>&nbsp;</p>
+<hr>
+<h3 id="1-2什么是HTTP协议？"><a href="#1-2什么是HTTP协议？" class="headerlink" title="1.2什么是HTTP协议？"></a>1.2什么是HTTP协议？</h3><pre><code class="hljs">    客户端和服务器端之间数据传输的格式规范，格式简称为“超文本传输协议”。 
+    是一个基于请求与响应模式的、无状态的、应用层的协议，基于 TCP 的连接方式
+</code></pre>
+<p>&nbsp;</p>
+<hr>
+<h3 id="1-3TCP的三次握手"><a href="#1-3TCP的三次握手" class="headerlink" title="1.3TCP的三次握手"></a>1.3TCP的三次握手</h3><pre><code class="hljs">为了准确无误地把数据送达目标处，TCP协议采用了三次握手策略。
+</code></pre>
+<p><img src="/img/web/%E5%9B%BE%E7%89%8730.png" srcset="/img/loading.gif" lazyload alt="image text"></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">为什么要三次握手？<br>三次握手的目的是建立可靠的通信信道，说到通讯，简单来说就是数据的发送与接收，而三次握手最主要的目的就是双方确认自己与对方的发送与接收是正常的。<br><br>SYN：同步序列编号（Synchronize Sequence Numbers）。是TCP/IP建立连接时使用的握手信号。<br>第一次握手：客户端给服务器发送一个SYN。客户端发送网络包，服务端收到了。服务器得出结论：客户端的发送能力，服务端的接收能力正常。<br>第二次握手：服务端收到SYN报文之后，会应答一个SYN+ACK报文。服务端发包，客户端收到了。<br>客户端得出结论：服务端的接收和发送能力，客户端的接收和发送能力正常。但是此时服务端不能确认客户端的接收能力是否正常。<br>第三次握手;客户端收到SYN+ACK报文之后，回应一个ACK报文。客户端发包，服务端收到了。服务器得出结论：客户端的接收和发送能力，自己的接收发送能力都正常。<br>通过三次握手，双方都确认对方的接收以及发送能力正常。<br></code></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<hr>
+<h3 id="1-4HTTP中重定向和请求转发的区别？"><a href="#1-4HTTP中重定向和请求转发的区别？" class="headerlink" title="1.4HTTP中重定向和请求转发的区别？"></a>1.4HTTP中重定向和请求转发的区别？</h3><p><strong>实现</strong></p>
+<pre><code class="hljs">转发：用request的getRequestDispatcher()方法得到ReuqestDispatcher对象，调用forward（）方法
+
+request.getRequestDispatcher(&quot;other.jsp&quot;).forward(request, response);
+
+
+重定向：调用response的sendRedirect(）方法
+
+response.sendRedirect(&quot;other.jsp&quot;);
+</code></pre>
+<p><strong>区别：</strong></p>
+<pre><code class="hljs">1&gt; 重定向2次请求，请求转发1次请求
+2&gt; 重定向地址栏会变，请求转发地址栏不变
+3&gt; 重定向是浏览器跳转，请求转发是服务器跳转
+4&gt; 重定向可以跳转到任意网址，请求转发只能跳转当前项目
+</code></pre>
+<p>&nbsp;</p>
+<hr>
+<h3 id="1-5Get和Post的区别？"><a href="#1-5Get和Post的区别？" class="headerlink" title="1.5Get和Post的区别？"></a>1.5Get和Post的区别？</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">1. Get是不安全的，因为在传输过程，数据被放在请求的URL中；Post的所有操作对用户来说都是不可见的。  <br>2. Get传送的数据量较小，一般传输数据大小不超过2k-4k（根据浏览器不同，限制不一样，但相差不大这主要是因为受URL长度限制；Post传送的数据量较大，一般被默认为不受限制。   <br>3. Get限制Form表单的数据集的值必须为ASCII字符；而Post支持整个ISO10646字符集。        <br>4. Get执行效率却比Post方法好。Get是form提交的默认方法。<br></code></pre></td></tr></table></figure>
+
+<p>   <img src="/img/web/20210325210742187.png" srcset="/img/loading.gif" lazyload alt="image text"></p>
+<p>&nbsp;</p>
+<hr>
+<h2 id="2-cookie和session的区别？（必会）"><a href="#2-cookie和session的区别？（必会）" class="headerlink" title="2.cookie和session的区别？（必会）"></a>2.cookie和session的区别？（必会）</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre class=" language-hljs tex"><code class="language-hljs tex">1.存储位置不同cookie的数据信息存放在客户端浏览器上。 session的数据信息存放在服务器上。 <br>2.存储容量不同单个cookie保存的数据<=4KB，一个站点最多保存20个Cookie。 对于session来说并没有上限，但出于对服务器端的性能考虑，session内不要存放过多的东西，并且设置session删除机制。<br>3.存储方式不同cookie中只能保管ASCII字符串，并需要通过编码方式存储为Unicode字符或者二进制数据。 session中能够存储任何类型的数据，包括且不限于string，integer，list，map等。<br>4.隐私策略不同cookie对客户端是可见的，别有用心的人可以分析存放在本地的cookie并进行cookie欺骗，所以它是不安全的。 session存储在服务器上，不存在敏感信息泄漏的风险。<br>5. 有效期上不同开发可以通过设置cookie的属性，达到使cookie长期有效的效果。 session依赖于名为JSESSIONID的cookie，而cookie JSESSIONID的过期时间默认为-1，只需关闭窗口该session就会失效，因而session不能达到长期有效的效果。<br>6.服务器压力不同cookie保管在客户端，不占用服务器资源。对于并发用户十分多的网站，cookie是很好的选择。 session是保管在服务器端的，每个用户都会产生一个session。假如并发访问的用户十分多，会产生十分多的session，耗费大量的内存。 <br></code></pre></td></tr></table></figure>
+
+
+<p>&nbsp;</p>
+<hr>
+<h2 id="3-Jsp和Servlet（了解）"><a href="#3-Jsp和Servlet（了解）" class="headerlink" title="3.Jsp和Servlet（了解）"></a>3.Jsp和Servlet（了解）</h2><p>1.Jsp和Servlet的区别？</p>
+<p>相同点</p>
+<pre><code class="hljs">jsp经编译后就变成了servlet，jsp本质就是servlet，jvm只能识别java的类，不能识别jsp代码，web容器将jsp的代码编译成jvm能够识别的java类。其实就是当你通过 http 请求一个 JSP 页面是，首先 Tomcat 会调用 service（）方法将JSP编译成为 Servlet，然后执行 Servlet。
+</code></pre>
+<p>不同点</p>
+<pre><code class="hljs">JSP侧重视图，Sevlet主要用于控制逻辑。Servlet中没有内置对象 。JSP中的内置对象都是必须通过HttpServletRequest对象，HttpServletResponse对象以及HttpServlet对象得到。
+</code></pre>
+<p>2.Servlet的生命周期</p>
+<pre><code class="hljs">// 1. servlet对象创建时，调用此方法public void init(ServletConfig servletConfig);// 2. 用户访问servlet时，调用此方法public void service(ServletRequest servletRequest, ServletResponse servletResponse);// 3. servlet对象销毁时，调用此方法public void destroy();
+</code></pre>
+<p>3.JSP九大内置对象</p>
+<pre><code class="hljs">out对象：用于向客户端、浏览器输出数据。
+request对象：封装了来自客户端、浏览器的各种信息。
+response对象：封装了服务器的响应信息。
+exception对象：封装了jsp程序执行过程中发生的异常和错误信息。
+config对象：封装了应用程序的配置信息。
+page对象：指向了当前jsp程序本身。
+session对象：用来保存会话信息。也就是说，可以实现在同一用户的不同请求之间共享数
+application对象：代表了当前应用程序的上下文。可以在不同的用户之间共享信息。
+pageContext对象：提供了对jsp页面所有对象以及命名空间的访问。
+</code></pre>
+<p>&nbsp;</p>
+<hr>
+<h2 id="4-Ajax的介绍（必会）"><a href="#4-Ajax的介绍（必会）" class="headerlink" title="4.Ajax的介绍（必会）"></a>4.Ajax的介绍（必会）</h2><p>Ajax 即”Asynchronous JavaScript And XML”（异步 JavaScript 和 XML），是指一种创建交互式、快速动态网页应用的网页开发技术，无需重新加载整个网页的情况下，能够更新部分网页的技术。 </p>
+<pre><code class="hljs">    $.ajax(&#123; 
+    选项 
+    &#125;)
+    常见的选项有: 
+    type:请求方式,常见的值有&quot;get&quot;,&quot;post&quot;等,默认值:get 
+    url:请求的路径,&quot;/ajax/hello&quot; 
+    data:请求的参数,参数的常见写法有键值对或者json 
+    方式1: name=tom&amp;pwd=123 
+    方式2: &#123;&quot;name&quot;:&quot;tom&quot;,&quot;pwd&quot;:&quot;123&quot;&#125; 
+    success:请求成功后的回调函数 function(返回值的参数名)&#123;&#125; 
+    contentType:用来设置请求参数的mime类型,默认值:表单的enctype默认值 name=tom&amp;pwd=123 
+    error:ajax请求时内部发生错误时执行的回调函数 function()&#123;&#125; 
+    dataType:指定返回值的类型 常见值:text json 
+    async:是否异步 默认值true 
+</code></pre>
+<p>Ajax应用程序的优势在于：</p>
+<pre><code class="hljs">   1. 通过异步模式，提升了用户体验 
+   2. 优化了浏览器和服务器之间的传输，减少不必要的数据往返，减少    了带宽占用 
+   3. Ajax引擎在客户端运行，承担了一部分本来由服务器承担的工作，从而减少了大用户量下的服务器负载。
+</code></pre>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Web/" class="category-chain-item">Web</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Web/">#Web</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Web</div>
+      <div>https://evanyangtobegreatest.github.io/2022/03/15/Web/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Evan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月15日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/15/JAVA%E9%9B%86%E5%90%88-0/" title="JAVA集合">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JAVA集合</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      粤ICP备2022060807号-1
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011402000758"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>粤公网安备 44011402000758号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
