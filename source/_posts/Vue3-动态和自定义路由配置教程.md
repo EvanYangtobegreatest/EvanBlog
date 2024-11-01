@@ -1,8 +1,8 @@
 ---
-layout:
-  - page
 title: Vue3 动态和自定义路由配置教程
 date: 2024-11-01 16:05:16
+author: Evan
+categories: 笔记
 tags:
 ---
 
