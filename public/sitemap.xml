@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://evanyangtobegreatest.github.io/2024/11/01/Vue3-%E5%8A%A8%E6%80%81%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2024-11-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://evanyangtobegreatest.github.io/2024/10/24/%E7%94%A8cloudflare-R2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</loc>
+    
+    <lastmod>2024-10-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://evanyangtobegreatest.github.io/2024/02/22/Django%E4%BD%BF%E7%94%A8Vue%E5%9C%A8html%E4%B8%AD%E6%8C%89-%E5%8F%96%E5%80%BC%E5%A4%B1%E8%B4%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</loc>
     
     <lastmod>2024-09-24</lastmod>
@@ -355,7 +373,7 @@
 
   <url>
     <loc>https://evanyangtobegreatest.github.io/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -363,77 +381,77 @@
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/tags/Java/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/tags/%E9%9B%86%E5%90%88/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/tags/Java%E6%A1%86%E6%9E%B6/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/tags/mybatis/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/tags/MySql/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/tags/Web/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/tags/vue/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/tags/springboot/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/tags/elementUI/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -442,35 +460,35 @@
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/categories/Java%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/categories/%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/categories/JAVA%E6%A1%86%E6%9E%B6/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/categories/Web/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://evanyangtobegreatest.github.io/categories/%E9%A1%B9%E7%9B%AE/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
